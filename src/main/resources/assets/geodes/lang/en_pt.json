@@ -1,5 +1,5 @@
 {
-  "block.geodes.emerald_geode": "Block o' green gems",
+  "block.geodes.emerald_crystal_block": "Block o' green gems",
   "block.geodes.budding_emerald": "Buddin' green gems",
   "block.geodes.emerald_cluster": "Clump o' green gems",
   "block.geodes.large_emerald_bud": "Huge bud o' green gem",
@@ -32,7 +32,7 @@
   "subtitles.block.geodes.echo_locator.resonate": "Plunder shakes",
   "subtitles.block.geodes.echo_locator.use": "Echo finder humms",
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
-  "subtitles.block.geodes.emerald_geode.chime": "Emerald clinks",
+  "subtitles.block.geodes.emerald_crystal_block.chime": "Emerald clinks",
   "subtitles.block.geodes.quartz_geode.chime": "White crystal clinks",
   "subtitles.block.geodes.diamond_geode.chime": "Diamond clinks"
 }

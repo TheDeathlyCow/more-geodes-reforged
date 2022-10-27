@@ -1,5 +1,5 @@
 {
-  "block.geodes.emerald_geode": "ǝpoǝ⅁ pןɐɹǝɯƎ",
+  "block.geodes.emerald_crystal_block": "ǝpoǝ⅁ pןɐɹǝɯƎ",
   "block.geodes.budding_emerald": "pʅɐɹǝɯƎ ƃuᴉppnᗺ",
   "block.geodes.emerald_cluster": "ɹǝʇsnʅƆ pʅɐɹǝɯƎ",
   "block.geodes.large_emerald_bud": "pnᗺ pʅɐɹǝɯƎ ǝƃɹɐ⅂",
@@ -32,7 +32,7 @@
   "subtitles.block.geodes.echo_locator.resonate": "sǝʇɐuosǝɹ lɐʇsʎɹƆ",
   "subtitles.block.geodes.echo_locator.use": "sɯɯnɥ ɹoʇɐɔol oɥɔƎ",
   "subtitles.block.geodes.echo_block.chime": "soɥɔǝ oɥɔƎ",
-  "subtitles.block.geodes.emerald_geode.chime": "sǝɯᴉɥɔ plɐɹǝɯƎ",
+  "subtitles.block.geodes.emerald_crystal_block.chime": "sǝɯᴉɥɔ plɐɹǝɯƎ",
   "subtitles.block.geodes.quartz_geode.chime": "sǝɯᴉɥɔ zʇɹɐnꝹ",
   "subtitles.block.geodes.diamond_geode.chime": "sǝɯᴉɥɔ puoɯɐᴉᗡ"
 }

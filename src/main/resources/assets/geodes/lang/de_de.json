@@ -1,5 +1,5 @@
 {
-  "block.geodes.emerald_geode": "Smaragdgeode",
+  "block.geodes.emerald_crystal_block": "Smaragdkristallblock",
   "block.geodes.budding_emerald": "Smaragdknospenblock",
   "block.geodes.emerald_cluster": "Smaragdhaufen",
   "block.geodes.large_emerald_bud": "Große Smaragdknospe",
@@ -32,7 +32,7 @@
   "subtitles.block.geodes.echo_locator.resonate": "Kristall schwingt mit",
   "subtitles.block.geodes.echo_locator.use": "Das Echolot humms",
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
-  "subtitles.block.geodes.emerald_geode.chime": "Smaragd Glockenspiel",
+  "subtitles.block.geodes.emerald_crystal_block.chime": "Smaragd Glockenspiel",
   "subtitles.block.geodes.quartz_geode.chime": "Quarz Glockenspiel",
   "subtitles.block.geodes.diamond_geode.chime": "Diamant Glockenspiel"
 }

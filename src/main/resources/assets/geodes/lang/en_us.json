@@ -1,5 +1,5 @@
 {
-    "block.geodes.emerald_geode": "Emerald Geode",
+    "block.geodes.emerald_crystal_block": "Emerald Crystal Block",
     "block.geodes.budding_emerald": "Budding Emerald",
     "block.geodes.emerald_cluster": "Emerald Cluster",
     "block.geodes.large_emerald_bud": "Large Emerald Bud",
@@ -32,7 +32,7 @@
     "subtitles.block.geodes.echo_locator.resonate": "Crystal resonates",
     "subtitles.block.geodes.echo_locator.use": "Echo locator humms",
     "subtitles.block.geodes.echo_block.chime": "Echo echos",
-    "subtitles.block.geodes.emerald_geode.chime": "Emerald chimes",
+    "subtitles.block.geodes.emerald_crystal_block.chime": "Emerald crystal chimes",
     "subtitles.block.geodes.quartz_geode.chime": "Quartz chimes",
     "subtitles.block.geodes.diamond_geode.chime": "Diamond chimes"
 }

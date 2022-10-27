@@ -1,5 +1,5 @@
 {
-  "block.geodes.emerald_geode": "Imerald Geyo innit",
+  "block.geodes.emerald_crystal_block": "Imerald Crystal innit",
   "block.geodes.budding_emerald": "Buddin' Imerald",
   "block.geodes.emerald_cluster": "Imerald Clustah",
   "block.geodes.large_emerald_bud": "Lahge Imerald Bud",
@@ -32,7 +32,7 @@
   "subtitles.block.geodes.echo_locator.resonate": "Crystal resonates",
   "subtitles.block.geodes.echo_locator.use": "Echo locator humms",
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
-  "subtitles.block.geodes.emerald_geode.chime": "Imerald chimes",
+  "subtitles.block.geodes.emerald_crystal_block.chime": "Imerald chimes",
   "subtitles.block.geodes.quartz_geode.chime": "The queen's chimes",
   "subtitles.block.geodes.diamond_geode.chime": "I hear diamonds to steal bruv"
 }

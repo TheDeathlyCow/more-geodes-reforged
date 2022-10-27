@@ -14,11 +14,7 @@ object MoreGeodesSoundEvents {
         MoreGeodesForge.MODID
     )
 
-    val BLOCK_EMERALD_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.emerald.crystal.block.chime") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.emerald.crystal.block.chime"))
-    }
-
-    val BLOCK_EMERALD_CRYSTAL_BLOCK_HIT by REGISTRY.registerObject("block.emerald.crystal.block.hit") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.emerald.crystal.block.hit"))
+    val BLOCK_EMERALD_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.emerald_crystal_block.chime") {
+        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.emerald_crystal_block.chime"))
     }
 }
