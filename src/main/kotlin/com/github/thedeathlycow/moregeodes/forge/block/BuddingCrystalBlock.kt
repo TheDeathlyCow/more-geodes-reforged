@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
+import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
