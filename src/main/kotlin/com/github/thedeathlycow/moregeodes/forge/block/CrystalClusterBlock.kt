@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
+import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import net.minecraft.world.level.block.SimpleWaterloggedBlock
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.BooleanProperty
