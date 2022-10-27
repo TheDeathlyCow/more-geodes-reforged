@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
+import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.SoundType
@@ -20,7 +21,7 @@ object MoreGeodesBlocks {
 
     val EMERALD_CRYSTAL_BLOCK by REGISTRY.registerObject("emerald_crystal_block") {
         CrystalBlock(
-            CrystalBlock.CrystalBlockSoundGroup.EMERALD_SOUND_GROUP,
+            CrystalBlockSoundGroup.EMERALD_SOUND_GROUP,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_PURPLE)
                 .strength(1.5f)
                 .sound(SoundType.AMETHYST)

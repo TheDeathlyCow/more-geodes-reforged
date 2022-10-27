@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
+import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
@@ -41,17 +42,4 @@ open class CrystalBlock(
         }
     }
 
-    data class CrystalBlockSoundGroup(
-        val hitSound: SoundEvent,
-        val chimeSound: SoundEvent
-    ) {
-
-        companion object {
-            val EMERALD_SOUND_GROUP = CrystalBlockSoundGroup(
-                SoundEvents.AMETHYST_BLOCK_HIT,
-                SoundEvents.AMETHYST_BLOCK_CHIME
-            )
-        }
-
-    }
 }
