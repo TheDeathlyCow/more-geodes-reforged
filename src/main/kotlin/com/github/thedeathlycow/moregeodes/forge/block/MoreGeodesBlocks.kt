@@ -81,4 +81,18 @@ object MoreGeodesBlocks {
                 .noOcclusion()
         )
     }
+
+    ////// Budding Blocks //////
+
+    val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
+        BuddingCrystalBlock(
+            listOf(SMALL_EMERALD_BUD, MEDIUM_EMERALD_BUD, LARGE_EMERALD_BUD, EMERALD_CLUSTER),
+            CrystalBlockSoundGroup.EMERALD,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .randomTicks()
+        )
+    }
 }

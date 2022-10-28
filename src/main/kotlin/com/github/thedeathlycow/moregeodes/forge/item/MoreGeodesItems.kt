@@ -56,4 +56,11 @@ object MoreGeodesItems {
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }
+
+    val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
+        BlockItem(
+            MoreGeodesBlocks.BUDDING_EMERALD,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
 }
