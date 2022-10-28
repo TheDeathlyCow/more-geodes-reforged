@@ -56,7 +56,7 @@ open class CrystalClusterBlock(
 
     override fun getShape(
         state: BlockState,
-        blowView: BlockGetter,
+        blockView: BlockGetter,
         pos: BlockPos,
         collisionContext: CollisionContext
     ): VoxelShape {
@@ -77,6 +77,7 @@ open class CrystalClusterBlock(
         return level.getBlockState(anchorPos).isFaceSturdy(level, anchorPos, direction);
     }
 
+    @Suppress("DEPRECATION")
     override fun updateShape(
         state: BlockState,
         dirToNeighbour: Direction,
@@ -110,10 +111,12 @@ open class CrystalClusterBlock(
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)))
     }
 
+    @Suppress("DEPRECATION")
     override fun mirror(state: BlockState, mirror: Mirror): BlockState {
         return state.rotate(mirror.getRotation(state.getValue(AmethystClusterBlock.FACING)))
     }
 
+    @Suppress("DEPRECATION")
     override fun getFluidState(state: BlockState): FluidState {
         return if (state.getValue(AmethystClusterBlock.WATERLOGGED)) Fluids.WATER.getSource(false)
         else super.getFluidState(state)

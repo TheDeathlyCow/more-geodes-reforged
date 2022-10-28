@@ -45,6 +45,7 @@ object MoreGeodesForge {
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.log(Level.INFO, "Initializing client...")
+
     }
 
     /**

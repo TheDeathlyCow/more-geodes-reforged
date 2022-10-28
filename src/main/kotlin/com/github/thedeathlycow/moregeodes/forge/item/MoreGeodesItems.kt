@@ -28,4 +28,32 @@ object MoreGeodesItems {
             Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
         )
     }
+
+    val EMERALD_CLUSTER by REGISTRY.registerObject("emerald_cluster") {
+        BlockItem(
+            MoreGeodesBlocks.EMERALD_CLUSTER,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val LARGE_EMERALD_BUD by REGISTRY.registerObject("large_emerald_bud") {
+        BlockItem(
+            MoreGeodesBlocks.LARGE_EMERALD_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val MEDIUM_EMERALD_BUD by REGISTRY.registerObject("medium_emerald_bud") {
+        BlockItem(
+            MoreGeodesBlocks.MEDIUM_EMERALD_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val SMALL_EMERALD_BUD by REGISTRY.registerObject("small_emerald_bud") {
+        BlockItem(
+            MoreGeodesBlocks.SMALL_EMERALD_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
 }

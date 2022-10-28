@@ -11,7 +11,7 @@ data class CrystalBlockSoundGroup(
 ) {
 
     companion object {
-        val EMERALD_SOUND_GROUP = CrystalBlockSoundGroup(
+        val EMERALD = CrystalBlockSoundGroup(
             SoundEvents.AMETHYST_BLOCK_HIT,
             MoreGeodesSoundEvents.BLOCK_EMERALD_CRYSTAL_BLOCK_CHIME
         )
