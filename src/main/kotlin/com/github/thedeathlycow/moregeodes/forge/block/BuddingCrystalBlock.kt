@@ -46,12 +46,12 @@ class BuddingCrystalBlock(
             // set the next bud state if present
             val nextBlock: Block? = this.getNextStateForGrowth(currentStateInGrow, dirToGrow)
             if (nextBlock != null) {
-                val isWaterlogged = currentStateInGrow.fluidState.fluidType == Fluids.WATER
+                val isWaterlogged = currentStateInGrow.fluidState.fluidType === Fluids.WATER
 
-                val toSet: BlockState = nextBlock.defaultBlockState()
+                val nextState: BlockState = nextBlock.defaultBlockState()
                     .setValue(CrystalClusterBlock.WATERLOGGED, isWaterlogged)
                     .setValue(CrystalClusterBlock.FACING, dirToGrow)
-                level.setBlockAndUpdate(posToGrow, toSet)
+                level.setBlockAndUpdate(posToGrow, nextState)
             }
         }
     }
