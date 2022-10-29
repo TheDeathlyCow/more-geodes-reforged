@@ -17,9 +17,9 @@ apply plugin: 'kotlinx-serialization'
 
 apply from: 'https://raw.githubusercontent.com/thedarkcolour/KotlinForForge/site/thedarkcolour/kotlinforforge/gradle/kff-3.7.1.gradle'
 
-version = '1.0.0'
-group = 'example.examplemod'
-archivesBaseName = 'examplemod'
+version = '0.1.0-ALPHA'
+group = 'com.github.thedeathlycow'
+archivesBaseName = 'more-geodes-reforged'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 

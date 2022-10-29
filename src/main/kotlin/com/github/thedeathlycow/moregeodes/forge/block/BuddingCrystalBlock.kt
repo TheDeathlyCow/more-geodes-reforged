@@ -10,10 +10,11 @@ import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.PushReaction
+import org.checkerframework.checker.units.qual.A
 
 @Suppress("OVERRIDE_DEPRECATION")
 class BuddingCrystalBlock(
-    private val crystalBuds: List<CrystalBlock>,
+    private val crystalBuds: List<CrystalClusterBlock>,
     soundGroup: CrystalBlockSoundGroup,
     properties: Properties
 ) : CrystalBlock(soundGroup, properties) {
@@ -54,6 +55,10 @@ class BuddingCrystalBlock(
                 level.setBlockAndUpdate(posToGrow, nextState)
             }
         }
+    }
+
+    fun getClusterStates(): List<BlockState> {
+        return this.crystalBuds.map { crystalClusterBlock -> crystalClusterBlock.defaultBlockState() }
     }
 
     private fun getNextStateForGrowth(currentState: BlockState, offsetFromSource: Direction): Block? {
