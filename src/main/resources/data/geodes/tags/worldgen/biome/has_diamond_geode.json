@@ -1,7 +1,10 @@
 {
-  "replace": false,
-  "values": [
-    "#minecraft:is_overworld",
-    {"id": "#terralith:all_terralith_biomes", "required": false}
-  ]
+	"replace": false,
+	"values": [
+		"#minecraft:is_overworld",
+		{"id": "#c:in_overworld", "required": false},
+		{"id": "#forge:is_overworld", "required": false},
+		{"id": "#byg:is_overworld", "required":  false},
+		{"id": "#terralith:all_terralith_biomes", "required": false}
+	]
 }

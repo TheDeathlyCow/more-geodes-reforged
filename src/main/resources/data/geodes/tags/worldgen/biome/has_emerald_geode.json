@@ -4,6 +4,7 @@
     "#minecraft:is_mountain",
     "#forge:is_mountain",
     "minecraft:grove",
+    {"id": "#c:mountain", "required": false},
     {"id": "terralith:alpine_grove", "required": false},
     {"id": "terralith:blooming_plateau", "required": false},
     {"id": "terralith:emerald_peaks", "required": false},
