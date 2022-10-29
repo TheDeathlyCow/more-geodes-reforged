@@ -6,7 +6,7 @@
   "block.geodes.medium_emerald_bud": "Medum Imerald Bud",
   "block.geodes.small_emerald_bud": "Small Imerald Bud",
   "item.geodes.emerald_shard": "Imerald Shard",
-  "block.geodes.quartz_geode": "Queen's Geyo",
+  "block.geodes.quartz_crystal_block": "Queen's Crystals",
   "block.geodes.budding_quartz": "Queens' Buddin' innit bruv",
   "block.geodes.quartz_cluster": "Queen's Clustah",
   "block.geodes.large_quartz_bud": "Lahge Queen's Bud",
@@ -33,7 +33,7 @@
   "subtitles.block.geodes.echo_locator.use": "Echo locator humms",
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
   "subtitles.block.geodes.emerald_crystal_block.chime": "Imerald chimes",
-  "subtitles.block.geodes.quartz_geode.chime": "The queen's chimes",
+  "subtitles.block.geodes.quartz_crystal_block.chime": "The queen's funeral is chimin'",
   "subtitles.block.geodes.diamond_geode.chime": "I hear diamonds to steal bruv"
 }
 

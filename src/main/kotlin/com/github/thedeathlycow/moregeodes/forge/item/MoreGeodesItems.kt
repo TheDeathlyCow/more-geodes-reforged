@@ -29,6 +29,20 @@ object MoreGeodesItems {
         )
     }
 
+    val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
+        BlockItem(
+            MoreGeodesBlocks.BUDDING_EMERALD,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
+
+    val QUARTZ_CRYSTAL_BLOCK by REGISTRY.registerObject("quartz_crystal_block") {
+        BlockItem(
+            MoreGeodesBlocks.QUARTZ_CRYSTAL_BLOCK,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
+
     val EMERALD_CLUSTER by REGISTRY.registerObject("emerald_cluster") {
         BlockItem(
             MoreGeodesBlocks.EMERALD_CLUSTER,
@@ -54,13 +68,6 @@ object MoreGeodesItems {
         BlockItem(
             MoreGeodesBlocks.SMALL_EMERALD_BUD,
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
-        )
-    }
-
-    val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
-        BlockItem(
-            MoreGeodesBlocks.BUDDING_EMERALD,
-            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
         )
     }
 }

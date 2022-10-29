@@ -2,10 +2,11 @@
   "replace": false,
   "values": [
     "geodes:emerald_crystal_block",
+    "geodes:budding_emerald",
     "geodes:emerald_cluster",
     "geodes:small_emerald_bud",
     "geodes:medium_emerald_bud",
     "geodes:large_emerald_bud",
-    "geodes:budding_emerald"
+    "geodes:quartz_crystal_block"
   ]
 }

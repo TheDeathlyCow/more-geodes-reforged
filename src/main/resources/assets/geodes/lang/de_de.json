@@ -6,7 +6,7 @@
   "block.geodes.medium_emerald_bud": "Mittlere Smaragdknospe",
   "block.geodes.small_emerald_bud": "Kleine Smaragdknospe",
   "item.geodes.emerald_shard": "Smaragdscherbe",
-  "block.geodes.quartz_geode": "Quarzgeode",
+  "block.geodes.quartz_crystal_block": "Quarzkristallblock",
   "block.geodes.budding_quartz": "Quarzknospenblock",
   "block.geodes.quartz_cluster": "Quarzhaufen",
   "block.geodes.large_quartz_bud": "Große Quarzknospe",
@@ -33,6 +33,6 @@
   "subtitles.block.geodes.echo_locator.use": "Das Echolot humms",
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
   "subtitles.block.geodes.emerald_crystal_block.chime": "Smaragd Glockenspiel",
-  "subtitles.block.geodes.quartz_geode.chime": "Quarz Glockenspiel",
+  "subtitles.block.geodes.quartz_crystal_block.chime": "Quarz Glockenspiel",
   "subtitles.block.geodes.diamond_geode.chime": "Diamant Glockenspiel"
 }

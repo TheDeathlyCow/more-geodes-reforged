@@ -6,7 +6,7 @@
   "block.geodes.medium_emerald_bud": "Da midl monies",
   "block.geodes.small_emerald_bud": "Da smol monies",
   "item.geodes.emerald_shard": "Monies pice",
-  "block.geodes.quartz_geode": "Kworts geode",
+  "block.geodes.quartz_crystal_block": "Kworts crystals",
   "block.geodes.budding_quartz": "Kworts makr",
   "block.geodes.quartz_cluster": "Kwartz clusti",
   "block.geodes.large_quartz_bud": "beeg kwartz buddi",
@@ -32,7 +32,7 @@
   "subtitles.block.geodes.echo_locator.resonate": "crystal maek sound",
   "subtitles.block.geodes.echo_locator.use": "shinne resonate",
   "subtitles.block.geodes.echo_block.chime": "ekko ekkos",
-  "subtitles.block.geodes.emerald_geode.chime": "monies clinks",
-  "subtitles.block.geodes.quartz_geode.chime": "nether cloud spookie",
+  "subtitles.block.geodes.emerald_crystal_block.chime": "monies clinks",
+  "subtitles.block.geodes.quartz_crystal_block.chime": "nether cloud spookie",
   "subtitles.block.geodes.diamond_geode.chime": "i hear shinee!!"
 }

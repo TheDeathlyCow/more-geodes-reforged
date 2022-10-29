@@ -21,7 +21,7 @@
     ],
     "subtitle": "subtitles.block.geodes.emerald_crystal_block.chime"
   },
-  "block.geodes.quartz_geode.chime": {
+  "block.geodes.quartz_crystal_block.chime": {
     "sounds": [
       {
         "name": "block/amethyst/shimmer",
@@ -29,7 +29,7 @@
         "pitch": 0.5
       }
     ],
-    "subtitle": "subtitles.block.geodes.quartz_geode.chime"
+    "subtitle": "subtitles.block.geodes.quartz_crystal_block.chime"
   },
   "block.geodes.diamond_geode.chime": {
     "sounds": [

@@ -6,7 +6,7 @@
   "block.geodes.medium_emerald_bud": "pnᗺ pʅɐɹǝɯƎ ɯnᴉpǝꟽ",
   "block.geodes.small_emerald_bud": "pnᗺ pʅɐɹǝɯƎ ʅʅɐɯS",
   "item.geodes.emerald_shard": "pɹɐɥS pʅɐɹǝɯƎ",
-  "block.geodes.quartz_geode": "ǝpoǝ⅁ zʇɹɐnꝹ",
+  "block.geodes.quartz_crystal_block": "ǝpoǝ⅁ zʇɹɐnꝹ",
   "block.geodes.budding_quartz": "zʇɹɐnꝹ ƃuᴉppnᗺ",
   "block.geodes.quartz_cluster": "ɹǝʇsnʅƆ zʇɹɐnꝹ",
   "block.geodes.large_quartz_bud": "pnᗺ zʇɹɐnꝹ ǝƃɹɐ⅂",
@@ -33,6 +33,6 @@
   "subtitles.block.geodes.echo_locator.use": "sɯɯnɥ ɹoʇɐɔol oɥɔƎ",
   "subtitles.block.geodes.echo_block.chime": "soɥɔǝ oɥɔƎ",
   "subtitles.block.geodes.emerald_crystal_block.chime": "sǝɯᴉɥɔ plɐɹǝɯƎ",
-  "subtitles.block.geodes.quartz_geode.chime": "sǝɯᴉɥɔ zʇɹɐnꝹ",
+  "subtitles.block.geodes.quartz_crystal_block.chime": "sǝɯᴉɥɔ zʇɹɐnꝹ",
   "subtitles.block.geodes.diamond_geode.chime": "sǝɯᴉɥɔ puoɯɐᴉᗡ"
 }

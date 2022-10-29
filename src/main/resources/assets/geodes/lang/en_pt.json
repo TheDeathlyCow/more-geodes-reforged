@@ -6,7 +6,7 @@
   "block.geodes.medium_emerald_bud": "Sizable bud o' green gem",
   "block.geodes.small_emerald_bud": "Small bud o' green gem",
   "item.geodes.emerald_shard": "Shard o' green gem",
-  "block.geodes.quartz_geode": "Block o' white crystals",
+  "block.geodes.quartz_crystal_block": "Block o' white crystals",
   "block.geodes.budding_quartz": "Buddin' white crystals",
   "block.geodes.quartz_cluster": "Clump o' white crystals",
   "block.geodes.large_quartz_bud": "Huge bud o' white crystals",
@@ -33,6 +33,6 @@
   "subtitles.block.geodes.echo_locator.use": "Echo finder humms",
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
   "subtitles.block.geodes.emerald_crystal_block.chime": "Emerald clinks",
-  "subtitles.block.geodes.quartz_geode.chime": "White crystal clinks",
+  "subtitles.block.geodes.quartz_crystal_block.chime": "White crystal clinks",
   "subtitles.block.geodes.diamond_geode.chime": "Diamond clinks"
 }

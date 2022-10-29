@@ -54,4 +54,13 @@ object MoreGeodesSoundTypes {
         { SoundEvents.AMETHYST_CLUSTER_FALL }
     )
 
+    val QUARTZ_CRYSTAL_BLOCK = ForgeSoundType(
+        1.0f, 0.5f,
+        { SoundEvents.AMETHYST_BLOCK_BREAK },
+        { SoundEvents.AMETHYST_BLOCK_STEP },
+        { SoundEvents.AMETHYST_BLOCK_PLACE },
+        { SoundEvents.AMETHYST_BLOCK_HIT },
+        { SoundEvents.AMETHYST_BLOCK_FALL }
+    )
+
 }

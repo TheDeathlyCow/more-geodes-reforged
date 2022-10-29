@@ -49,7 +49,7 @@ object MoreGeodesBlocks {
             5.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
                 .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.EMERALD_CLUSTER)
+                .sound(MoreGeodesSoundTypes.LARGE_EMERALD_BUD)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 4 }
                 .noOcclusion()
@@ -62,7 +62,7 @@ object MoreGeodesBlocks {
             4.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
                 .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.EMERALD_CLUSTER)
+                .sound(MoreGeodesSoundTypes.MEDIUM_EMERALD_BUD)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 2 }
                 .noOcclusion()
@@ -79,6 +79,16 @@ object MoreGeodesBlocks {
                 .requiresCorrectToolForDrops()
                 .lightLevel { 1 }
                 .noOcclusion()
+        )
+    }
+
+    val QUARTZ_CRYSTAL_BLOCK by REGISTRY.registerObject("quartz_crystal_block") {
+        CrystalBlock(
+            CrystalBlockSoundGroup.QUARTZ,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.QUARTZ_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
         )
     }
 
