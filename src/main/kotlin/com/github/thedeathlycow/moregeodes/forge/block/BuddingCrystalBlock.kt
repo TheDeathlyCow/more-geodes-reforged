@@ -23,7 +23,7 @@ class BuddingCrystalBlock(
         val DIRECTIONS: Array<Direction> = Direction.values()
     }
 
-    override fun getPistonPushReaction(p_60584_: BlockState): PushReaction {
+    override fun getPistonPushReaction(state: BlockState): PushReaction {
         return PushReaction.DESTROY
     }
 
