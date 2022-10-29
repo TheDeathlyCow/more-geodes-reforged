@@ -12,7 +12,7 @@
   "block.geodes.large_quartz_bud": "Lahge Queen's Bud",
   "block.geodes.medium_quartz_bud": "Medum Queen's Bud",
   "block.geodes.small_quartz_bud": "Small Queen's Bud",
-  "block.geodes.diamond_geode": "Stolen Diamond Geode",
+  "block.geodes.diamond_crystal_block": "Stolen Diamond Block",
   "block.geodes.diamond_cluster": "Stolen Diamond Cluster",
   "advancement.geodes.adventure.outrageous.title": "These Gems Are Definitely Bri'ish",
   "advancement.geodes.adventure.outrageous.description": "Steal an Emerald and Diamond geode block from the colonies",
@@ -34,6 +34,6 @@
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
   "subtitles.block.geodes.emerald_crystal_block.chime": "Imerald chimes",
   "subtitles.block.geodes.quartz_crystal_block.chime": "The queen's funeral is chimin'",
-  "subtitles.block.geodes.diamond_geode.chime": "I hear diamonds to steal bruv"
+  "subtitles.block.geodes.diamond_crystal_block.chime": "I hear diamonds to steal bruv"
 }
 

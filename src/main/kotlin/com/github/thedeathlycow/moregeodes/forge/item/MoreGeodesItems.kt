@@ -50,6 +50,13 @@ object MoreGeodesItems {
         )
     }
 
+    val DIAMOND_CRYSTAL_BLOCK by REGISTRY.registerObject("diamond_crystal_block") {
+        BlockItem(
+            MoreGeodesBlocks.DIAMOND_CRYSTAL_BLOCK,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
+
     val EMERALD_CLUSTER by REGISTRY.registerObject("emerald_cluster") {
         BlockItem(
             MoreGeodesBlocks.EMERALD_CLUSTER,
@@ -102,6 +109,13 @@ object MoreGeodesItems {
     val SMALL_QUARTZ_BUD by REGISTRY.registerObject("small_quartz_bud") {
         BlockItem(
             MoreGeodesBlocks.SMALL_QUARTZ_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val DIAMOND_CLUSTER by REGISTRY.registerObject("diamond_cluster") {
+        BlockItem(
+            MoreGeodesBlocks.DIAMOND_CLUSTER,
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }

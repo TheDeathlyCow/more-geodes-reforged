@@ -12,7 +12,7 @@
   "block.geodes.large_quartz_bud": "Große Quarzknospe",
   "block.geodes.medium_quartz_bud": "Mittlere Quarzknospe",
   "block.geodes.small_quartz_bud": "Kleine Quarzknospe",
-  "block.geodes.diamond_geode": "Diamantgeode",
+  "block.geodes.diamond_crystal_block": "Diamantkristallblock",
   "block.geodes.diamond_cluster": "Diamanthaufen",
   "advancement.geodes.adventure.outrageous.title": "Edelsteine Sind Sirklich Unverschämt",
   "advancement.geodes.adventure.outrageous.description": "Sammeln ein Smaragdkristallblock und ein Diamantkristallblock",
@@ -34,5 +34,5 @@
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
   "subtitles.block.geodes.emerald_crystal_block.chime": "Smaragd Glockenspiel",
   "subtitles.block.geodes.quartz_crystal_block.chime": "Quarz Glockenspiel",
-  "subtitles.block.geodes.diamond_geode.chime": "Diamant Glockenspiel"
+  "subtitles.block.geodes.diamond_crystal_block.chime": "Diamant Glockenspiel"
 }

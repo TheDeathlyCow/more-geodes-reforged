@@ -12,7 +12,7 @@
   "block.geodes.large_quartz_bud": "pnᗺ zʇɹɐnꝹ ǝƃɹɐ⅂",
   "block.geodes.medium_quartz_bud": "pnᗺ zʇɹɐnꝹ ɯnᴉpǝꟽ",
   "block.geodes.small_quartz_bud": "pnᗺ zʇɹɐnꝹ ʅʅɐɯS",
-  "block.geodes.diamond_geode": "ǝpoǝ⅁ puoɯɐᴉᗡ",
+  "block.geodes.diamond_crystal_block": "ǝpoǝ⅁ puoɯɐᴉᗡ",
   "block.geodes.diamond_cluster": "ɹǝʇsnʅƆ puoɯɐᴉᗡ",
   "advancement.geodes.adventure.outrageous.title": "snoǝƃɐɹʇnO ʎʅnɹꓕ ǝɹ∀ sɯǝ⅁",
   "advancement.geodes.adventure.outrageous.description": "ʞɔoʅq ǝpoǝƃ puoɯɐᴉᗡ puɐ pʅɐɹǝɯƎ uɐ ɥʇoq ʇɔǝʅʅoϽ",
@@ -34,5 +34,5 @@
   "subtitles.block.geodes.echo_block.chime": "soɥɔǝ oɥɔƎ",
   "subtitles.block.geodes.emerald_crystal_block.chime": "sǝɯᴉɥɔ plɐɹǝɯƎ",
   "subtitles.block.geodes.quartz_crystal_block.chime": "sǝɯᴉɥɔ zʇɹɐnꝹ",
-  "subtitles.block.geodes.diamond_geode.chime": "sǝɯᴉɥɔ puoɯɐᴉᗡ"
+  "subtitles.block.geodes.diamond_crystal_block.chime": "sǝɯᴉɥɔ puoɯɐᴉᗡ"
 }

@@ -12,7 +12,7 @@
   "block.geodes.large_quartz_bud": "Huge bud o' white crystals",
   "block.geodes.medium_quartz_bud": "Sizable bud o' white crystals",
   "block.geodes.small_quartz_bud": "Small bud o' white crystals",
-  "block.geodes.diamond_geode": "Block o' shinies",
+  "block.geodes.diamond_crystal_block": "Block o' shinies",
   "block.geodes.diamond_cluster": "Clump o' shinies",
   "advancement.geodes.adventure.outrageous.title": "Gems Arrrr Truly Outrageous",
   "advancement.geodes.adventure.outrageous.description": "Plunder thar green gem and thar shiny gem",
@@ -34,5 +34,5 @@
   "subtitles.block.geodes.echo_block.chime": "Echo echos",
   "subtitles.block.geodes.emerald_crystal_block.chime": "Emerald clinks",
   "subtitles.block.geodes.quartz_crystal_block.chime": "White crystal clinks",
-  "subtitles.block.geodes.diamond_geode.chime": "Diamond clinks"
+  "subtitles.block.geodes.diamond_crystal_block.chime": "Diamond clinks"
 }

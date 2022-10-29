@@ -6,7 +6,8 @@ import net.minecraftforge.common.util.ForgeSoundType
 object MoreGeodesSoundTypes {
 
     val EMERALD_CRYSTAL_BLOCK = ForgeSoundType(
-        1.0f, 1.7f,
+        1.0f,
+        1.7f,
         { SoundEvents.AMETHYST_BLOCK_BREAK },
         { SoundEvents.AMETHYST_BLOCK_STEP },
         { SoundEvents.AMETHYST_BLOCK_PLACE },
@@ -55,7 +56,8 @@ object MoreGeodesSoundTypes {
     )
 
     val QUARTZ_CRYSTAL_BLOCK = ForgeSoundType(
-        1.0f, 0.5f,
+        1.0f,
+        0.5f,
         { SoundEvents.AMETHYST_BLOCK_BREAK },
         { SoundEvents.AMETHYST_BLOCK_STEP },
         { SoundEvents.AMETHYST_BLOCK_PLACE },
@@ -99,6 +101,26 @@ object MoreGeodesSoundTypes {
         { SoundEvents.LARGE_AMETHYST_BUD_BREAK },
         { SoundEvents.AMETHYST_CLUSTER_STEP },
         { SoundEvents.LARGE_AMETHYST_BUD_PLACE },
+        { SoundEvents.AMETHYST_CLUSTER_HIT },
+        { SoundEvents.AMETHYST_CLUSTER_FALL }
+    )
+
+    val DIAMOND_CRYSTAL_BLOCK = ForgeSoundType(
+        1.0f,
+        1.4f,
+        { SoundEvents.AMETHYST_BLOCK_BREAK },
+        { SoundEvents.AMETHYST_BLOCK_STEP },
+        { SoundEvents.AMETHYST_BLOCK_PLACE },
+        { SoundEvents.AMETHYST_BLOCK_HIT },
+        { SoundEvents.AMETHYST_BLOCK_FALL }
+    )
+
+    val DIAMOND_CLUSTER = ForgeSoundType(
+        1.0f,
+        1.4f,
+        { SoundEvents.AMETHYST_CLUSTER_BREAK },
+        { SoundEvents.AMETHYST_CLUSTER_STEP },
+        { SoundEvents.AMETHYST_CLUSTER_PLACE },
         { SoundEvents.AMETHYST_CLUSTER_HIT },
         { SoundEvents.AMETHYST_CLUSTER_FALL }
     )

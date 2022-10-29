@@ -18,5 +18,10 @@ data class CrystalBlockSoundGroup(
             SoundEvents.AMETHYST_BLOCK_HIT,
             MoreGeodesSoundEvents.BLOCK_QUARTZ_CRYSTAL_BLOCK_CHIME
         )
+
+        val DIAMOND = CrystalBlockSoundGroup(
+            SoundEvents.AMETHYST_BLOCK_HIT,
+            MoreGeodesSoundEvents.BLOCK_DIAMOND_CRYSTAL_BLOCK_CHIME
+        )
     }
 }

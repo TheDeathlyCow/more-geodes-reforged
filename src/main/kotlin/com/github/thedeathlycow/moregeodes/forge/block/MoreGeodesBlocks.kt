@@ -144,6 +144,29 @@ object MoreGeodesBlocks {
         )
     }
 
+    val DIAMOND_CRYSTAL_BLOCK by REGISTRY.registerObject("diamond_crystal_block") {
+        CrystalBlock(
+            CrystalBlockSoundGroup.DIAMOND,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.DIAMOND)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.DIAMOND_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val DIAMOND_CLUSTER by REGISTRY.registerObject("diamond_cluster") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.DIAMOND,
+            7.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.DIAMOND)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.DIAMOND_CLUSTER)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 5 }
+                .noOcclusion()
+        )
+    }
+
     ////// Budding Blocks //////
 
     val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
