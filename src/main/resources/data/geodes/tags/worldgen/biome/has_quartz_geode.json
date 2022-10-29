@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#minecraft:is_nether",
+    "#forge:is_hot/nether",
     {"id": "incendium:ash_barrens", "required": false},
     {"id": "incendium:infernal_dunes", "required": false},
     {"id": "incendium:inverted_forest", "required": false},
