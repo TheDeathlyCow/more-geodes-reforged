@@ -92,6 +92,58 @@ object MoreGeodesBlocks {
         )
     }
 
+    val QUARTZ_CLUSTER by REGISTRY.registerObject("quartz_cluster") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.QUARTZ,
+            7.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.QUARTZ_CLUSTER)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 5 }
+                .noOcclusion()
+        )
+    }
+
+    val LARGE_QUARTZ_BUD by REGISTRY.registerObject("large_quartz_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.QUARTZ,
+            5.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LARGE_QUARTZ_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 4 }
+                .noOcclusion()
+        )
+    }
+
+    val MEDIUM_QUARTZ_BUD by REGISTRY.registerObject("medium_quartz_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.QUARTZ,
+            4.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.MEDIUM_QUARTZ_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 2 }
+                .noOcclusion()
+        )
+    }
+
+    val SMALL_QUARTZ_BUD by REGISTRY.registerObject("small_quartz_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.QUARTZ,
+            3.0, 4.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.SMALL_QUARTZ_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 1 }
+                .noOcclusion()
+        )
+    }
+
     ////// Budding Blocks //////
 
     val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
@@ -101,6 +153,18 @@ object MoreGeodesBlocks {
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .randomTicks()
+        )
+    }
+
+    val BUDDING_QUARTZ by REGISTRY.registerObject("budding_quartz") {
+        BuddingCrystalBlock(
+            listOf(SMALL_QUARTZ_BUD, MEDIUM_QUARTZ_BUD, LARGE_QUARTZ_BUD, QUARTZ_CLUSTER),
+            CrystalBlockSoundGroup.QUARTZ,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.QUARTZ_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
         )

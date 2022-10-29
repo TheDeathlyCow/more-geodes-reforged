@@ -43,6 +43,13 @@ object MoreGeodesItems {
         )
     }
 
+    val BUDDING_QUARTZ by REGISTRY.registerObject("budding_quartz") {
+        BlockItem(
+            MoreGeodesBlocks.BUDDING_QUARTZ,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
+
     val EMERALD_CLUSTER by REGISTRY.registerObject("emerald_cluster") {
         BlockItem(
             MoreGeodesBlocks.EMERALD_CLUSTER,
@@ -67,6 +74,34 @@ object MoreGeodesItems {
     val SMALL_EMERALD_BUD by REGISTRY.registerObject("small_emerald_bud") {
         BlockItem(
             MoreGeodesBlocks.SMALL_EMERALD_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val QUARTZ_CLUSTER by REGISTRY.registerObject("quartz_cluster") {
+        BlockItem(
+            MoreGeodesBlocks.QUARTZ_CLUSTER,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val LARGE_QUARTZ_BUD by REGISTRY.registerObject("large_quartz_bud") {
+        BlockItem(
+            MoreGeodesBlocks.LARGE_QUARTZ_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val MEDIUM_QUARTZ_BUD by REGISTRY.registerObject("medium_quartz_bud") {
+        BlockItem(
+            MoreGeodesBlocks.MEDIUM_QUARTZ_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val SMALL_QUARTZ_BUD by REGISTRY.registerObject("small_quartz_bud") {
+        BlockItem(
+            MoreGeodesBlocks.SMALL_QUARTZ_BUD,
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }

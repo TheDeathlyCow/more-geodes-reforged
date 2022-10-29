@@ -63,4 +63,43 @@ object MoreGeodesSoundTypes {
         { SoundEvents.AMETHYST_BLOCK_FALL }
     )
 
+    val QUARTZ_CLUSTER = ForgeSoundType(
+        1.0f,
+        0.5f,
+        { SoundEvents.AMETHYST_CLUSTER_BREAK },
+        { SoundEvents.AMETHYST_CLUSTER_STEP },
+        { SoundEvents.AMETHYST_CLUSTER_PLACE },
+        { SoundEvents.AMETHYST_CLUSTER_HIT },
+        { SoundEvents.AMETHYST_CLUSTER_FALL }
+    )
+
+    val SMALL_QUARTZ_BUD = ForgeSoundType(
+        1.0f,
+        0.5f,
+        { SoundEvents.SMALL_AMETHYST_BUD_BREAK },
+        { SoundEvents.AMETHYST_CLUSTER_STEP },
+        { SoundEvents.SMALL_AMETHYST_BUD_PLACE },
+        { SoundEvents.AMETHYST_CLUSTER_HIT },
+        { SoundEvents.AMETHYST_CLUSTER_FALL }
+    )
+
+    val MEDIUM_QUARTZ_BUD = ForgeSoundType(
+        1.0f,
+        0.5f,
+        { SoundEvents.MEDIUM_AMETHYST_BUD_BREAK },
+        { SoundEvents.AMETHYST_CLUSTER_STEP },
+        { SoundEvents.MEDIUM_AMETHYST_BUD_PLACE },
+        { SoundEvents.AMETHYST_CLUSTER_HIT },
+        { SoundEvents.AMETHYST_CLUSTER_FALL }
+    )
+
+    val LARGE_QUARTZ_BUD = ForgeSoundType(
+        1.0f,
+        0.5f,
+        { SoundEvents.LARGE_AMETHYST_BUD_BREAK },
+        { SoundEvents.AMETHYST_CLUSTER_STEP },
+        { SoundEvents.LARGE_AMETHYST_BUD_PLACE },
+        { SoundEvents.AMETHYST_CLUSTER_HIT },
+        { SoundEvents.AMETHYST_CLUSTER_FALL }
+    )
 }
