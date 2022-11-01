@@ -1,0 +1,6 @@
+{
+	"type": "forge:add_features",
+	"biomes": "#geodes:has_echo_geode",
+	"features": "geodes:echo_geode",
+	"step": "underground_decoration"
+}
