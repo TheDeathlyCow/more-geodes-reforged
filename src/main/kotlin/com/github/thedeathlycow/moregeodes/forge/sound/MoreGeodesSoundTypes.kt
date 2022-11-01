@@ -124,4 +124,54 @@ object MoreGeodesSoundTypes {
         { SoundEvents.AMETHYST_CLUSTER_HIT },
         { SoundEvents.AMETHYST_CLUSTER_FALL }
     )
+
+    val ECHO_BLOCK = ForgeSoundType(
+        1.0f,
+        1.0f,
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_BLOCK_BREAK },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_BLOCK_STEP },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_BLOCK_PLACE },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_BLOCK_HIT },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_BLOCK_FALL }
+    )
+
+    val ECHO_CLUSTER = ForgeSoundType(
+        1.0f,
+        1.0f,
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_BREAK },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_STEP },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_PLACE },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_HIT },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_FALL }
+    )
+
+    val SMALL_ECHO_BUD = ForgeSoundType(
+        1.0f,
+        1.0f,
+        { EchoGeodeBlockSoundEvents.BLOCK_SMALL_ECHO_BUD_BREAK },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_STEP },
+        { EchoGeodeBlockSoundEvents.BLOCK_SMALL_ECHO_BUD_PLACE },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_HIT },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_FALL }
+    )
+
+    val MEDIUM_ECHO_BUD = ForgeSoundType(
+        1.0f,
+        1.0f,
+        { EchoGeodeBlockSoundEvents.BLOCK_MEDIUM_ECHO_BUD_BREAK },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_STEP },
+        { EchoGeodeBlockSoundEvents.BLOCK_MEDIUM_ECHO_BUD_PLACE },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_HIT },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_FALL }
+    )
+
+    val LARGE_ECHO_BUD = ForgeSoundType(
+        1.0f,
+        1.0f,
+        { EchoGeodeBlockSoundEvents.BLOCK_MEDIUM_ECHO_BUD_BREAK },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_STEP },
+        { EchoGeodeBlockSoundEvents.BLOCK_MEDIUM_ECHO_BUD_PLACE },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_HIT },
+        { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_FALL }
+    )
 }

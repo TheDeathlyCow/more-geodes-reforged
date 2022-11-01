@@ -11,7 +11,7 @@ import net.minecraft.world.phys.BlockHitResult
 
 @Suppress("OVERRIDE_DEPRECATION")
 open class CrystalBlock(
-    private val soundGroup: CrystalBlockSoundGroup,
+    val soundGroup: CrystalBlockSoundGroup,
     properties: Properties
 ) : AmethystBlock(properties) {
 

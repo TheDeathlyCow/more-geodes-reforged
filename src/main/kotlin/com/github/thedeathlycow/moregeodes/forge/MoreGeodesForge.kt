@@ -2,6 +2,7 @@ package com.github.thedeathlycow.moregeodes.forge
 
 import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
+import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.Mod
@@ -21,9 +22,10 @@ object MoreGeodesForge {
     val LOGGER: Logger = LogManager.getLogger(MODID)
 
     init {
+        MoreGeodesSoundEvents.REGISTRY.register(MOD_BUS)
+        EchoGeodeBlockSoundEvents.REGISTRY.register(MOD_BUS)
         MoreGeodesBlocks.REGISTRY.register(MOD_BUS)
         MoreGeodesItems.REGISTRY.register(MOD_BUS)
-        MoreGeodesSoundEvents.REGISTRY.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {

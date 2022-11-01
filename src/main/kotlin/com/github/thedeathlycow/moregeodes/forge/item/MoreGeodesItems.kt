@@ -57,6 +57,20 @@ object MoreGeodesItems {
         )
     }
 
+    val ECHO_BLOCK by REGISTRY.registerObject("echo_block") {
+        BlockItem(
+            MoreGeodesBlocks.ECHO_BLOCK,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
+
+    val BUDDING_ECHO_BLOCK by REGISTRY.registerObject("budding_echo_block") {
+        BlockItem(
+            MoreGeodesBlocks.BUDDING_ECHO_BLOCK,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
+
     val EMERALD_CLUSTER by REGISTRY.registerObject("emerald_cluster") {
         BlockItem(
             MoreGeodesBlocks.EMERALD_CLUSTER,
@@ -116,6 +130,34 @@ object MoreGeodesItems {
     val DIAMOND_CLUSTER by REGISTRY.registerObject("diamond_cluster") {
         BlockItem(
             MoreGeodesBlocks.DIAMOND_CLUSTER,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val ECHO_CLUSTER by REGISTRY.registerObject("echo_cluster") {
+        BlockItem(
+            MoreGeodesBlocks.ECHO_CLUSTER,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val LARGE_ECHO_BUD by REGISTRY.registerObject("large_echo_bud") {
+        BlockItem(
+            MoreGeodesBlocks.LARGE_ECHO_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val MEDIUM_ECHO_BUD by REGISTRY.registerObject("medium_echo_bud") {
+        BlockItem(
+            MoreGeodesBlocks.MEDIUM_ECHO_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val SMALL_ECHO_BUD by REGISTRY.registerObject("small_echo_bud") {
+        BlockItem(
+            MoreGeodesBlocks.SMALL_ECHO_BUD,
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }

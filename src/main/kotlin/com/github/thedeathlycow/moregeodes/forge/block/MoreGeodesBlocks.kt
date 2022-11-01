@@ -167,12 +167,74 @@ object MoreGeodesBlocks {
         )
     }
 
+    val ECHO_BLOCK by REGISTRY.registerObject("echo_block") {
+        CrystalBlock(
+            CrystalBlockSoundGroup.ECHO,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.ECHO_BLOCK)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val ECHO_CLUSTER by REGISTRY.registerObject("echo_cluster") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.ECHO,
+            7.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.ECHO_CLUSTER)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 5 }
+                .noOcclusion()
+        )
+    }
+
+    val LARGE_ECHO_BUD by REGISTRY.registerObject("large_echo_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.ECHO,
+            5.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LARGE_ECHO_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 4 }
+                .noOcclusion()
+        )
+    }
+
+    val MEDIUM_ECHO_BUD by REGISTRY.registerObject("medium_echo_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.ECHO,
+            4.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.MEDIUM_ECHO_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 2 }
+                .noOcclusion()
+        )
+    }
+
+    val SMALL_ECHO_BUD by REGISTRY.registerObject("small_echo_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.ECHO,
+            3.0, 4.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.SMALL_ECHO_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 1 }
+                .noOcclusion()
+        )
+    }
+
     ////// Budding Blocks //////
 
     val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
         BuddingCrystalBlock(
             listOf(SMALL_EMERALD_BUD, MEDIUM_EMERALD_BUD, LARGE_EMERALD_BUD, EMERALD_CLUSTER),
-            CrystalBlockSoundGroup.EMERALD,
+            CrystalBlockSoundGroup.ECHO,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
@@ -188,6 +250,18 @@ object MoreGeodesBlocks {
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.QUARTZ_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .randomTicks()
+        )
+    }
+
+    val BUDDING_ECHO_BLOCK by REGISTRY.registerObject("budding_echo_block") {
+        BuddingCrystalBlock(
+            listOf(SMALL_ECHO_BUD, MEDIUM_ECHO_BUD, LARGE_ECHO_BUD, ECHO_CLUSTER),
+            CrystalBlockSoundGroup.ECHO,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.ECHO_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
         )
