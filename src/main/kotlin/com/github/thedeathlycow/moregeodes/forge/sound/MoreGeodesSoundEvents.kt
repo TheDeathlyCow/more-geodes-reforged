@@ -14,6 +14,13 @@ object MoreGeodesSoundEvents {
         MoreGeodesForge.MODID
     )
 
+    val BLOCK_ECHO_LOCATOR_RESONATE: SoundEvent by REGISTRY.registerObject("block.geodes.echo_locator.resonate") {
+        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.echo_locator.resonate"))
+    }
+    val BLOCK_ECHO_LOCATOR_USE: SoundEvent by REGISTRY.registerObject("block.geodes.echo_locator.use") {
+        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.echo_locator.use"))
+    }
+
     val BLOCK_EMERALD_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.emerald_crystal_block.chime") {
         SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.emerald_crystal_block.chime"))
     }

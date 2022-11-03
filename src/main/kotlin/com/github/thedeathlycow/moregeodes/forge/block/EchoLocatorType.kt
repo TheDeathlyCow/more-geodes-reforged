@@ -1,5 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
+import com.github.thedeathlycow.moregeodes.forge.block.tag.MoreGeodesBlockTags
+import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import net.minecraft.core.Registry
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.resources.ResourceLocation
@@ -23,6 +25,9 @@ data class EchoLocatorType(
     }
 
     companion object {
+
+        val EMPTY = EchoLocatorType(MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE, MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE, MoreGeodesBlockTags.ECHO_LOCATABLE_DEFAULT)
+
         fun fromNbt(nbt: CompoundTag): EchoLocatorType {
             val activateSound: SoundEvent = getSoundEventById(nbt.getString("ActivateSound"))
             val resonateSound: SoundEvent = getSoundEventById(nbt.getString("ResonateSound"))
