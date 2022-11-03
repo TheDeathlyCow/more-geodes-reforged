@@ -39,16 +39,18 @@ public abstract class StepSoundMixin {
     )
     private void customGeodeEntityStepSound(BlockState state, CallbackInfo ci) {
         if (state.is(MoreGeodesBlockTags.CUSTOM_CRYSTAL_SOUND_BLOCKS) && this.tickCount >= this.lastCrystalSoundPlayTick + 20) {
-            if (state.getBlock() instanceof CrystalBlock crystalBlock) {
-                this.crystalSoundIntensity *= (float)Math.pow(0.997D, this.tickCount - this.lastCrystalSoundPlayTick);
-                this.crystalSoundIntensity = Math.min(1.0F, this.crystalSoundIntensity + 0.07F);
-
-                float volume = 0.1F + this.crystalSoundIntensity * 1.2F;
-                float pitch = 0.5F + this.crystalSoundIntensity * this.random.nextFloat() * 1.2F;
-
-                this.playSound(crystalBlock.getSoundGroup().getChimeSound(), volume, pitch);
-                this.lastCrystalSoundPlayTick = this.tickCount;
+            if (!(state.getBlock() instanceof CrystalBlock crystalBlock)) {
+                return;
             }
+
+            this.crystalSoundIntensity *= (float)Math.pow(0.997D, this.tickCount - this.lastCrystalSoundPlayTick);
+            this.crystalSoundIntensity = Math.min(1.0F, this.crystalSoundIntensity + 0.07F);
+
+            float volume = 0.1F + this.crystalSoundIntensity * 1.2F;
+            float pitch = 0.5F + this.crystalSoundIntensity * this.random.nextFloat() * 1.2F;
+
+            this.playSound(crystalBlock.getSoundGroup().getChimeSound(), volume, pitch);
+            this.lastCrystalSoundPlayTick = this.tickCount;
         }
     }
 }
