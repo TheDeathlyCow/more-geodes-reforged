@@ -93,7 +93,8 @@ object MoreGeodesBlocks {
     }
 
     val QUARTZ_CLUSTER by REGISTRY.registerObject("quartz_cluster") {
-        CrystalClusterBlock(
+        QuartzClusterBlock(
+            15, 1,
             CrystalBlockSoundGroup.QUARTZ,
             7.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
@@ -106,7 +107,8 @@ object MoreGeodesBlocks {
     }
 
     val LARGE_QUARTZ_BUD by REGISTRY.registerObject("large_quartz_bud") {
-        CrystalClusterBlock(
+        QuartzClusterBlock(
+            15, 5,
             CrystalBlockSoundGroup.QUARTZ,
             5.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
@@ -119,7 +121,8 @@ object MoreGeodesBlocks {
     }
 
     val MEDIUM_QUARTZ_BUD by REGISTRY.registerObject("medium_quartz_bud") {
-        CrystalClusterBlock(
+        QuartzClusterBlock(
+            15, 10,
             CrystalBlockSoundGroup.QUARTZ,
             4.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
@@ -132,7 +135,8 @@ object MoreGeodesBlocks {
     }
 
     val SMALL_QUARTZ_BUD by REGISTRY.registerObject("small_quartz_bud") {
-        CrystalClusterBlock(
+        QuartzClusterBlock(
+            15, 20,
             CrystalBlockSoundGroup.QUARTZ,
             3.0, 4.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)

@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
+import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.*
@@ -118,12 +119,13 @@ open class CrystalClusterBlock(
 
     @Suppress("DEPRECATION")
     override fun getFluidState(state: BlockState): FluidState {
-        return if (state.getValue(AmethystClusterBlock.WATERLOGGED)) Fluids.WATER.getSource(false)
+        return if (state.getValue(WATERLOGGED)) Fluids.WATER.getSource(false)
         else super.getFluidState(state)
     }
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
-        builder.add(AmethystClusterBlock.WATERLOGGED, AmethystClusterBlock.FACING)
+        super.createBlockStateDefinition(builder)
+        builder.add(WATERLOGGED, FACING)
     }
 
     override fun getPistonPushReaction(state: BlockState): PushReaction {
