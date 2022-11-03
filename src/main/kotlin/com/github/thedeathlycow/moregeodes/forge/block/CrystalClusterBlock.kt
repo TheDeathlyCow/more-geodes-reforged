@@ -114,7 +114,7 @@ open class CrystalClusterBlock(
 
     @Suppress("DEPRECATION")
     override fun mirror(state: BlockState, mirror: Mirror): BlockState {
-        return state.rotate(mirror.getRotation(state.getValue(AmethystClusterBlock.FACING)))
+        return state.rotate(mirror.getRotation(state.getValue(FACING)))
     }
 
     @Suppress("DEPRECATION")
