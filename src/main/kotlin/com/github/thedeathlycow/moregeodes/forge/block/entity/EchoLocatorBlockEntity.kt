@@ -12,7 +12,6 @@ import net.minecraft.util.Mth
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
-import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.gameevent.BlockPositionSource
 import net.minecraft.world.level.gameevent.GameEvent
@@ -20,24 +19,24 @@ import net.minecraft.world.level.gameevent.GameEventListener
 import net.minecraft.world.level.gameevent.vibrations.VibrationListener
 
 class EchoLocatorBlockEntity(
-    type: BlockEntityType<*>,
     blockPos: BlockPos,
     state: BlockState
-) : BlockEntity(type, blockPos, state), VibrationListener.VibrationListenerConfig {
+) : BlockEntity(MoreGeodesBlockEntityTypes.ECHO_LOCATOR, blockPos, state), VibrationListener.VibrationListenerConfig {
 
     var type = EchoLocatorType.EMPTY
+    val vibrationListener: VibrationListener
+
     private var pingTicks = 0
     private var pinging: MutableList<BlockPos> = ArrayList()
-    private val listener: VibrationListener
 
     companion object {
         const val SCAN_RADIUS = 30
         val SCAN_BOX = Vec3i(SCAN_RADIUS, SCAN_RADIUS, SCAN_RADIUS)
         const val MAX_PING_TIME = 20 * 20
-        const val TICKS_PER_PING = 20
+        private const val TICKS_PER_PING = 20
     }
     init {
-        listener = VibrationListener(BlockPositionSource(blockPos), SCAN_RADIUS, this, null, 0.0f, 0)
+        vibrationListener = VibrationListener(BlockPositionSource(blockPos), SCAN_RADIUS, this, null, 0.0f, 0)
     }
 
     fun activate(level: Level, origin: BlockPos) {
@@ -47,30 +46,30 @@ class EchoLocatorBlockEntity(
         this.pinging.clear()
         for (pos in BlockPos.betweenClosed(from, to)) {
             val state = level.getBlockState(pos)
-            val rangedSquared = Mth.square(this.listener.listenerRadius)
+            val rangedSquared = Mth.square(this.vibrationListener.listenerRadius)
             if (origin.distSqr(pos) <= rangedSquared && state.`is`(this.type.canLocate)) {
                 this.pinging.add(pos.immutable())
             }
         }
     }
 
-    fun tick(level: ServerLevel, origin: BlockPos, state: BlockState) {
-        if (this.isPinging() && !level.isClientSide) {
+    fun tick(level: Level, origin: BlockPos, state: BlockState) {
+        if (!level.isClientSide && this.isPinging()) {
             this.pingTicks++
-            this.listener.tick(level)
+            this.vibrationListener.tick(level)
             if (this.pingTicks % TICKS_PER_PING != 0) {
                 return
             }
 
             val blocksToKeep = ArrayList<BlockPos>()
-            for (pos in pinging) {
+            for (pos in this.pinging) {
                 val atState = level.getBlockState(pos)
-                if (highlightBlock(level, pos, atState)) {
+                if (this.highlightBlock(level, pos, atState)) {
                     blocksToKeep.add(pos)
                 }
             }
-            pinging.clear()
-            pinging = blocksToKeep
+            this.pinging.clear()
+            this.pinging = blocksToKeep
         }
     }
 
@@ -100,14 +99,13 @@ class EchoLocatorBlockEntity(
         // do nothing, just make the particles
     }
 
-    private fun highlightBlock(serverLevel: ServerLevel, pos: BlockPos, state: BlockState): Boolean {
+    private fun highlightBlock(level: Level, pos: BlockPos, state: BlockState): Boolean {
         if (state.`is`(this.type.canLocate)) {
-            serverLevel.gameEvent(null, MoreGeodesGameEvents.CRYSTAL_RESONATE, pos)
-            serverLevel.playSound(null, pos, this.type.resonateSound, SoundSource.BLOCKS, 2.5f, 1.0f)
+            level.gameEvent(null, MoreGeodesGameEvents.CRYSTAL_RESONATE, pos)
+            level.playSound(null, pos, this.type.resonateSound, SoundSource.BLOCKS, 2.5f, 1.0f)
             return true
-        } else {
-            return false
         }
+        return false
     }
 
     private fun isPinging(): Boolean {

@@ -1,20 +1,35 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
+import com.github.thedeathlycow.moregeodes.forge.block.entity.EchoLocatorBlockEntity
+import com.github.thedeathlycow.moregeodes.forge.block.entity.MoreGeodesBlockEntityTypes
+import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.sounds.SoundSource
 import net.minecraft.util.RandomSource
+import net.minecraft.world.InteractionHand
+import net.minecraft.world.InteractionResult
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.block.*
 import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.world.level.block.entity.BlockEntityTicker
+import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
+import net.minecraft.world.level.block.state.properties.BooleanProperty
+import net.minecraft.world.level.block.state.properties.DirectionProperty
+import net.minecraft.world.level.block.state.properties.EnumProperty
+import net.minecraft.world.level.gameevent.GameEvent
+import net.minecraft.world.level.gameevent.GameEventListener
 import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
+import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
 
@@ -26,15 +41,15 @@ class EchoLocatorBlock(
 
     companion object {
         // state companions
-        val WATERLOGGED = BlockStateProperties.WATERLOGGED
-        val POWDERED = BlockStateProperties.POWERED
-        val AXIS = BlockStateProperties.HORIZONTAL_AXIS
-        val FACING = BlockStateProperties.FACING
+        val WATERLOGGED: BooleanProperty = BlockStateProperties.WATERLOGGED
+        val POWDERED: BooleanProperty = BlockStateProperties.POWERED
+        val AXIS: EnumProperty<Direction.Axis> = BlockStateProperties.HORIZONTAL_AXIS
+        val FACING: DirectionProperty = BlockStateProperties.FACING
 
         // voxel shapes
-        val Y_SHAPE = Block.box(5.0, 0.0, 5.0, 11.0, 16.0, 11.0)
-        val Z_SHAPE = Block.box(5.0, 5.0, 0.0, 11.0, 11.0, 16.0)
-        val X_SHAPE = Block.box(0.0, 5.0, 5.0, 16.0, 11.0, 11.0)
+        val Y_SHAPE: VoxelShape = Block.box(5.0, 0.0, 5.0, 11.0, 16.0, 11.0)
+        val Z_SHAPE: VoxelShape = Block.box(5.0, 5.0, 0.0, 11.0, 11.0, 16.0)
+        val X_SHAPE: VoxelShape = Block.box(0.0, 5.0, 5.0, 16.0, 11.0, 11.0)
 
         const val POWDERED_TIME = 8
     }
@@ -49,8 +64,33 @@ class EchoLocatorBlock(
         )
     }
 
-    override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity? {
-        TODO("Not yet implemented")
+    override fun <T : BlockEntity> getListener(serverLevel: ServerLevel, blockEntity: T): GameEventListener? {
+        if (blockEntity is EchoLocatorBlockEntity) {
+            return blockEntity.vibrationListener
+        } else {
+            return null
+        }
+    }
+
+    override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
+        val blockEntity = EchoLocatorBlockEntity(pos, state)
+        blockEntity.type = this.type
+        return blockEntity
+    }
+
+    override fun <T : BlockEntity> getTicker(
+        level: Level,
+        state: BlockState,
+        type: BlockEntityType<T>
+    ): BlockEntityTicker<T>? {
+        return createTickerHelper(
+            type,
+            MoreGeodesBlockEntityTypes.ECHO_LOCATOR,
+        ) { tickLevel, pos, tickState, entity ->
+                if (!tickLevel.isClientSide && entity is EchoLocatorBlockEntity) {
+                    entity.tick(tickLevel, pos, tickState)
+                }
+        }
     }
 
     override fun getRenderShape(state: BlockState): RenderShape {
@@ -87,6 +127,23 @@ class EchoLocatorBlock(
         }
 
         return super.updateShape(state, dirFromNeighbour, neighbourState, level, pos, neighbourPos)
+    }
+
+    override fun use(
+        state: BlockState,
+        level: Level,
+        pos: BlockPos,
+        player: Player,
+        hand: InteractionHand,
+        hitResult: BlockHitResult
+    ): InteractionResult {
+        this.powerLocator(level, state, pos)
+
+        if (this.ping(level, pos, state, hitResult, player)) {
+            return InteractionResult.sidedSuccess(level.isClientSide)
+        }
+
+        return InteractionResult.PASS
     }
 
     fun powerLocator(level: Level, state: BlockState, pos: BlockPos) {
@@ -158,5 +215,25 @@ class EchoLocatorBlock(
 
     private fun updateNeighbors(level: Level, pos: BlockPos) {
         level.updateNeighborsAt(pos.below(), this)
+    }
+
+    private fun ping(
+        level: Level,
+        origin: BlockPos,
+        state: BlockState,
+        hitResult: BlockHitResult,
+        player: Player
+    ): Boolean {
+        level.playSound(null, origin, type.activateSound, SoundSource.BLOCKS, 2.0f, 1.0f)
+
+        val blockEntity: BlockEntity? = level.getBlockEntity(origin)
+
+        if (blockEntity != null && !state.getValue(POWDERED) && blockEntity is EchoLocatorBlockEntity) {
+            level.gameEvent(player, GameEvent.BLOCK_CHANGE, origin)
+            blockEntity.activate(level, origin)
+            return true
+        }
+
+        return false
     }
 }

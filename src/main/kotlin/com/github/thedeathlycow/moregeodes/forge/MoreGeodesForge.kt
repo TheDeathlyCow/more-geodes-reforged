@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge
 
 import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
+import com.github.thedeathlycow.moregeodes.forge.block.entity.MoreGeodesBlockEntityTypes
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
 import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
@@ -28,6 +29,7 @@ object MoreGeodesForge {
         MoreGeodesBlocks.REGISTRY.register(MOD_BUS)
         MoreGeodesItems.REGISTRY.register(MOD_BUS)
         MoreGeodesGameEvents.REGISTRY.register(MOD_BUS)
+        MoreGeodesBlockEntityTypes.REGISTRY.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {
