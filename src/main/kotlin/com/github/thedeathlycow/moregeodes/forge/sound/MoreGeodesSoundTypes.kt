@@ -174,4 +174,13 @@ object MoreGeodesSoundTypes {
         { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_HIT },
         { EchoGeodeBlockSoundEvents.BLOCK_ECHO_CLUSTER_FALL }
     )
+
+    val ECHO_LOCATOR = ForgeSoundType(
+        1.0f, 1.0f,
+        { SoundEvents.METAL_BREAK },
+        { SoundEvents.METAL_STEP },
+        { SoundEvents.METAL_PLACE },
+        { SoundEvents.METAL_HIT },
+        { SoundEvents.METAL_FALL },
+    )
 }

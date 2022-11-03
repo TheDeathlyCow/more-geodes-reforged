@@ -27,6 +27,7 @@ data class EchoLocatorType(
     companion object {
 
         val EMPTY = EchoLocatorType(MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE, MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE, MoreGeodesBlockTags.ECHO_LOCATABLE_DEFAULT)
+        val EMERALD = EchoLocatorType(MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE, MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE, MoreGeodesBlockTags.ECHO_LOCATABLE_EMERALD)
 
         fun fromNbt(nbt: CompoundTag): EchoLocatorType {
             val activateSound: SoundEvent = getSoundEventById(nbt.getString("ActivateSound"))

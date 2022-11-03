@@ -20,6 +20,7 @@
     "geodes:echo_cluster",
     "geodes:small_echo_bud",
     "geodes:medium_echo_bud",
-    "geodes:large_echo_bud"
+    "geodes:large_echo_bud",
+    "geodes:emerald_crystal_echo_locator"
   ]
 }

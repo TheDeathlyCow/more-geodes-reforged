@@ -161,4 +161,11 @@ object MoreGeodesItems {
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }
+
+    val EMERALD_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("emerald_crystal_echo_locator") {
+        BlockItem(
+            MoreGeodesBlocks.EMERALD_CRYSTAL_ECHO_LOCATOR,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
 }

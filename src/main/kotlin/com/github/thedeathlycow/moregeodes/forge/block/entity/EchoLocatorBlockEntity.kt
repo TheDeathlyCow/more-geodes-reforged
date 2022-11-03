@@ -99,6 +99,8 @@ class EchoLocatorBlockEntity(
         // do nothing, just make the particles
     }
 
+    // TODO: Add NBT serialization
+
     private fun highlightBlock(level: Level, pos: BlockPos, state: BlockState): Boolean {
         if (state.`is`(this.type.canLocate)) {
             level.gameEvent(null, MoreGeodesGameEvents.CRYSTAL_RESONATE, pos)
