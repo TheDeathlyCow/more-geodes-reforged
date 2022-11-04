@@ -38,6 +38,27 @@ class EchoLocatorBlockEntity(
         val SCAN_BOX = Vec3i(SCAN_RADIUS, SCAN_RADIUS, SCAN_RADIUS)
         const val MAX_PING_TIME = 20 * 20
         private const val TICKS_PER_PING = 20
+
+        fun tick(level: Level, origin: BlockPos, state: BlockState, blockEntity: EchoLocatorBlockEntity) {
+            if (!level.isClientSide && blockEntity.isPinging()) {
+                blockEntity.pingTicks++
+                blockEntity.vibrationListener.tick(level)
+                if (blockEntity.pingTicks % TICKS_PER_PING != 0) {
+                    return
+                }
+
+                val blocksToKeep = ArrayList<BlockPos>()
+                for (pos in blockEntity.pinging) {
+                    val atState = level.getBlockState(pos)
+                    if (blockEntity.highlightBlock(level, pos, atState)) {
+                        blocksToKeep.add(pos)
+                    }
+                }
+                blockEntity.pinging.clear()
+                blockEntity.pinging.addAll(blocksToKeep)
+            }
+        }
+
     }
 
     init {
@@ -58,24 +79,6 @@ class EchoLocatorBlockEntity(
         }
     }
 
-    fun tick(level: Level, origin: BlockPos, state: BlockState) {
-        if (!level.isClientSide && this.isPinging()) {
-            this.pingTicks++
-            this.vibrationListener.tick(level)
-            if (this.pingTicks % TICKS_PER_PING != 0) {
-                return
-            }
-
-            val blocksToKeep = ArrayList<BlockPos>()
-            for (pos in this.pinging) {
-                val atState = level.getBlockState(pos)
-                if (this.highlightBlock(level, pos, atState)) {
-                    blocksToKeep.add(pos)
-                }
-            }
-            this.pinging = blocksToKeep
-        }
-    }
 
     override fun getListenableEvents(): TagKey<GameEvent> {
         return MoreGeodesGameEventTags.ECHO_LOCATOR_CAN_LISTEN
@@ -89,6 +92,8 @@ class EchoLocatorBlockEntity(
         ctx: GameEvent.Context
     ): Boolean {
         return !this.isRemoved
+                && event === MoreGeodesGameEvents.CRYSTAL_RESONATE
+                && this.isPinging()
     }
 
     override fun onSignalReceive(

@@ -86,11 +86,8 @@ class EchoLocatorBlock(
         return createTickerHelper(
             type,
             MoreGeodesBlockEntityTypes.ECHO_LOCATOR,
-        ) { tickLevel, pos, tickState, entity ->
-                if (!tickLevel.isClientSide && entity is EchoLocatorBlockEntity) {
-                    entity.tick(tickLevel, pos, tickState)
-                }
-        }
+            EchoLocatorBlockEntity::tick
+        )
     }
 
     override fun getRenderShape(state: BlockState): RenderShape {

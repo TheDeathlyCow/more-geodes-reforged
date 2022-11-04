@@ -14,7 +14,7 @@ object MoreGeodesBlockEntityTypes {
         MoreGeodesForge.MODID
     )
 
-    val ECHO_LOCATOR: BlockEntityType<*> by REGISTRY.registerObject("echo_locator") {
+    val ECHO_LOCATOR: BlockEntityType<EchoLocatorBlockEntity> by REGISTRY.registerObject("echo_locator") {
         BlockEntityType.Builder.of(
             ::EchoLocatorBlockEntity
         ).build(null)
