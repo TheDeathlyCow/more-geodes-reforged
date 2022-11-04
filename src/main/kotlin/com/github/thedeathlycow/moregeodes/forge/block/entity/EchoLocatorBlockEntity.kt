@@ -1,10 +1,13 @@
 package com.github.thedeathlycow.moregeodes.forge.block.entity
 
+import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
 import com.github.thedeathlycow.moregeodes.forge.block.EchoLocatorType
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import com.github.thedeathlycow.moregeodes.forge.world.event.tag.MoreGeodesGameEventTags
+import com.mojang.serialization.Dynamic
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Vec3i
+import net.minecraft.nbt.*
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundSource
 import net.minecraft.tags.TagKey
@@ -12,6 +15,7 @@ import net.minecraft.util.Mth
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.world.level.block.entity.SculkSensorBlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.gameevent.BlockPositionSource
 import net.minecraft.world.level.gameevent.GameEvent
@@ -24,7 +28,7 @@ class EchoLocatorBlockEntity(
 ) : BlockEntity(MoreGeodesBlockEntityTypes.ECHO_LOCATOR, blockPos, state), VibrationListener.VibrationListenerConfig {
 
     var type = EchoLocatorType.EMPTY
-    val vibrationListener: VibrationListener
+    var vibrationListener: VibrationListener
 
     private var pingTicks = 0
     private var pinging: MutableList<BlockPos> = ArrayList()
@@ -35,6 +39,7 @@ class EchoLocatorBlockEntity(
         const val MAX_PING_TIME = 20 * 20
         private const val TICKS_PER_PING = 20
     }
+
     init {
         vibrationListener = VibrationListener(BlockPositionSource(blockPos), SCAN_RADIUS, this, null, 0.0f, 0)
     }
@@ -68,7 +73,6 @@ class EchoLocatorBlockEntity(
                     blocksToKeep.add(pos)
                 }
             }
-            this.pinging.clear()
             this.pinging = blocksToKeep
         }
     }
@@ -99,7 +103,59 @@ class EchoLocatorBlockEntity(
         // do nothing, just make the particles
     }
 
-    // TODO: Add NBT serialization
+    override fun saveAdditional(nbt: CompoundTag) {
+        super.saveAdditional(nbt)
+        nbt.putInt("PingTicks", this.pingTicks)
+
+        nbt.put("Type", this.type.toNbt())
+
+        val pingingNbt = ListTag()
+        for (pingingPos in this.pinging) {
+            val pos = IntArrayTag(intArrayOf(pingingPos.x, pingingPos.y, pingingPos.z))
+            pingingNbt.add(pos)
+        }
+        nbt.put("Pinging", pingingNbt)
+
+        VibrationListener.codec(this)
+            .encodeStart(NbtOps.INSTANCE, this.vibrationListener)
+            .resultOrPartial { msg: String ->
+                MoreGeodesForge.LOGGER.error(msg)
+            }.ifPresent { nbtElement: Tag ->
+                nbt.put("listener", nbtElement)
+            }
+    }
+
+    override fun load(nbt: CompoundTag) {
+        super.load(nbt)
+        this.pingTicks = nbt.getInt("PingTicks")
+
+        this.pinging.clear()
+        val pingingNbt = nbt.getList("Pinging", ListTag.TAG_COMPOUND.toInt())
+        for ((index, _) in pingingNbt.withIndex()) {
+            val elemList = pingingNbt.getList(index)
+            this.pinging.add(
+                BlockPos(
+                    elemList.getInt(0), elemList.getInt(1), elemList.getInt(2)
+                )
+            )
+        }
+
+        if (nbt.contains("Type", Tag.TAG_COMPOUND.toInt())) {
+            this.type = EchoLocatorType.fromNbt(nbt.getCompound("Type"))
+        } else {
+            this.type = EchoLocatorType.EMPTY
+        }
+
+        if (nbt.contains("listener", Tag.TAG_COMPOUND.toInt())) {
+            VibrationListener.codec(this).parse(Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener")))
+                .resultOrPartial { msg: String ->
+                    MoreGeodesForge.LOGGER.error(msg)
+                }.ifPresent { listener: VibrationListener ->
+                    this.vibrationListener = listener
+                }
+        }
+    }
+
 
     private fun highlightBlock(level: Level, pos: BlockPos, state: BlockState): Boolean {
         if (state.`is`(this.type.canLocate)) {
