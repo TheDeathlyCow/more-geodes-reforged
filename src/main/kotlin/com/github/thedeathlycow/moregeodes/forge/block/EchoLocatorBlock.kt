@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.block.state.properties.DirectionProperty
 import net.minecraft.world.level.block.state.properties.EnumProperty
+import net.minecraft.world.level.chunk.LevelChunk
 import net.minecraft.world.level.gameevent.GameEvent
 import net.minecraft.world.level.gameevent.GameEventListener
 import net.minecraft.world.level.material.FluidState
@@ -83,10 +84,11 @@ class EchoLocatorBlock(
         state: BlockState,
         type: BlockEntityType<T>
     ): BlockEntityTicker<T>? {
+        val a: LevelChunk? = null
         return createTickerHelper(
             type,
             MoreGeodesBlockEntityTypes.ECHO_LOCATOR,
-            EchoLocatorBlockEntity::tick
+            if (level.isClientSide) EchoLocatorBlockEntity::clientTick else EchoLocatorBlockEntity::serverTick
         )
     }
 

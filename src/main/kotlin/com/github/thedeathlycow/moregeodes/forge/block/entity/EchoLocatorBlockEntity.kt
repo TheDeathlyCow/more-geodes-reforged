@@ -39,7 +39,7 @@ class EchoLocatorBlockEntity(
         const val MAX_PING_TIME = 20 * 20
         private const val TICKS_PER_PING = 20
 
-        fun tick(level: Level, origin: BlockPos, state: BlockState, blockEntity: EchoLocatorBlockEntity) {
+        fun tick(level: ServerLevel, origin: BlockPos, state: BlockState, blockEntity: EchoLocatorBlockEntity) {
             if (!level.isClientSide && blockEntity.isPinging()) {
                 blockEntity.pingTicks++
                 blockEntity.vibrationListener.tick(level)
@@ -57,6 +57,14 @@ class EchoLocatorBlockEntity(
                 blockEntity.pinging.clear()
                 blockEntity.pinging.addAll(blocksToKeep)
             }
+        }
+
+        fun serverTick(level: Level, origin: BlockPos, state: BlockState, blockEntity: EchoLocatorBlockEntity) {
+            tick(level as ServerLevel, origin, state, blockEntity)
+        }
+
+        fun clientTick(level: Level, origin: BlockPos, state: BlockState, blockEntity: EchoLocatorBlockEntity) {
+            // nothing to do on client
         }
 
     }

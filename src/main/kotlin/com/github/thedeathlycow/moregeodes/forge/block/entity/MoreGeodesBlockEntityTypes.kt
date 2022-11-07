@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge.block.entity
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
+import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraftforge.registries.DeferredRegister
@@ -16,7 +17,8 @@ object MoreGeodesBlockEntityTypes {
 
     val ECHO_LOCATOR: BlockEntityType<EchoLocatorBlockEntity> by REGISTRY.registerObject("echo_locator") {
         BlockEntityType.Builder.of(
-            ::EchoLocatorBlockEntity
+            ::EchoLocatorBlockEntity,
+            MoreGeodesBlocks.EMERALD_CRYSTAL_ECHO_LOCATOR
         ).build(null)
     }
 }
