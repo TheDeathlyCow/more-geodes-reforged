@@ -283,4 +283,48 @@ object MoreGeodesBlocks {
                 .requiresCorrectToolForDrops()
         )
     }
+
+    val QUARTZ_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("quartz_crystal_echo_locator") {
+        EchoLocatorBlock(
+            EchoLocatorType.QUARTZ,
+            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
+                .noOcclusion()
+                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
+                .strength(1.5f, 6.0f)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val DIAMOND_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("diamond_crystal_echo_locator") {
+        EchoLocatorBlock(
+            EchoLocatorType.DIAMOND,
+            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
+                .noOcclusion()
+                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
+                .strength(1.5f, 6.0f)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val AMETHYST_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("amethyst_crystal_echo_locator") {
+        EchoLocatorBlock(
+            EchoLocatorType.AMETHYST,
+            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
+                .noOcclusion()
+                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
+                .strength(1.5f, 6.0f)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val ECHO_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("echo_crystal_echo_locator") {
+        EchoLocatorBlock(
+            EchoLocatorType.ECHO,
+            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
+                .noOcclusion()
+                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
+                .strength(1.5f, 6.0f)
+                .requiresCorrectToolForDrops()
+        )
+    }
 }

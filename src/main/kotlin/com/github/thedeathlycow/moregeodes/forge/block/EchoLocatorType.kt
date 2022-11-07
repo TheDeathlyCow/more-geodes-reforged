@@ -26,8 +26,36 @@ data class EchoLocatorType(
 
     companion object {
 
-        val EMPTY = EchoLocatorType(MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE, MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE, MoreGeodesBlockTags.ECHO_LOCATABLE_DEFAULT)
-        val EMERALD = EchoLocatorType(MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE, MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE, MoreGeodesBlockTags.ECHO_LOCATABLE_EMERALD)
+        val EMPTY = EchoLocatorType(
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE,
+            MoreGeodesBlockTags.ECHO_LOCATABLE_DEFAULT
+        )
+        val EMERALD = EchoLocatorType(
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE,
+            MoreGeodesBlockTags.ECHO_LOCATABLE_EMERALD
+        )
+        val QUARTZ = EchoLocatorType(
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE,
+            MoreGeodesBlockTags.ECHO_LOCATABLE_QUARTZ
+        )
+        val DIAMOND = EchoLocatorType(
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE,
+            MoreGeodesBlockTags.ECHO_LOCATABLE_DIAMOND
+        )
+        val AMETHYST = EchoLocatorType(
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE,
+            MoreGeodesBlockTags.ECHO_LOCATABLE_AMETHYST
+        )
+        val ECHO = EchoLocatorType(
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
+            MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE,
+            MoreGeodesBlockTags.ECHO_LOCATABLE_ECHO
+        )
 
         fun fromNbt(nbt: CompoundTag): EchoLocatorType {
             val activateSound: SoundEvent = getSoundEventById(nbt.getString("ActivateSound"))

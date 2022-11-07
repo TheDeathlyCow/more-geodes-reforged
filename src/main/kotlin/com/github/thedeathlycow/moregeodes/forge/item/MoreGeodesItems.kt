@@ -168,4 +168,32 @@ object MoreGeodesItems {
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }
+
+    val QUARTZ_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("quartz_crystal_echo_locator") {
+        BlockItem(
+            MoreGeodesBlocks.QUARTZ_CRYSTAL_ECHO_LOCATOR,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val DIAMOND_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("diamond_crystal_echo_locator") {
+        BlockItem(
+            MoreGeodesBlocks.DIAMOND_CRYSTAL_ECHO_LOCATOR,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val AMETHYST_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("amethyst_crystal_echo_locator") {
+        BlockItem(
+            MoreGeodesBlocks.AMETHYST_CRYSTAL_ECHO_LOCATOR,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val ECHO_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("echo_crystal_echo_locator") {
+        BlockItem(
+            MoreGeodesBlocks.ECHO_CRYSTAL_ECHO_LOCATOR,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
 }
