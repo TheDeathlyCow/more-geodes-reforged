@@ -19,3 +19,5 @@ The ID for the base geode blocks are different in this version of the mod:
 | `geodes:emerald_geode` | `geodes:emerald_crystal_block` |
 | `geodes:quartz_geode`  | `geodes:quartz_crystal_block`  |
 | `geodes:diamond_geode` | `geodes:diamond_crystal_block` |
+
+These differences should not affect the datapack addons, unless otherwise specified.
