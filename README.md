@@ -12,6 +12,10 @@ Differences between the two versions will be listed below. If you find any diffe
 
 # Differences from Fabric Version
 
+These differences should not affect the datapack addons I provide, unless otherwise specified.
+
+## Block IDs for Base Geode Blocks
+
 The ID for the base geode blocks are different in this version of the mod:
 
 | Fabric ID              | Forge ID                       |
@@ -20,4 +24,6 @@ The ID for the base geode blocks are different in this version of the mod:
 | `geodes:quartz_geode`  | `geodes:quartz_crystal_block`  |
 | `geodes:diamond_geode` | `geodes:diamond_crystal_block` |
 
-These differences should not affect the datapack addons, unless otherwise specified.
+## Emerald Shard
+
+The Emerald Shard is not present in this version of the mod.
