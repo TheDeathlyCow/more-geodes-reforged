@@ -27,3 +27,7 @@ The ID for the base geode blocks are different in this version of the mod:
 ## Emerald Shard
 
 The Emerald Shard is not present in this version of the mod.
+
+## Config 
+
+The geode generation config is not yet implemented, but will be soon.
