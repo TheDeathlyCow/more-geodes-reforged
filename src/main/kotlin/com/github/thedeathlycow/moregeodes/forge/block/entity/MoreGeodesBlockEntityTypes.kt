@@ -18,11 +18,6 @@ object MoreGeodesBlockEntityTypes {
     val ECHO_LOCATOR: BlockEntityType<EchoLocatorBlockEntity> by REGISTRY.registerObject("echo_locator") {
         BlockEntityType.Builder.of(
             ::EchoLocatorBlockEntity,
-            MoreGeodesBlocks.EMERALD_CRYSTAL_ECHO_LOCATOR,
-            MoreGeodesBlocks.QUARTZ_CRYSTAL_ECHO_LOCATOR,
-            MoreGeodesBlocks.DIAMOND_CRYSTAL_ECHO_LOCATOR,
-            MoreGeodesBlocks.AMETHYST_CRYSTAL_ECHO_LOCATOR,
-            MoreGeodesBlocks.ECHO_CRYSTAL_ECHO_LOCATOR,
             MoreGeodesBlocks.ECHO_LOCATOR
         ).build(null)
     }

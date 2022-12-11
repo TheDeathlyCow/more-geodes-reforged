@@ -169,37 +169,16 @@ object MoreGeodesItems {
         )
     }
 
-    val EMERALD_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("emerald_crystal_echo_locator") {
+    val GYPSUM_ROSE by REGISTRY.registerObject("gypsum_rose") {
         BlockItem(
-            MoreGeodesBlocks.EMERALD_CRYSTAL_ECHO_LOCATOR,
+            MoreGeodesBlocks.GYPSUM_ROSE,
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }
 
-    val QUARTZ_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("quartz_crystal_echo_locator") {
+    val LARGE_GYPSUM_BUD by REGISTRY.registerObject("large_gypsum_bud") {
         BlockItem(
-            MoreGeodesBlocks.QUARTZ_CRYSTAL_ECHO_LOCATOR,
-            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
-        )
-    }
-
-    val DIAMOND_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("diamond_crystal_echo_locator") {
-        BlockItem(
-            MoreGeodesBlocks.DIAMOND_CRYSTAL_ECHO_LOCATOR,
-            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
-        )
-    }
-
-    val AMETHYST_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("amethyst_crystal_echo_locator") {
-        BlockItem(
-            MoreGeodesBlocks.AMETHYST_CRYSTAL_ECHO_LOCATOR,
-            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
-        )
-    }
-
-    val ECHO_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("echo_crystal_echo_locator") {
-        BlockItem(
-            MoreGeodesBlocks.ECHO_CRYSTAL_ECHO_LOCATOR,
+            MoreGeodesBlocks.LARGE_GYPSUM_BUD,
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }
