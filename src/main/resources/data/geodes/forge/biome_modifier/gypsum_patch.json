@@ -1,0 +1,6 @@
+{
+	"type": "forge:add_features",
+	"biomes": "#geodes:has_gypsum_patch",
+	"features": "geodes:gypsum_patch",
+	"step": "vegetal_decoration"
+}
