@@ -23,9 +23,15 @@ data class CrystalBlockSoundGroup(
             SoundEvents.AMETHYST_BLOCK_HIT,
             MoreGeodesSoundEvents.BLOCK_DIAMOND_CRYSTAL_BLOCK_CHIME
         )
+
         val ECHO = CrystalBlockSoundGroup(
             SoundEvents.AMETHYST_BLOCK_HIT,
             EchoGeodeBlockSoundEvents.BLOCK_ECHO_BLOCK_CHIME
+        )
+
+        val GYPSUM = CrystalBlockSoundGroup(
+            SoundEvents.AMETHYST_BLOCK_HIT,
+            MoreGeodesSoundEvents.BLOCK_GYPSUM_CRYSTAL_BLOCK_CHIME
         )
     }
 }

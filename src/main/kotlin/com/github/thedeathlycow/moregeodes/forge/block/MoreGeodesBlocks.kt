@@ -236,21 +236,21 @@ object MoreGeodesBlocks {
 
     val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
         CrystalBlock(
-            CrystalBlockSoundGroup.EMERALD,
+            CrystalBlockSoundGroup.GYPSUM,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_RED)
                 .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
         )
     }
 
     val GYPSUM_ROSE by REGISTRY.registerObject("gypsum_rose") {
         LargeCrystalClusterBlock(
-            CrystalBlockSoundGroup.EMERALD,
+            CrystalBlockSoundGroup.GYPSUM,
             13.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_WHITE)
                 .noOcclusion()
-                .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .strength(1.3f)
         )
@@ -258,11 +258,11 @@ object MoreGeodesBlocks {
 
     val LARGE_GYPSUM_BUD by REGISTRY.registerObject("large_gypsum_bud") {
         LargeCrystalClusterBlock(
-            CrystalBlockSoundGroup.EMERALD,
+            CrystalBlockSoundGroup.GYPSUM,
             5.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_WHITE)
                 .noOcclusion()
-                .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .strength(1.3f)
         )
@@ -270,11 +270,11 @@ object MoreGeodesBlocks {
 
     val MEDIUM_GYPSUM_BUD by REGISTRY.registerObject("medium_gypsum_bud") {
         CrystalClusterBlock(
-            CrystalBlockSoundGroup.ECHO,
+            CrystalBlockSoundGroup.GYPSUM,
             4.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
                 .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.MEDIUM_ECHO_BUD)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 2 }
                 .noOcclusion()
@@ -283,11 +283,11 @@ object MoreGeodesBlocks {
 
     val SMALL_GYPSUM_BUD by REGISTRY.registerObject("small_gypsum_bud") {
         CrystalClusterBlock(
-            CrystalBlockSoundGroup.ECHO,
+            CrystalBlockSoundGroup.GYPSUM,
             3.0, 4.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
                 .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.SMALL_ECHO_BUD)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 1 }
                 .noOcclusion()
@@ -336,10 +336,10 @@ object MoreGeodesBlocks {
         MonoDirectedBuddingBlock(
             Direction.UP,
             listOf(SMALL_GYPSUM_BUD, MEDIUM_GYPSUM_BUD, LARGE_GYPSUM_BUD, GYPSUM_ROSE),
-            CrystalBlockSoundGroup.EMERALD,
+            CrystalBlockSoundGroup.GYPSUM,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
                 .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
         )
