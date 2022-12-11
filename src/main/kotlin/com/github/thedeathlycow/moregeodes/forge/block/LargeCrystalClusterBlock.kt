@@ -72,7 +72,7 @@ open class LargeCrystalClusterBlock(
 
             level.setBlock(
                 headPos,
-                DoublePlantBlock.copyWaterloggedFrom(level, pos, state.setValue(HALF, DoubleBlockHalf.UPPER)),
+                DoublePlantBlock.copyWaterloggedFrom(level, headPos, state.setValue(HALF, DoubleBlockHalf.UPPER)),
                 flags
             )
         }
