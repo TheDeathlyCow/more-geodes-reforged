@@ -1,12 +1,16 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
+import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
 import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundTypes
 import net.minecraft.core.Direction
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
+import net.minecraft.world.level.block.StairBlock
+import net.minecraft.world.level.block.WallBlock
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Material
 import net.minecraft.world.level.material.MaterialColor
@@ -235,7 +239,6 @@ object MoreGeodesBlocks {
     }
 
 
-
     val LAPIS_CRYSTAL_BLOCK by REGISTRY.registerObject("lapis_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.LAPIS,
@@ -295,6 +298,54 @@ object MoreGeodesBlocks {
                 .requiresCorrectToolForDrops()
                 .lightLevel { 1 }
                 .noOcclusion()
+        )
+    }
+
+    val PYRITE by REGISTRY.registerObject("pyrite") {
+        Block(
+            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.GOLD)
+                .sound(SoundType.CALCITE)
+                .requiresCorrectToolForDrops()
+                .strength(0.75f)
+        )
+    }
+
+    val PYRITE_STAIRS by REGISTRY.registerObject("pyrite_stairs") {
+        StairBlock(
+            { PYRITE.defaultBlockState() },
+            BlockBehaviour.Properties.copy(PYRITE)
+        )
+    }
+
+    val PYRITE_SLAB by REGISTRY.registerObject("pyrite_slab") {
+        SlabBlock(
+            BlockBehaviour.Properties.copy(PYRITE)
+        )
+    }
+
+    val PYRITE_WALL by REGISTRY.registerObject("pyrite_wall") {
+        WallBlock(
+            BlockBehaviour.Properties.copy(PYRITE)
+        )
+    }
+
+
+    val CALCITE_STAIRS by REGISTRY.registerObject("calcite_stairs") {
+        StairBlock(
+            { Blocks.CALCITE.defaultBlockState() },
+            BlockBehaviour.Properties.copy(Blocks.CALCITE)
+        )
+    }
+
+    val CALCITE_SLAB by REGISTRY.registerObject("calcite_slab") {
+        SlabBlock(
+            BlockBehaviour.Properties.copy(Blocks.CALCITE)
+        )
+    }
+
+    val CALCITE_WALL by REGISTRY.registerObject("calcite_wall") {
+        WallBlock(
+            BlockBehaviour.Properties.copy(Blocks.CALCITE)
         )
     }
 

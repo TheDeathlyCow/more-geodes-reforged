@@ -272,6 +272,55 @@ object MoreGeodesItems {
         )
     }
 
+    val PYRITE by REGISTRY.registerObject("pyrite") {
+        BlockItem(
+            MoreGeodesBlocks.PYRITE,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val PYRITE_STAIRS by REGISTRY.registerObject("pyrite_stairs") {
+        BlockItem(
+            MoreGeodesBlocks.PYRITE_STAIRS,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val PYRITE_SLAB by REGISTRY.registerObject("pyrite_slab") {
+        BlockItem(
+            MoreGeodesBlocks.PYRITE_SLAB,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val PYRITE_WALL by REGISTRY.registerObject("pyrite_wall") {
+        BlockItem(
+            MoreGeodesBlocks.PYRITE_WALL,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+
+    val CALCITE_STAIRS by REGISTRY.registerObject("calcite_stairs") {
+        BlockItem(
+            MoreGeodesBlocks.CALCITE_STAIRS,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val CALCITE_SLAB by REGISTRY.registerObject("calcite_slab") {
+        BlockItem(
+            MoreGeodesBlocks.CALCITE_SLAB,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val CALCITE_WALL by REGISTRY.registerObject("calcite_wall") {
+        BlockItem(
+            MoreGeodesBlocks.CALCITE_WALL,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
 
 
     val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
