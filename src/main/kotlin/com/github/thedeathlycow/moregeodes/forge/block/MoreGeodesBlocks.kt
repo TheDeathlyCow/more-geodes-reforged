@@ -234,6 +234,16 @@ object MoreGeodesBlocks {
         )
     }
 
+    val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
+        CrystalBlock(
+            CrystalBlockSoundGroup.EMERALD,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_RED)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
     val GYPSUM_ROSE by REGISTRY.registerObject("gypsum_rose") {
         LargeCrystalClusterBlock(
             CrystalBlockSoundGroup.EMERALD,

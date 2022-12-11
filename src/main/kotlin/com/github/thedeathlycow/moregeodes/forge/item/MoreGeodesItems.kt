@@ -197,6 +197,13 @@ object MoreGeodesItems {
         )
     }
 
+    val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
+        BlockItem(
+            MoreGeodesBlocks.GYPSUM_CRYSTAL_BLOCK,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
+
     val BUDDING_GYPSUM by REGISTRY.registerObject("budding_gypsum") {
         BlockItem(
             MoreGeodesBlocks.BUDDING_GYPSUM,
