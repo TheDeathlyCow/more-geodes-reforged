@@ -234,6 +234,8 @@ object MoreGeodesBlocks {
         )
     }
 
+
+
     val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.GYPSUM,
@@ -271,7 +273,7 @@ object MoreGeodesBlocks {
     val MEDIUM_GYPSUM_BUD by REGISTRY.registerObject("medium_gypsum_bud") {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.GYPSUM,
-            4.0, 3.0,
+            16.0, 3.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
@@ -284,7 +286,7 @@ object MoreGeodesBlocks {
     val SMALL_GYPSUM_BUD by REGISTRY.registerObject("small_gypsum_bud") {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.GYPSUM,
-            3.0, 4.0,
+            11.0, 4.0,
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
