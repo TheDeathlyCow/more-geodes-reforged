@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.util.RandomSource
+import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
@@ -58,28 +59,36 @@ open class BuddingCrystalBlock(
         val currentStateInGrow = level.getBlockState(posToGrow)
 
         // set the next bud state if present
-        val nextBlock: Block? = this.getNextBlockForGrowth(currentStateInGrow, dirToGrow)
-        if (nextBlock != null) {
-            val isWaterlogged = currentStateInGrow.fluidState.fluidType === Fluids.WATER
+        val nextBlock: Block = this.getNextBlockForGrowth(currentStateInGrow, dirToGrow) ?: return
 
-            val nextBudState: BlockState = nextBlock.defaultBlockState()
-                .setValue(CrystalClusterBlock.FACING, dirToGrow)
-                .setValue(CrystalClusterBlock.WATERLOGGED, isWaterlogged)
+        val isWaterlogged = currentStateInGrow.fluidState.fluidType === Fluids.WATER
 
-            val shouldGrowLargeCluster = nextBlock is LargeCrystalClusterBlock
+        val nextBudState: BlockState = nextBlock.defaultBlockState()
+            .setValue(CrystalClusterBlock.FACING, dirToGrow)
+            .setValue(CrystalClusterBlock.WATERLOGGED, isWaterlogged)
+
+        if (nextBlock is LargeCrystalClusterBlock) {
+
+            val headPos = posToGrow.relative(nextBudState.getValue(CrystalClusterBlock.FACING))
+            val headState: BlockState = level.getBlockState(headPos)
+
+
+            val canGrow = (headState.isAir || headState.`is`(Blocks.WATER))
                     && nextBudState.canSurvive(level, posToGrow)
 
-            if (shouldGrowLargeCluster) {
+            if (canGrow) {
                 LargeCrystalClusterBlock.placeAt(
                     level,
                     nextBudState,
                     posToGrow,
                     Block.UPDATE_CLIENTS
                 )
-            } else {
-                level.setBlock(posToGrow, nextBudState, Block.UPDATE_ALL)
             }
+
+        } else {
+            level.setBlock(posToGrow, nextBudState, Block.UPDATE_ALL)
         }
+
     }
 
     private fun getNextBlockForGrowth(currentState: BlockState, offsetFromSource: Direction): Block? {
