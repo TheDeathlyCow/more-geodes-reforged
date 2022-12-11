@@ -273,6 +273,17 @@ object MoreGeodesBlocks {
 
     ////// Echo Locator Blocks //////
 
+    val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
+        EchoLocatorBlock(
+            EchoLocatorType.ALL,
+            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
+                .noOcclusion()
+                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
+                .strength(1.5f, 6.0f)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
     val EMERALD_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("emerald_crystal_echo_locator") {
         EchoLocatorBlock(
             EchoLocatorType.EMERALD,

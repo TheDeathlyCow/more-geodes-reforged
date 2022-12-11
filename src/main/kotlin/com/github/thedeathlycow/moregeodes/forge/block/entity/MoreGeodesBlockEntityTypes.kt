@@ -22,7 +22,8 @@ object MoreGeodesBlockEntityTypes {
             MoreGeodesBlocks.QUARTZ_CRYSTAL_ECHO_LOCATOR,
             MoreGeodesBlocks.DIAMOND_CRYSTAL_ECHO_LOCATOR,
             MoreGeodesBlocks.AMETHYST_CRYSTAL_ECHO_LOCATOR,
-            MoreGeodesBlocks.ECHO_CRYSTAL_ECHO_LOCATOR
+            MoreGeodesBlocks.ECHO_CRYSTAL_ECHO_LOCATOR,
+            MoreGeodesBlocks.ECHO_LOCATOR
         ).build(null)
     }
 }
