@@ -68,10 +68,11 @@ open class BuddingCrystalBlock(
 
         if (nextBlock is LargeCrystalClusterBlock) {
 
-            val headPos = posToGrow.relative(nextBudState.getValue(CrystalClusterBlock.FACING))
+            val facing = nextBudState.getValue(CrystalClusterBlock.FACING)
+            val headPos = posToGrow.relative(facing)
             val headState: BlockState = level.getBlockState(headPos)
 
-            val canGrow = (headState.isAir || headState.`is`(Blocks.WATER))
+            val canGrow = (canStateGrowNewBud(headState) || isStateGrowableBud(headState, facing))
                     && nextBudState.canSurvive(level, posToGrow)
 
             if (canGrow) {
@@ -114,5 +115,6 @@ open class BuddingCrystalBlock(
     private fun isStateGrowableBud(state: BlockState, direction: Direction): Boolean {
         return state.hasProperty(CrystalClusterBlock.FACING)
                 && state.getValue(CrystalClusterBlock.FACING) === direction
+                && state.block in this.crystalBuds
     }
 }
