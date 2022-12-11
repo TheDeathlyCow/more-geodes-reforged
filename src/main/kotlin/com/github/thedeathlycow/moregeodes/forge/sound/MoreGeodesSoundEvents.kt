@@ -33,6 +33,10 @@ object MoreGeodesSoundEvents {
         SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.diamond_crystal_block.chime"))
     }
 
+    val BLOCK_LAPIS_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.lapis_crystal_block.chime") {
+        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.lapis_crystal_block.chime"))
+    }
+
     val BLOCK_GYPSUM_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.gypsum_crystal_block.chime") {
         SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.gypsum_crystal_block.chime"))
     }

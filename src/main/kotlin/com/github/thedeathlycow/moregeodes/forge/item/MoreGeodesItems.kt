@@ -172,6 +172,50 @@ object MoreGeodesItems {
 
 
 
+    val LAPIS_CRYSTAL_BLOCK by REGISTRY.registerObject("lapis_crystal_block") {
+        BlockItem(
+            MoreGeodesBlocks.LAPIS_CRYSTAL_BLOCK,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val BUDDING_LAPIS by REGISTRY.registerObject("budding_lapis") {
+        BlockItem(
+            MoreGeodesBlocks.BUDDING_LAPIS,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val LAPIS_CLUSTER by REGISTRY.registerObject("lapis_cluster") {
+        BlockItem(
+            MoreGeodesBlocks.LAPIS_CLUSTER,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val LARGE_LAPIS_BUD by REGISTRY.registerObject("large_lapis_bud") {
+        BlockItem(
+            MoreGeodesBlocks.LARGE_LAPIS_BUD,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val MEDIUM_LAPIS_BUD by REGISTRY.registerObject("medium_lapis_bud") {
+        BlockItem(
+            MoreGeodesBlocks.MEDIUM_LAPIS_BUD,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+    val SMALL_LAPIS_BUD by REGISTRY.registerObject("small_lapis_bud") {
+        BlockItem(
+            MoreGeodesBlocks.SMALL_LAPIS_BUD,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
+
+
+
     val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
         BlockItem(
             MoreGeodesBlocks.GYPSUM_CRYSTAL_BLOCK,

@@ -236,6 +236,70 @@ object MoreGeodesBlocks {
 
 
 
+    val LAPIS_CRYSTAL_BLOCK by REGISTRY.registerObject("lapis_crystal_block") {
+        CrystalBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val LAPIS_CLUSTER by REGISTRY.registerObject("lapis_cluster") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            7.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 5 }
+                .noOcclusion()
+        )
+    }
+
+    val LARGE_LAPIS_BUD by REGISTRY.registerObject("large_lapis_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            5.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 4 }
+                .noOcclusion()
+        )
+    }
+
+    val MEDIUM_LAPIS_BUD by REGISTRY.registerObject("medium_lapis_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            4.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 2 }
+                .noOcclusion()
+        )
+    }
+
+    val SMALL_LAPIS_BUD by REGISTRY.registerObject("small_lapis_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            3.0, 4.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 1 }
+                .noOcclusion()
+        )
+    }
+
+
+
     val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.GYPSUM,
@@ -329,6 +393,18 @@ object MoreGeodesBlocks {
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.ECHO_BLOCK)
+                .requiresCorrectToolForDrops()
+                .randomTicks()
+        )
+    }
+
+    val BUDDING_LAPIS by REGISTRY.registerObject("budding_lapis") {
+        BuddingCrystalBlock(
+            listOf(SMALL_LAPIS_BUD, MEDIUM_LAPIS_BUD, LARGE_LAPIS_BUD, LAPIS_CLUSTER),
+            CrystalBlockSoundGroup.LAPIS,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
         )

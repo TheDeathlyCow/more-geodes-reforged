@@ -29,6 +29,11 @@ data class CrystalBlockSoundGroup(
             EchoGeodeBlockSoundEvents.BLOCK_ECHO_BLOCK_CHIME
         )
 
+        val LAPIS = CrystalBlockSoundGroup(
+            SoundEvents.AMETHYST_BLOCK_HIT,
+            MoreGeodesSoundEvents.BLOCK_GYPSUM_CRYSTAL_BLOCK_CHIME
+        )
+
         val GYPSUM = CrystalBlockSoundGroup(
             SoundEvents.AMETHYST_BLOCK_HIT,
             MoreGeodesSoundEvents.BLOCK_GYPSUM_CRYSTAL_BLOCK_CHIME
