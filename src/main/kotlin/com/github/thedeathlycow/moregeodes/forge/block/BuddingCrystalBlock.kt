@@ -10,10 +10,9 @@ import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.PushReaction
-import org.checkerframework.checker.units.qual.A
 
 @Suppress("OVERRIDE_DEPRECATION")
-class BuddingCrystalBlock(
+open class BuddingCrystalBlock(
     private val crystalBuds: List<CrystalClusterBlock>,
     soundGroup: CrystalBlockSoundGroup,
     properties: Properties
@@ -33,35 +32,57 @@ class BuddingCrystalBlock(
         blockPos: BlockPos,
         random: RandomSource
     ) {
-        if (random.nextInt(5) == 0) { // slow the speed of the budding growth
-
+        if (this.shouldGrow(random)) { // slow the speed of the budding growth
             // the direction we want to try growing in
             val dirToGrow = DIRECTIONS[random.nextInt(DIRECTIONS.size)]
 
-            // the position of the block to try growing in
-            val posToGrow = blockPos.relative(dirToGrow)
+            this.growCrystalOnce(level, blockPos, dirToGrow)
+        }
+    }
 
-            // current state of PosToGrow
-            val currentStateInGrow = level.getBlockState(posToGrow)
+    protected fun shouldGrow(
+        random: RandomSource
+    ): Boolean {
+        return random.nextInt(5) == 0
+    }
 
-            // set the next bud state if present
-            val nextBlock: Block? = this.getNextStateForGrowth(currentStateInGrow, dirToGrow)
-            if (nextBlock != null) {
-                val isWaterlogged = currentStateInGrow.fluidState.fluidType === Fluids.WATER
+    protected fun growCrystalOnce(
+        level: ServerLevel,
+        blockPos: BlockPos,
+        dirToGrow: Direction
+    ) {
+        // the position of the block to try growing in
+        val posToGrow = blockPos.relative(dirToGrow)
 
-                val nextState: BlockState = nextBlock.defaultBlockState()
-                    .setValue(CrystalClusterBlock.WATERLOGGED, isWaterlogged)
-                    .setValue(CrystalClusterBlock.FACING, dirToGrow)
-                level.setBlockAndUpdate(posToGrow, nextState)
+        // current state of PosToGrow
+        val currentStateInGrow = level.getBlockState(posToGrow)
+
+        // set the next bud state if present
+        val nextBlock: Block? = this.getNextBlockForGrowth(currentStateInGrow, dirToGrow)
+        if (nextBlock != null) {
+            val isWaterlogged = currentStateInGrow.fluidState.fluidType === Fluids.WATER
+
+            val nextBudState: BlockState = nextBlock.defaultBlockState()
+                .setValue(CrystalClusterBlock.FACING, dirToGrow)
+                .setValue(CrystalClusterBlock.WATERLOGGED, isWaterlogged)
+
+            val shouldGrowLargeCluster = nextBlock is LargeCrystalClusterBlock
+                    && nextBudState.canSurvive(level, posToGrow)
+
+            if (shouldGrowLargeCluster) {
+                LargeCrystalClusterBlock.placeAt(
+                    level,
+                    nextBudState,
+                    posToGrow,
+                    Block.UPDATE_CLIENTS
+                )
+            } else {
+                level.setBlock(posToGrow, nextBudState, Block.UPDATE_ALL)
             }
         }
     }
 
-    fun getClusterStates(): List<BlockState> {
-        return this.crystalBuds.map { crystalClusterBlock -> crystalClusterBlock.defaultBlockState() }
-    }
-
-    private fun getNextStateForGrowth(currentState: BlockState, offsetFromSource: Direction): Block? {
+    private fun getNextBlockForGrowth(currentState: BlockState, offsetFromSource: Direction): Block? {
         val currentBlock: Block = currentState.block
 
         if (crystalBuds.isNotEmpty() && this.canStateGrowNewBud(currentState)) {

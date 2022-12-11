@@ -182,4 +182,25 @@ object MoreGeodesItems {
             Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
         )
     }
+
+    val MEDIUM_GYPSUM_BUD by REGISTRY.registerObject("medium_gypsum_bud") {
+        BlockItem(
+            MoreGeodesBlocks.MEDIUM_GYPSUM_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val SMALL_GYPSUM_BUD by REGISTRY.registerObject("small_gypsum_bud") {
+        BlockItem(
+            MoreGeodesBlocks.SMALL_GYPSUM_BUD,
+            Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)
+        )
+    }
+
+    val BUDDING_GYPSUM by REGISTRY.registerObject("budding_gypsum") {
+        BlockItem(
+            MoreGeodesBlocks.BUDDING_GYPSUM,
+            Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    }
 }

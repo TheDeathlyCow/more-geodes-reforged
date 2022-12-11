@@ -3,6 +3,7 @@ package com.github.thedeathlycow.moregeodes.forge.block
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
 import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundTypes
+import net.minecraft.core.Direction
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.SoundType
@@ -257,6 +258,32 @@ object MoreGeodesBlocks {
         )
     }
 
+    val MEDIUM_GYPSUM_BUD by REGISTRY.registerObject("medium_gypsum_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.ECHO,
+            4.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.MEDIUM_ECHO_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 2 }
+                .noOcclusion()
+        )
+    }
+
+    val SMALL_GYPSUM_BUD by REGISTRY.registerObject("small_gypsum_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.ECHO,
+            3.0, 4.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.SMALL_ECHO_BUD)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 1 }
+                .noOcclusion()
+        )
+    }
+
     ////// Budding Blocks //////
 
     val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
@@ -290,6 +317,19 @@ object MoreGeodesBlocks {
             BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.ECHO_BLOCK)
+                .requiresCorrectToolForDrops()
+                .randomTicks()
+        )
+    }
+
+    val BUDDING_GYPSUM by REGISTRY.registerObject("budding_gypsum") {
+        MonoDirectedBuddingBlock(
+            Direction.UP,
+            listOf(SMALL_GYPSUM_BUD, MEDIUM_GYPSUM_BUD, LARGE_GYPSUM_BUD, GYPSUM_ROSE),
+            CrystalBlockSoundGroup.EMERALD,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
         )
