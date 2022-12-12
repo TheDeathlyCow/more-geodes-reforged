@@ -5,7 +5,9 @@
 	"compatibilityLevel": "JAVA_17",
 	"refmap": "mixins.geodes.refmap.json",
 	"mixins": [
-		"StepSoundMixin"
+		"StepSoundMixin",
+		"fools_gold.FoolsGoldBarterMixin",
+		"fools_gold.PiglinMemoryMixin"
 	],
 	"client": [
 	],

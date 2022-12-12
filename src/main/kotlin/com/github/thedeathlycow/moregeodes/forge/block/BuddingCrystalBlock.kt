@@ -80,7 +80,7 @@ open class BuddingCrystalBlock(
                     level,
                     nextBudState,
                     posToGrow,
-                    Block.UPDATE_CLIENTS
+                    Block.UPDATE_ALL
                 )
             }
 
