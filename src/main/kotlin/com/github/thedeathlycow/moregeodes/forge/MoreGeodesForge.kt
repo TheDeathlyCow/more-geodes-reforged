@@ -8,8 +8,10 @@ import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import net.minecraft.client.Minecraft
+import net.minecraft.world.level.block.ComposterBlock
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
@@ -36,14 +38,19 @@ object MoreGeodesForge {
         val obj = runForDist(
             clientTarget = {
                 MOD_BUS.addListener(::onClientSetup)
-                Minecraft.getInstance()
             },
             serverTarget = {
                 MOD_BUS.addListener(::onServerSetup)
-                "test"
-            })
+            }
+        )
 
-        println(obj)
+        MOD_BUS.addListener(::onCommonSetup)
+    }
+
+    private fun onCommonSetup(event: FMLCommonSetupEvent) {
+        LOGGER.info("Setting up More Geodes Reforged")
+
+        ComposterBlock.COMPOSTABLES.put(MoreGeodesItems.GYPSUM_SHARD, 1.0f)
     }
 
     /**
@@ -52,7 +59,7 @@ object MoreGeodesForge {
      * Fired on the mod specific event bus.
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
-        LOGGER.log(Level.INFO, "Initializing client...")
+        LOGGER.info("Setting up More Geodes Reforged Client")
 
     }
 
@@ -60,6 +67,6 @@ object MoreGeodesForge {
      * Fired on the global Forge bus.
      */
     private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {
-        LOGGER.log(Level.INFO, "Server starting...")
+        LOGGER.info("Setting up More Geodes Reforged Server")
     }
 }
