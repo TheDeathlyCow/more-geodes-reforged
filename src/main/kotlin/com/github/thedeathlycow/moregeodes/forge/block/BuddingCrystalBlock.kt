@@ -10,10 +10,9 @@ import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.PushReaction
-import org.checkerframework.checker.units.qual.A
 
 @Suppress("OVERRIDE_DEPRECATION")
-class BuddingCrystalBlock(
+open class BuddingCrystalBlock(
     private val crystalBuds: List<CrystalClusterBlock>,
     soundGroup: CrystalBlockSoundGroup,
     properties: Properties
@@ -33,35 +32,65 @@ class BuddingCrystalBlock(
         blockPos: BlockPos,
         random: RandomSource
     ) {
-        if (random.nextInt(5) == 0) { // slow the speed of the budding growth
-
+        if (this.shouldGrow(random)) { // slow the speed of the budding growth
             // the direction we want to try growing in
             val dirToGrow = DIRECTIONS[random.nextInt(DIRECTIONS.size)]
 
-            // the position of the block to try growing in
-            val posToGrow = blockPos.relative(dirToGrow)
-
-            // current state of PosToGrow
-            val currentStateInGrow = level.getBlockState(posToGrow)
-
-            // set the next bud state if present
-            val nextBlock: Block? = this.getNextStateForGrowth(currentStateInGrow, dirToGrow)
-            if (nextBlock != null) {
-                val isWaterlogged = currentStateInGrow.fluidState.fluidType === Fluids.WATER
-
-                val nextState: BlockState = nextBlock.defaultBlockState()
-                    .setValue(CrystalClusterBlock.WATERLOGGED, isWaterlogged)
-                    .setValue(CrystalClusterBlock.FACING, dirToGrow)
-                level.setBlockAndUpdate(posToGrow, nextState)
-            }
+            this.growCrystalOnce(level, blockPos, dirToGrow)
         }
     }
 
-    fun getClusterStates(): List<BlockState> {
-        return this.crystalBuds.map { crystalClusterBlock -> crystalClusterBlock.defaultBlockState() }
+    protected fun shouldGrow(
+        random: RandomSource
+    ): Boolean {
+        return random.nextInt(5) == 0
     }
 
-    private fun getNextStateForGrowth(currentState: BlockState, offsetFromSource: Direction): Block? {
+    protected fun growCrystalOnce(
+        level: ServerLevel,
+        blockPos: BlockPos,
+        dirToGrow: Direction
+    ) {
+        // the position of the block to try growing in
+        val posToGrow = blockPos.relative(dirToGrow)
+
+        // current state of PosToGrow
+        val currentStateInGrow = level.getBlockState(posToGrow)
+
+        // set the next bud state if present
+        val nextBlock: Block = this.getNextBlockForGrowth(currentStateInGrow, dirToGrow) ?: return
+
+        val isWaterlogged = java.lang.Boolean.valueOf(currentStateInGrow.fluidState.type === Fluids.WATER)
+
+        val nextBudState: BlockState = nextBlock.defaultBlockState()
+            .setValue(CrystalClusterBlock.FACING, dirToGrow)
+            .setValue(CrystalClusterBlock.WATERLOGGED, isWaterlogged)
+
+        if (nextBlock is LargeCrystalClusterBlock) {
+
+            val facing = nextBudState.getValue(CrystalClusterBlock.FACING)
+            val headPos = posToGrow.relative(facing)
+            val headState: BlockState = level.getBlockState(headPos)
+
+            val canGrow = (canStateGrowNewBud(headState) || isStateGrowableBud(headState, facing))
+                    && nextBudState.canSurvive(level, posToGrow)
+
+            if (canGrow) {
+                LargeCrystalClusterBlock.placeAt(
+                    level,
+                    nextBudState,
+                    posToGrow,
+                    Block.UPDATE_ALL
+                )
+            }
+
+        } else {
+            level.setBlock(posToGrow, nextBudState, Block.UPDATE_ALL)
+        }
+
+    }
+
+    private fun getNextBlockForGrowth(currentState: BlockState, offsetFromSource: Direction): Block? {
         val currentBlock: Block = currentState.block
 
         if (crystalBuds.isNotEmpty() && this.canStateGrowNewBud(currentState)) {
@@ -86,5 +115,6 @@ class BuddingCrystalBlock(
     private fun isStateGrowableBud(state: BlockState, direction: Direction): Boolean {
         return state.hasProperty(CrystalClusterBlock.FACING)
                 && state.getValue(CrystalClusterBlock.FACING) === direction
+                && state.block in this.crystalBuds
     }
 }

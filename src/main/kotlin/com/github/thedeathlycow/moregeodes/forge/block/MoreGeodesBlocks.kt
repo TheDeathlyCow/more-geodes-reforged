@@ -1,11 +1,16 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
+import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
 import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundTypes
+import net.minecraft.core.Direction
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
+import net.minecraft.world.level.block.StairBlock
+import net.minecraft.world.level.block.WallBlock
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.material.Material
 import net.minecraft.world.level.material.MaterialColor
@@ -233,6 +238,179 @@ object MoreGeodesBlocks {
         )
     }
 
+
+    val LAPIS_CRYSTAL_BLOCK by REGISTRY.registerObject("lapis_crystal_block") {
+        CrystalBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val LAPIS_CLUSTER by REGISTRY.registerObject("lapis_cluster") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            7.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 5 }
+                .noOcclusion()
+        )
+    }
+
+    val LARGE_LAPIS_BUD by REGISTRY.registerObject("large_lapis_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            5.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 4 }
+                .noOcclusion()
+        )
+    }
+
+    val MEDIUM_LAPIS_BUD by REGISTRY.registerObject("medium_lapis_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            4.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 2 }
+                .noOcclusion()
+        )
+    }
+
+    val SMALL_LAPIS_BUD by REGISTRY.registerObject("small_lapis_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.LAPIS,
+            3.0, 4.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 1 }
+                .noOcclusion()
+        )
+    }
+
+    val PYRITE by REGISTRY.registerObject("pyrite") {
+        Block(
+            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.GOLD)
+                .sound(SoundType.CALCITE)
+                .requiresCorrectToolForDrops()
+                .strength(0.75f)
+        )
+    }
+
+    val PYRITE_STAIRS by REGISTRY.registerObject("pyrite_stairs") {
+        StairBlock(
+            { PYRITE.defaultBlockState() },
+            BlockBehaviour.Properties.copy(PYRITE)
+        )
+    }
+
+    val PYRITE_SLAB by REGISTRY.registerObject("pyrite_slab") {
+        SlabBlock(
+            BlockBehaviour.Properties.copy(PYRITE)
+        )
+    }
+
+    val PYRITE_WALL by REGISTRY.registerObject("pyrite_wall") {
+        WallBlock(
+            BlockBehaviour.Properties.copy(PYRITE)
+        )
+    }
+
+
+    val CALCITE_STAIRS by REGISTRY.registerObject("calcite_stairs") {
+        StairBlock(
+            { Blocks.CALCITE.defaultBlockState() },
+            BlockBehaviour.Properties.copy(Blocks.CALCITE)
+        )
+    }
+
+    val CALCITE_SLAB by REGISTRY.registerObject("calcite_slab") {
+        SlabBlock(
+            BlockBehaviour.Properties.copy(Blocks.CALCITE)
+        )
+    }
+
+    val CALCITE_WALL by REGISTRY.registerObject("calcite_wall") {
+        WallBlock(
+            BlockBehaviour.Properties.copy(Blocks.CALCITE)
+        )
+    }
+
+
+
+    val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
+        CrystalBlock(
+            CrystalBlockSoundGroup.GYPSUM,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_RED)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val GYPSUM_ROSE by REGISTRY.registerObject("gypsum_rose") {
+        LargeCrystalClusterBlock(
+            CrystalBlockSoundGroup.GYPSUM,
+            13.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_WHITE)
+                .noOcclusion()
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .strength(1.3f)
+        )
+    }
+
+    val LARGE_GYPSUM_BUD by REGISTRY.registerObject("large_gypsum_bud") {
+        LargeCrystalClusterBlock(
+            CrystalBlockSoundGroup.GYPSUM,
+            5.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_WHITE)
+                .noOcclusion()
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .strength(1.3f)
+        )
+    }
+
+    val MEDIUM_GYPSUM_BUD by REGISTRY.registerObject("medium_gypsum_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.GYPSUM,
+            16.0, 3.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 2 }
+                .noOcclusion()
+        )
+    }
+
+    val SMALL_GYPSUM_BUD by REGISTRY.registerObject("small_gypsum_bud") {
+        CrystalClusterBlock(
+            CrystalBlockSoundGroup.GYPSUM,
+            11.0, 4.0,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .lightLevel { 1 }
+                .noOcclusion()
+        )
+    }
+
     ////// Budding Blocks //////
 
     val BUDDING_EMERALD by REGISTRY.registerObject("budding_emerald") {
@@ -271,55 +449,36 @@ object MoreGeodesBlocks {
         )
     }
 
+    val BUDDING_LAPIS by REGISTRY.registerObject("budding_lapis") {
+        BuddingCrystalBlock(
+            listOf(SMALL_LAPIS_BUD, MEDIUM_LAPIS_BUD, LARGE_LAPIS_BUD, LAPIS_CLUSTER),
+            CrystalBlockSoundGroup.LAPIS,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .randomTicks()
+        )
+    }
+
+    val BUDDING_GYPSUM by REGISTRY.registerObject("budding_gypsum") {
+        MonoDirectedBuddingBlock(
+            Direction.UP,
+            listOf(SMALL_GYPSUM_BUD, MEDIUM_GYPSUM_BUD, LARGE_GYPSUM_BUD, GYPSUM_ROSE),
+            CrystalBlockSoundGroup.GYPSUM,
+            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+                .strength(1.5f)
+                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
+                .requiresCorrectToolForDrops()
+                .randomTicks()
+        )
+    }
+
     ////// Echo Locator Blocks //////
 
-    val EMERALD_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("emerald_crystal_echo_locator") {
+    val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
         EchoLocatorBlock(
-            EchoLocatorType.EMERALD,
-            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
-                .noOcclusion()
-                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
-                .strength(1.5f, 6.0f)
-                .requiresCorrectToolForDrops()
-        )
-    }
-
-    val QUARTZ_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("quartz_crystal_echo_locator") {
-        EchoLocatorBlock(
-            EchoLocatorType.QUARTZ,
-            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
-                .noOcclusion()
-                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
-                .strength(1.5f, 6.0f)
-                .requiresCorrectToolForDrops()
-        )
-    }
-
-    val DIAMOND_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("diamond_crystal_echo_locator") {
-        EchoLocatorBlock(
-            EchoLocatorType.DIAMOND,
-            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
-                .noOcclusion()
-                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
-                .strength(1.5f, 6.0f)
-                .requiresCorrectToolForDrops()
-        )
-    }
-
-    val AMETHYST_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("amethyst_crystal_echo_locator") {
-        EchoLocatorBlock(
-            EchoLocatorType.AMETHYST,
-            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
-                .noOcclusion()
-                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
-                .strength(1.5f, 6.0f)
-                .requiresCorrectToolForDrops()
-        )
-    }
-
-    val ECHO_CRYSTAL_ECHO_LOCATOR by REGISTRY.registerObject("echo_crystal_echo_locator") {
-        EchoLocatorBlock(
-            EchoLocatorType.ECHO,
+            EchoLocatorType.ALL,
             BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
                 .noOcclusion()
                 .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)

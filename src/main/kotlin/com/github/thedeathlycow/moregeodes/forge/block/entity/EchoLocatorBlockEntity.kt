@@ -15,7 +15,6 @@ import net.minecraft.util.Mth
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
-import net.minecraft.world.level.block.entity.SculkSensorBlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.gameevent.BlockPositionSource
 import net.minecraft.world.level.gameevent.GameEvent
@@ -27,7 +26,7 @@ class EchoLocatorBlockEntity(
     state: BlockState
 ) : BlockEntity(MoreGeodesBlockEntityTypes.ECHO_LOCATOR, blockPos, state), VibrationListener.VibrationListenerConfig {
 
-    var type = EchoLocatorType.EMPTY
+    var type = EchoLocatorType.ALL
     var vibrationListener: VibrationListener
 
     private var pingTicks = 0
@@ -156,7 +155,7 @@ class EchoLocatorBlockEntity(
         if (nbt.contains("Type", Tag.TAG_COMPOUND.toInt())) {
             this.type = EchoLocatorType.fromNbt(nbt.getCompound("Type"))
         } else {
-            this.type = EchoLocatorType.EMPTY
+            this.type = EchoLocatorType.ALL
         }
 
         if (nbt.contains("listener", Tag.TAG_COMPOUND.toInt())) {

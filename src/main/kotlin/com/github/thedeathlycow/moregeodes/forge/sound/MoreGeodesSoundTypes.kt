@@ -183,4 +183,22 @@ object MoreGeodesSoundTypes {
         { SoundEvents.METAL_HIT },
         { SoundEvents.METAL_FALL },
     )
+
+    val LAPIS_CRYSTAL_BLOCK = ForgeSoundType(
+        1.0f, 0.9f,
+        { SoundEvents.AMETHYST_BLOCK_BREAK },
+        { SoundEvents.AMETHYST_BLOCK_STEP },
+        { SoundEvents.AMETHYST_BLOCK_PLACE },
+        { SoundEvents.AMETHYST_BLOCK_HIT },
+        { SoundEvents.AMETHYST_BLOCK_FALL }
+    )
+
+    val GYPSUM_CRYSTAL_BLOCK = ForgeSoundType(
+        1.0f, 0.2f,
+        { SoundEvents.AMETHYST_BLOCK_BREAK },
+        { SoundEvents.AMETHYST_BLOCK_STEP },
+        { SoundEvents.AMETHYST_BLOCK_PLACE },
+        { SoundEvents.AMETHYST_BLOCK_HIT },
+        { SoundEvents.AMETHYST_BLOCK_FALL }
+    )
 }

@@ -21,7 +21,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 apply from: 'https://raw.githubusercontent.com/thedarkcolour/KotlinForForge/site/thedarkcolour/kotlinforforge/gradle/kff-3.7.1.gradle'
 
-version = '0.1.0'
+version = '0.2.0'
 group = 'com.github.thedeathlycow'
 archivesBaseName = 'more-geodes-reforged'
 

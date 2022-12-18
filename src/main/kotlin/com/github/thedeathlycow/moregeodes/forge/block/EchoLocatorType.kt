@@ -26,10 +26,10 @@ data class EchoLocatorType(
 
     companion object {
 
-        val EMPTY = EchoLocatorType(
+        val ALL = EchoLocatorType(
             MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
             MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_RESONATE,
-            MoreGeodesBlockTags.ECHO_LOCATABLE_DEFAULT
+            MoreGeodesBlockTags.ECHO_LOCATABLE
         )
         val EMERALD = EchoLocatorType(
             MoreGeodesSoundEvents.BLOCK_ECHO_LOCATOR_USE,
