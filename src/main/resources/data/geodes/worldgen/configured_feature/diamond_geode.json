@@ -24,13 +24,13 @@
 				"type": "minecraft:weighted_state_provider",
 				"entries": [
 					{
-						"weight": 3,
+						"weight": 1,
 						"data": {
 							"Name": "minecraft:deepslate_coal_ore"
 						}
 					},
 					{
-						"weight": 1,
+						"weight": 3,
 						"data": {
 							"Name": "minecraft:smooth_basalt"
 						}
