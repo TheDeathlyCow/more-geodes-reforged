@@ -1,5 +1,6 @@
 {
-	"type": "forge:add_features",
+	"type": "geodes:add_features",
+	"config": "generate_emerald_geodes",
 	"biomes": "#geodes:has_emerald_geode",
 	"features": "geodes:emerald_geode",
 	"step": "underground_decoration"

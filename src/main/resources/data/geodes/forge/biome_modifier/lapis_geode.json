@@ -1,5 +1,6 @@
 {
-	"type": "forge:add_features",
+	"type": "geodes:add_features",
+	"config": "generate_lapis_geodes",
 	"biomes": "#geodes:has_lapis_geode",
 	"features": "geodes:lapis_geode",
 	"step": "underground_decoration"

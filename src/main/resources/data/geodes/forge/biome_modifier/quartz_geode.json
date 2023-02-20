@@ -1,5 +1,6 @@
 {
-	"type": "forge:add_features",
+	"type": "geodes:add_features",
+	"config": "generate_quartz_geodes",
 	"biomes": "#geodes:has_quartz_geode",
 	"features": "geodes:quartz_geode",
 	"step": "underground_decoration"

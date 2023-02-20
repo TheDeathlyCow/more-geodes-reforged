@@ -1,5 +1,6 @@
 {
-	"type": "forge:add_features",
+	"type": "geodes:add_features",
+	"config": "generate_diamond_geodes",
 	"biomes": "#geodes:has_diamond_geode",
 	"features": "geodes:diamond_geode",
 	"step": "underground_decoration"

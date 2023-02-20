@@ -2,18 +2,18 @@ package com.github.thedeathlycow.moregeodes.forge
 
 import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
 import com.github.thedeathlycow.moregeodes.forge.block.entity.MoreGeodesBlockEntityTypes
+import com.github.thedeathlycow.moregeodes.forge.config.MoreGeodesConfig
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesMemoryModules
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
 import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
-import net.minecraft.client.Minecraft
+import com.github.thedeathlycow.moregeodes.forge.world.modifications.MoreGeodesBiomeModifiers
 import net.minecraft.world.level.block.ComposterBlock
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
-import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
@@ -26,6 +26,8 @@ object MoreGeodesForge {
 
     val LOGGER: Logger = LogManager.getLogger(MODID)
 
+    val CONFIG: MoreGeodesConfig = MoreGeodesConfig()
+
     init {
         MoreGeodesSoundEvents.REGISTRY.register(MOD_BUS)
         EchoGeodeBlockSoundEvents.REGISTRY.register(MOD_BUS)
@@ -34,6 +36,8 @@ object MoreGeodesForge {
         MoreGeodesGameEvents.REGISTRY.register(MOD_BUS)
         MoreGeodesBlockEntityTypes.REGISTRY.register(MOD_BUS)
         MoreGeodesMemoryModules.REGISTRY.register(MOD_BUS)
+        MoreGeodesBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(MOD_BUS)
+
 
         val obj = runForDist(
             clientTarget = {
@@ -49,6 +53,7 @@ object MoreGeodesForge {
 
     private fun onCommonSetup(event: FMLCommonSetupEvent) {
         LOGGER.info("Setting up More Geodes Reforged")
+        CONFIG.loadConfig()
 
         ComposterBlock.COMPOSTABLES.put(MoreGeodesItems.GYPSUM_SHARD, 1.0f)
     }
