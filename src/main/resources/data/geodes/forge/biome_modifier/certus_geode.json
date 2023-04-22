@@ -1,7 +1,7 @@
 {
-	"type": "geodes:add_features",
+	"type": "geodes:add_features_with_dependency",
 	"config": "generate_certus_geodes",
-	"requires_mod": "ae2",
+	"required_mod_id": "ae2",
 	"biomes": "#geodes:has_certus_geode",
 	"features": "geodes:certus_geode",
 	"step": "underground_decoration"
