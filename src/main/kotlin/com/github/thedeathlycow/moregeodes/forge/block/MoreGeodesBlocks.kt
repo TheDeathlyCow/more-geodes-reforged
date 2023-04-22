@@ -350,7 +350,6 @@ object MoreGeodesBlocks {
     }
 
 
-
     val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.GYPSUM,
@@ -483,6 +482,15 @@ object MoreGeodesBlocks {
                 .noOcclusion()
                 .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
                 .strength(1.5f, 6.0f)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val GABBRO by REGISTRY.registerObject("gabbro") {
+        Block(
+            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
+                .sound(SoundType.BASALT)
+                .strength(1.25f, 4.2f)
                 .requiresCorrectToolForDrops()
         )
     }

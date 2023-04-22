@@ -329,4 +329,11 @@ object MoreGeodesItems {
             Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
         )
     }
+
+    val GABBRO by REGISTRY.registerObject("gabbro") {
+        BlockItem(
+            MoreGeodesBlocks.GABBRO,
+            Item.Properties().tab(MoreGeodesCreativeTabs.MORE_GEODES)
+        )
+    }
 }

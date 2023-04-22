@@ -9,13 +9,15 @@ import net.minecraft.world.level.levelgen.GenerationStep
 import net.minecraft.world.level.levelgen.placement.PlacedFeature
 import net.minecraftforge.common.world.BiomeModifier
 import net.minecraftforge.common.world.ModifiableBiomeInfo
+import net.minecraftforge.fml.ModList
 import java.util.function.Consumer
 
 data class ConfiguredFeatureAdder(
     val key: String,
     val biomes: HolderSet<Biome>,
     val features: HolderSet<PlacedFeature>,
-    val step: GenerationStep.Decoration
+    val step: GenerationStep.Decoration,
+    val requiresMod: String?
 ) : BiomeModifier {
 
     override fun modify(
@@ -23,6 +25,11 @@ data class ConfiguredFeatureAdder(
         phase: BiomeModifier.Phase,
         builder: ModifiableBiomeInfo.BiomeInfo.Builder
     ) {
+
+        if (requiresMod !== null && !ModList.get().isLoaded(requiresMod)) {
+            return;
+        }
+
         if (phase == BiomeModifier.Phase.ADD && biomes.contains(biome) && MoreGeodesForge.CONFIG.checkConfig(key)) {
             val generationSettings = builder.generationSettings
             features.forEach(

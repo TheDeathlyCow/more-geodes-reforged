@@ -1,0 +1,8 @@
+{
+	"type": "geodes:add_features",
+	"config": "generate_certus_geodes",
+	"requires_mod": "ae2",
+	"biomes": "#geodes:has_certus_geode",
+	"features": "geodes:certus_geode",
+	"step": "underground_decoration"
+}

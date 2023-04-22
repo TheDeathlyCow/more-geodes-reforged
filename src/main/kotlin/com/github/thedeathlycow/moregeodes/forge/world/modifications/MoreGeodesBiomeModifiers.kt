@@ -24,18 +24,22 @@ object MoreGeodesBiomeModifiers {
                 PlacedFeature.LIST_CODEC.fieldOf("features")
                     .forGetter { obj: ConfiguredFeatureAdder -> obj.features },
                 GenerationStep.Decoration.CODEC.fieldOf("step")
-                    .forGetter { obj: ConfiguredFeatureAdder -> obj.step }
+                    .forGetter { obj: ConfiguredFeatureAdder -> obj.step },
+                Codec.STRING.fieldOf("requires_mod")
+                    .forGetter { obj: ConfiguredFeatureAdder -> obj.requiresMod }
             ).apply(
                 builder
             ) { config: String,
                 biomes: HolderSet<Biome>,
                 features: HolderSet<PlacedFeature>,
-                step: GenerationStep.Decoration ->
+                step: GenerationStep.Decoration,
+                requiresMod: String? ->
                 ConfiguredFeatureAdder(
                     config,
                     biomes,
                     features,
-                    step
+                    step,
+                    requiresMod
                 )
             }
         }
