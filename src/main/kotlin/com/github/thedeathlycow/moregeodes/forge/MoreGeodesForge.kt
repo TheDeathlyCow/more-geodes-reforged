@@ -2,7 +2,9 @@ package com.github.thedeathlycow.moregeodes.forge
 
 import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
 import com.github.thedeathlycow.moregeodes.forge.block.entity.MoreGeodesBlockEntityTypes
+import com.github.thedeathlycow.moregeodes.forge.client.EchoDisplayRenderer
 import com.github.thedeathlycow.moregeodes.forge.config.MoreGeodesConfig
+import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesEntityTypes
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesMemoryModules
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesCreativeTabs
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
@@ -10,6 +12,8 @@ import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import com.github.thedeathlycow.moregeodes.forge.world.modifications.MoreGeodesBiomeModifiers
+import net.minecraft.client.renderer.entity.EntityRendererProvider
+import net.minecraft.client.renderer.entity.EntityRenderers
 import net.minecraft.world.level.block.ComposterBlock
 import net.minecraftforge.common.CreativeModeTabRegistry
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent
@@ -42,6 +46,7 @@ object MoreGeodesForge {
         MoreGeodesMemoryModules.REGISTRY.register(MOD_BUS)
         MoreGeodesBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(MOD_BUS)
         MoreGeodesCreativeTabs.REGISTRY.register(MOD_BUS)
+        MoreGeodesEntityTypes.REGISTRY.register(MOD_BUS)
 
 
         val obj = runForDist(
@@ -70,7 +75,9 @@ object MoreGeodesForge {
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.info("Setting up More Geodes Reforged Client")
-
+        EntityRenderers.register(MoreGeodesEntityTypes.ECHO_DISPLAY) {
+            EchoDisplayRenderer(it)
+        }
     }
 
     /**

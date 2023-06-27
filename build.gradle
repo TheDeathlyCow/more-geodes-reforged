@@ -22,7 +22,7 @@ minecraft {
     // Change to your preferred mappings
     mappings channel: mapping_channel, version: mapping_version
     // Add your AccessTransformer
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
         // REQUIRED for processResources to work in dev
