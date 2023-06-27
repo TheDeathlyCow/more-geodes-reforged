@@ -1,7 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge.world.event
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
-import net.minecraft.core.Registry
+import net.minecraft.core.registries.Registries
 import net.minecraft.world.level.gameevent.GameEvent
 import net.minecraftforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.forge.registerObject
@@ -9,7 +9,7 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 object MoreGeodesGameEvents {
 
     val REGISTRY: DeferredRegister<GameEvent> = DeferredRegister.create(
-        Registry.GAME_EVENT_REGISTRY,
+        Registries.GAME_EVENT,
         MoreGeodesForge.MODID
     )
 

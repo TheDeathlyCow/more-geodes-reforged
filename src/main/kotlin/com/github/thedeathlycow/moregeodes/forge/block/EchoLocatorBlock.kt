@@ -2,7 +2,6 @@ package com.github.thedeathlycow.moregeodes.forge.block
 
 import com.github.thedeathlycow.moregeodes.forge.block.entity.EchoLocatorBlockEntity
 import com.github.thedeathlycow.moregeodes.forge.block.entity.MoreGeodesBlockEntityTypes
-import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
@@ -25,9 +24,9 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.block.state.properties.DirectionProperty
 import net.minecraft.world.level.block.state.properties.EnumProperty
-import net.minecraft.world.level.chunk.LevelChunk
 import net.minecraft.world.level.gameevent.GameEvent
 import net.minecraft.world.level.gameevent.GameEventListener
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem
 import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.phys.BlockHitResult
@@ -66,11 +65,7 @@ class EchoLocatorBlock(
     }
 
     override fun <T : BlockEntity> getListener(serverLevel: ServerLevel, blockEntity: T): GameEventListener? {
-        if (blockEntity is EchoLocatorBlockEntity) {
-            return blockEntity.vibrationListener
-        } else {
-            return null
-        }
+        return if (blockEntity is EchoLocatorBlockEntity) blockEntity.listener else null
     }
 
     override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
@@ -84,12 +79,12 @@ class EchoLocatorBlock(
         state: BlockState,
         type: BlockEntityType<T>
     ): BlockEntityTicker<T>? {
-        val a: LevelChunk? = null
-        return createTickerHelper(
-            type,
-            MoreGeodesBlockEntityTypes.ECHO_LOCATOR,
-            if (level.isClientSide) EchoLocatorBlockEntity::clientTick else EchoLocatorBlockEntity::serverTick
-        )
+        return if (!level.isClientSide) createTickerHelper(
+            type, MoreGeodesBlockEntityTypes.ECHO_LOCATOR
+        ) { levelX: Level, pos: BlockPos, stateX: BlockState, blockEntity: EchoLocatorBlockEntity ->
+            VibrationSystem.Ticker.tick(levelX, blockEntity.vibrationData, blockEntity.vibrationUser)
+            EchoLocatorBlockEntity.serverTick(levelX, pos, stateX, blockEntity)
+        } else null
     }
 
     override fun getRenderShape(state: BlockState): RenderShape {

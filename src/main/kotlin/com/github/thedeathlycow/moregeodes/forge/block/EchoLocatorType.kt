@@ -3,12 +3,15 @@ package com.github.thedeathlycow.moregeodes.forge.block
 import com.github.thedeathlycow.moregeodes.forge.block.tag.MoreGeodesBlockTags
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import net.minecraft.core.Registry
+import net.minecraft.core.RegistryAccess
+import net.minecraft.core.registries.Registries
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.tags.BlockTags
 import net.minecraft.tags.TagKey
 import net.minecraft.world.level.block.Block
+import net.minecraftforge.registries.ForgeRegistries
 
 data class EchoLocatorType(
     val activateSound: SoundEvent,
@@ -67,7 +70,7 @@ data class EchoLocatorType(
 
         private fun getSoundEventById(id: String): SoundEvent {
             val location = ResourceLocation(id)
-            return Registry.SOUND_EVENT[location] ?: throw Exception(
+            return ForgeRegistries.SOUND_EVENTS.getValue(location) ?: throw Exception(
                 String.format(
                     "Sound event '%s' does not exist!",
                     location

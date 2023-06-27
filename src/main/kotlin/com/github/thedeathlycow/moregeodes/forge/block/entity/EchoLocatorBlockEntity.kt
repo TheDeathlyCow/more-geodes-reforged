@@ -3,34 +3,35 @@ package com.github.thedeathlycow.moregeodes.forge.block.entity
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
 import com.github.thedeathlycow.moregeodes.forge.block.EchoLocatorType
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
-import com.github.thedeathlycow.moregeodes.forge.world.event.tag.MoreGeodesGameEventTags
 import com.mojang.serialization.Dynamic
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Vec3i
 import net.minecraft.nbt.*
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.sounds.SoundSource
-import net.minecraft.tags.TagKey
 import net.minecraft.util.Mth
-import net.minecraft.world.entity.Entity
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.world.level.block.entity.SculkShriekerBlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.gameevent.BlockPositionSource
-import net.minecraft.world.level.gameevent.GameEvent
 import net.minecraft.world.level.gameevent.GameEventListener
-import net.minecraft.world.level.gameevent.vibrations.VibrationListener
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem
 
 class EchoLocatorBlockEntity(
     blockPos: BlockPos,
     state: BlockState
-) : BlockEntity(MoreGeodesBlockEntityTypes.ECHO_LOCATOR, blockPos, state), VibrationListener.VibrationListenerConfig {
+) : BlockEntity(MoreGeodesBlockEntityTypes.ECHO_LOCATOR, blockPos, state),
+    GameEventListener.Holder<VibrationSystem.Listener>,
+    VibrationSystem {
 
     var type = EchoLocatorType.ALL
-    var vibrationListener: VibrationListener
-
     private var pingTicks = 0
     private var pinging: MutableList<BlockPos> = ArrayList()
+    private var listenerData: VibrationSystem.Data = VibrationSystem.Data()
+    private var vibrationListener: VibrationSystem.Listener = VibrationSystem.Listener(this)
+    private var callback: VibrationSystem.User
+
 
     companion object {
         const val SCAN_RADIUS = 30
@@ -41,20 +42,23 @@ class EchoLocatorBlockEntity(
         fun tick(level: ServerLevel, origin: BlockPos, state: BlockState, blockEntity: EchoLocatorBlockEntity) {
             if (!level.isClientSide && blockEntity.isPinging()) {
                 blockEntity.pingTicks++
-                blockEntity.vibrationListener.tick(level)
                 if (blockEntity.pingTicks % TICKS_PER_PING != 0) {
                     return
                 }
 
-                val blocksToKeep = ArrayList<BlockPos>()
-                for (pos in blockEntity.pinging) {
-                    val atState = level.getBlockState(pos)
-                    if (blockEntity.highlightBlock(level, pos, atState)) {
-                        blocksToKeep.add(pos)
+                var shouldHighlight = true
+
+                val pinging: MutableIterator<BlockPos> = blockEntity.pinging.iterator()
+                var pos: BlockPos
+                while (pinging.hasNext()) {
+                    pos = pinging.next()
+                    val atState: BlockState = level.getBlockState(pos)
+                    if (blockEntity.highlightBlock(level, pos, atState, shouldHighlight)) {
+                        shouldHighlight = false
+                    } else {
+                        pinging.remove()
                     }
                 }
-                blockEntity.pinging.clear()
-                blockEntity.pinging.addAll(blocksToKeep)
             }
         }
 
@@ -69,7 +73,7 @@ class EchoLocatorBlockEntity(
     }
 
     init {
-        vibrationListener = VibrationListener(BlockPositionSource(blockPos), SCAN_RADIUS, this, null, 0.0f, 0)
+        this.callback = EchoLocatorCallback(this, SCAN_RADIUS, BlockPositionSource(blockPos))
     }
 
     fun activate(level: Level, origin: BlockPos) {
@@ -79,40 +83,11 @@ class EchoLocatorBlockEntity(
         this.pinging.clear()
         for (pos in BlockPos.betweenClosed(from, to)) {
             val state = level.getBlockState(pos)
-            val rangedSquared = Mth.square(this.vibrationListener.listenerRadius)
-            if (origin.distSqr(pos) <= rangedSquared && state.`is`(this.type.canLocate)) {
+            val rangedSquared: Int = Mth.square(this.vibrationListener.listenerRadius)
+            if ((origin.distSqr(pos) <= rangedSquared) && state.`is`(this.type.canLocate)) {
                 this.pinging.add(pos.immutable())
             }
         }
-    }
-
-
-    override fun getListenableEvents(): TagKey<GameEvent> {
-        return MoreGeodesGameEventTags.ECHO_LOCATOR_CAN_LISTEN
-    }
-
-    override fun shouldListen(
-        serverLevel: ServerLevel,
-        gameEventListener: GameEventListener,
-        pos: BlockPos,
-        event: GameEvent,
-        ctx: GameEvent.Context
-    ): Boolean {
-        return !this.isRemoved
-                && event === MoreGeodesGameEvents.CRYSTAL_RESONATE
-                && this.isPinging()
-    }
-
-    override fun onSignalReceive(
-        serverLevel: ServerLevel,
-        gameEventListener: GameEventListener,
-        pos: BlockPos,
-        event: GameEvent,
-        entity: Entity?,
-        srcEntity: Entity?,
-        distance: Float
-    ) {
-        // do nothing, just make the particles
     }
 
     override fun saveAdditional(nbt: CompoundTag) {
@@ -128,12 +103,11 @@ class EchoLocatorBlockEntity(
         }
         nbt.put("Pinging", pingingNbt)
 
-        VibrationListener.codec(this)
-            .encodeStart(NbtOps.INSTANCE, this.vibrationListener)
-            .resultOrPartial { msg: String ->
+        VibrationSystem.Data.CODEC.encodeStart(NbtOps.INSTANCE, this.vibrationData)
+            .resultOrPartial { msg: String? ->
                 MoreGeodesForge.LOGGER.error(msg)
-            }.ifPresent { nbtElement: Tag ->
-                nbt.put("listener", nbtElement)
+            }.ifPresent {
+                nbt.put("listener", it)
             }
     }
 
@@ -159,27 +133,41 @@ class EchoLocatorBlockEntity(
         }
 
         if (nbt.contains("listener", Tag.TAG_COMPOUND.toInt())) {
-            VibrationListener.codec(this).parse(Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener")))
-                .resultOrPartial { msg: String ->
+            VibrationSystem.Data.CODEC.parse(Dynamic(NbtOps.INSTANCE, nbt.getCompound("listener")))
+                .resultOrPartial { msg: String? ->
                     MoreGeodesForge.LOGGER.error(msg)
-                }.ifPresent { listener: VibrationListener ->
-                    this.vibrationListener = listener
+                }.ifPresent {
+                    this.listenerData = it
                 }
         }
     }
 
 
-    private fun highlightBlock(level: Level, pos: BlockPos, state: BlockState): Boolean {
+    private fun highlightBlock(level: Level, pos: BlockPos, state: BlockState, shouldHighlight: Boolean): Boolean {
         if (state.`is`(this.type.canLocate)) {
-            level.gameEvent(null, MoreGeodesGameEvents.CRYSTAL_RESONATE, pos)
-            level.playSound(null, pos, this.type.resonateSound, SoundSource.BLOCKS, 2.5f, 1.0f)
+            if (shouldHighlight) {
+                level.gameEvent(null, MoreGeodesGameEvents.CRYSTAL_RESONATE, pos)
+                level.playSound(null, pos, this.type.resonateSound, SoundSource.BLOCKS, 2.5f, 1.0f)
+            }
             return true
         }
         return false
     }
 
-    private fun isPinging(): Boolean {
+    fun isPinging(): Boolean {
         return this.pingTicks < MAX_PING_TIME
+    }
+
+    override fun getListener(): VibrationSystem.Listener {
+        return this.vibrationListener
+    }
+
+    override fun getVibrationData(): VibrationSystem.Data {
+        return this.listenerData
+    }
+
+    override fun getVibrationUser(): VibrationSystem.User {
+        return this.callback
     }
 
 }

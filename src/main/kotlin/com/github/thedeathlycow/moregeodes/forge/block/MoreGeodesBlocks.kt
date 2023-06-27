@@ -1,19 +1,13 @@
 package com.github.thedeathlycow.moregeodes.forge.block
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
-import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
 import com.github.thedeathlycow.moregeodes.forge.sound.CrystalBlockSoundGroup
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundTypes
 import net.minecraft.core.Direction
-import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.Blocks
-import net.minecraft.world.level.block.SlabBlock
-import net.minecraft.world.level.block.SoundType
-import net.minecraft.world.level.block.StairBlock
-import net.minecraft.world.level.block.WallBlock
+import net.minecraft.world.level.block.*
 import net.minecraft.world.level.block.state.BlockBehaviour
-import net.minecraft.world.level.material.Material
-import net.minecraft.world.level.material.MaterialColor
+import net.minecraft.world.level.material.MapColor
+import net.minecraft.world.level.material.PushReaction
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import thedarkcolour.kotlinforforge.forge.registerObject
@@ -28,7 +22,8 @@ object MoreGeodesBlocks {
     val EMERALD_CRYSTAL_BLOCK by REGISTRY.registerObject("emerald_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.EMERALD,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.EMERALD)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
@@ -39,12 +34,15 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.EMERALD,
             7.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.EMERALD)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.EMERALD_CLUSTER)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 5 }
                 .noOcclusion()
+                .pushReaction(PushReaction.DESTROY)
+                .forceSolidOn()
         )
     }
 
@@ -52,12 +50,9 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.EMERALD,
             5.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(EMERALD_CLUSTER)
                 .sound(MoreGeodesSoundTypes.LARGE_EMERALD_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 4 }
-                .noOcclusion()
         )
     }
 
@@ -65,12 +60,9 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.EMERALD,
             4.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(EMERALD_CLUSTER)
                 .sound(MoreGeodesSoundTypes.MEDIUM_EMERALD_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 2 }
-                .noOcclusion()
         )
     }
 
@@ -78,19 +70,17 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.EMERALD,
             3.0, 4.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(EMERALD_CLUSTER)
                 .sound(MoreGeodesSoundTypes.SMALL_EMERALD_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 1 }
-                .noOcclusion()
         )
     }
 
     val QUARTZ_CRYSTAL_BLOCK by REGISTRY.registerObject("quartz_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.QUARTZ,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.QUARTZ)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.QUARTZ_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
@@ -102,13 +92,17 @@ object MoreGeodesBlocks {
             15, 1,
             CrystalBlockSoundGroup.QUARTZ,
             7.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.QUARTZ)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.QUARTZ_CLUSTER)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 5 }
                 .noOcclusion()
+                .pushReaction(PushReaction.DESTROY)
+                .forceSolidOn()
         )
+
     }
 
     val LARGE_QUARTZ_BUD by REGISTRY.registerObject("large_quartz_bud") {
@@ -116,12 +110,9 @@ object MoreGeodesBlocks {
             15, 5,
             CrystalBlockSoundGroup.QUARTZ,
             5.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(QUARTZ_CLUSTER)
                 .sound(MoreGeodesSoundTypes.LARGE_QUARTZ_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 4 }
-                .noOcclusion()
         )
     }
 
@@ -130,12 +121,9 @@ object MoreGeodesBlocks {
             15, 10,
             CrystalBlockSoundGroup.QUARTZ,
             4.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(QUARTZ_CLUSTER)
                 .sound(MoreGeodesSoundTypes.MEDIUM_QUARTZ_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 2 }
-                .noOcclusion()
         )
     }
 
@@ -144,19 +132,17 @@ object MoreGeodesBlocks {
             15, 20,
             CrystalBlockSoundGroup.QUARTZ,
             3.0, 4.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(QUARTZ_CLUSTER)
                 .sound(MoreGeodesSoundTypes.SMALL_QUARTZ_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 1 }
-                .noOcclusion()
         )
     }
 
     val DIAMOND_CRYSTAL_BLOCK by REGISTRY.registerObject("diamond_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.DIAMOND,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.DIAMOND)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.DIAMOND)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.DIAMOND_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
@@ -167,19 +153,23 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.DIAMOND,
             7.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.DIAMOND)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.DIAMOND)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.DIAMOND_CLUSTER)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 5 }
                 .noOcclusion()
+                .pushReaction(PushReaction.DESTROY)
+                .forceSolidOn()
         )
     }
 
     val ECHO_BLOCK by REGISTRY.registerObject("echo_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.ECHO,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_BLACK)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.ECHO_BLOCK)
                 .requiresCorrectToolForDrops()
@@ -190,12 +180,15 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.ECHO,
             7.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_BLACK)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.ECHO_CLUSTER)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 5 }
                 .noOcclusion()
+                .pushReaction(PushReaction.DESTROY)
+                .forceSolidOn()
         )
     }
 
@@ -203,12 +196,9 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.ECHO,
             5.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(ECHO_CLUSTER)
                 .sound(MoreGeodesSoundTypes.LARGE_ECHO_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 4 }
-                .noOcclusion()
         )
     }
 
@@ -216,12 +206,9 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.ECHO,
             4.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(ECHO_CLUSTER)
                 .sound(MoreGeodesSoundTypes.MEDIUM_ECHO_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 2 }
-                .noOcclusion()
         )
     }
 
@@ -229,12 +216,9 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.ECHO,
             3.0, 4.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
-                .strength(1.5f)
+            BlockBehaviour.Properties.copy(ECHO_CLUSTER)
                 .sound(MoreGeodesSoundTypes.SMALL_ECHO_BUD)
-                .requiresCorrectToolForDrops()
                 .lightLevel { 1 }
-                .noOcclusion()
         )
     }
 
@@ -242,7 +226,8 @@ object MoreGeodesBlocks {
     val LAPIS_CRYSTAL_BLOCK by REGISTRY.registerObject("lapis_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.LAPIS,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.LAPIS)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
@@ -253,12 +238,15 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.LAPIS,
             7.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.LAPIS)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .lightLevel { 5 }
                 .noOcclusion()
+                .pushReaction(PushReaction.DESTROY)
+                .forceSolidOn()
         )
     }
 
@@ -266,12 +254,8 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.LAPIS,
             5.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
-                .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
-                .requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.copy(LAPIS_CLUSTER)
                 .lightLevel { 4 }
-                .noOcclusion()
         )
     }
 
@@ -279,12 +263,8 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.LAPIS,
             4.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
-                .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
-                .requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.copy(LAPIS_CLUSTER)
                 .lightLevel { 2 }
-                .noOcclusion()
         )
     }
 
@@ -292,18 +272,15 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.LAPIS,
             3.0, 4.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
-                .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
-                .requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.copy(LAPIS_CLUSTER)
                 .lightLevel { 1 }
-                .noOcclusion()
         )
     }
 
     val PYRITE by REGISTRY.registerObject("pyrite") {
         Block(
-            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.GOLD)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.GOLD)
                 .sound(SoundType.CALCITE)
                 .requiresCorrectToolForDrops()
                 .strength(0.75f)
@@ -353,7 +330,8 @@ object MoreGeodesBlocks {
     val GYPSUM_CRYSTAL_BLOCK by REGISTRY.registerObject("gypsum_crystal_block") {
         CrystalBlock(
             CrystalBlockSoundGroup.GYPSUM,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_RED)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_RED)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
@@ -364,11 +342,14 @@ object MoreGeodesBlocks {
         LargeCrystalClusterBlock(
             CrystalBlockSoundGroup.GYPSUM,
             13.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_WHITE)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_WHITE)
                 .noOcclusion()
                 .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .strength(1.3f)
+                .pushReaction(PushReaction.DESTROY)
+                .forceSolidOn()
         )
     }
 
@@ -376,11 +357,7 @@ object MoreGeodesBlocks {
         LargeCrystalClusterBlock(
             CrystalBlockSoundGroup.GYPSUM,
             5.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.TERRACOTTA_WHITE)
-                .noOcclusion()
-                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
-                .requiresCorrectToolForDrops()
-                .strength(1.3f)
+            BlockBehaviour.Properties.copy(GYPSUM_ROSE)
         )
     }
 
@@ -388,12 +365,7 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.GYPSUM,
             16.0, 3.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
-                .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
-                .requiresCorrectToolForDrops()
-                .lightLevel { 2 }
-                .noOcclusion()
+            BlockBehaviour.Properties.copy(GYPSUM_ROSE)
         )
     }
 
@@ -401,12 +373,7 @@ object MoreGeodesBlocks {
         CrystalClusterBlock(
             CrystalBlockSoundGroup.GYPSUM,
             11.0, 4.0,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
-                .strength(1.5f)
-                .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
-                .requiresCorrectToolForDrops()
-                .lightLevel { 1 }
-                .noOcclusion()
+            BlockBehaviour.Properties.copy(GYPSUM_ROSE)
         )
     }
 
@@ -416,11 +383,13 @@ object MoreGeodesBlocks {
         BuddingCrystalBlock(
             listOf(SMALL_EMERALD_BUD, MEDIUM_EMERALD_BUD, LARGE_EMERALD_BUD, EMERALD_CLUSTER),
             CrystalBlockSoundGroup.ECHO,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.EMERALD)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.EMERALD)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.EMERALD_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
+                .pushReaction(PushReaction.DESTROY)
         )
     }
 
@@ -428,11 +397,13 @@ object MoreGeodesBlocks {
         BuddingCrystalBlock(
             listOf(SMALL_QUARTZ_BUD, MEDIUM_QUARTZ_BUD, LARGE_QUARTZ_BUD, QUARTZ_CLUSTER),
             CrystalBlockSoundGroup.QUARTZ,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.QUARTZ)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.QUARTZ)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.QUARTZ_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
+                .pushReaction(PushReaction.DESTROY)
         )
     }
 
@@ -440,11 +411,13 @@ object MoreGeodesBlocks {
         BuddingCrystalBlock(
             listOf(SMALL_ECHO_BUD, MEDIUM_ECHO_BUD, LARGE_ECHO_BUD, ECHO_CLUSTER),
             CrystalBlockSoundGroup.ECHO,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_BLACK)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.ECHO_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
+                .pushReaction(PushReaction.DESTROY)
         )
     }
 
@@ -452,11 +425,13 @@ object MoreGeodesBlocks {
         BuddingCrystalBlock(
             listOf(SMALL_LAPIS_BUD, MEDIUM_LAPIS_BUD, LARGE_LAPIS_BUD, LAPIS_CLUSTER),
             CrystalBlockSoundGroup.LAPIS,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.LAPIS)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.LAPIS)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.LAPIS_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
+                .pushReaction(PushReaction.DESTROY)
         )
     }
 
@@ -465,11 +440,13 @@ object MoreGeodesBlocks {
             Direction.UP,
             listOf(SMALL_GYPSUM_BUD, MEDIUM_GYPSUM_BUD, LARGE_GYPSUM_BUD, GYPSUM_ROSE),
             CrystalBlockSoundGroup.GYPSUM,
-            BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_BLACK)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.TERRACOTTA_RED)
                 .strength(1.5f)
                 .sound(MoreGeodesSoundTypes.GYPSUM_CRYSTAL_BLOCK)
                 .requiresCorrectToolForDrops()
                 .randomTicks()
+                .pushReaction(PushReaction.DESTROY)
         )
     }
 
@@ -478,7 +455,8 @@ object MoreGeodesBlocks {
     val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
         EchoLocatorBlock(
             EchoLocatorType.ALL,
-            BlockBehaviour.Properties.of(MoreGeodesBlockMaterials.ECHO_LOCATOR)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_BLACK)
                 .noOcclusion()
                 .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
                 .strength(1.5f, 6.0f)
@@ -488,7 +466,8 @@ object MoreGeodesBlocks {
 
     val GABBRO by REGISTRY.registerObject("gabbro") {
         Block(
-            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_GRAY)
                 .sound(SoundType.BASALT)
                 .strength(1.25f, 4.2f)
                 .requiresCorrectToolForDrops()

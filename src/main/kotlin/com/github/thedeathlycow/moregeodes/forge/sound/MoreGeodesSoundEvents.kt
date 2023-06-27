@@ -15,29 +15,29 @@ object MoreGeodesSoundEvents {
     )
 
     val BLOCK_ECHO_LOCATOR_RESONATE: SoundEvent by REGISTRY.registerObject("block.geodes.echo_locator.resonate") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.echo_locator.resonate"))
+        SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.echo_locator.resonate"))
     }
     val BLOCK_ECHO_LOCATOR_USE: SoundEvent by REGISTRY.registerObject("block.geodes.echo_locator.use") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.echo_locator.use"))
+        SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.echo_locator.use"))
     }
 
     val BLOCK_EMERALD_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.emerald_crystal_block.chime") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.emerald_crystal_block.chime"))
+        SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.emerald_crystal_block.chime"))
     }
 
     val BLOCK_QUARTZ_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.quartz_crystal_block.chime") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.quartz_crystal_block.chime"))
+        SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.quartz_crystal_block.chime"))
     }
 
     val BLOCK_DIAMOND_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.diamond_crystal_block.chime") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.diamond_crystal_block.chime"))
+        SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.diamond_crystal_block.chime"))
     }
 
     val BLOCK_LAPIS_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.lapis_crystal_block.chime") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.lapis_crystal_block.chime"))
+        SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.lapis_crystal_block.chime"))
     }
 
     val BLOCK_GYPSUM_CRYSTAL_BLOCK_CHIME by REGISTRY.registerObject("block.geodes.gypsum_crystal_block.chime") {
-        SoundEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.gypsum_crystal_block.chime"))
+        SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.gypsum_crystal_block.chime"))
     }
 }
