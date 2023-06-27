@@ -58,9 +58,9 @@
     "subtitles.block.geodes.echo_locator.resonate": "Crystal resonates",
     "subtitles.block.geodes.echo_locator.use": "Echo locator humms",
     "subtitles.block.geodes.echo_block.chime": "Echo echos",
-    "subtitles.block.geodes.emerald_geode.chime": "Emerald jingles",
-    "subtitles.block.geodes.quartz_geode.chime": "Quartz humms",
-    "subtitles.block.geodes.diamond_geode.chime": "Diamond sparkles",
+    "subtitles.block.geodes.emerald_crystal_block.chime": "Emerald jingles",
+    "subtitles.block.geodes.quartz_crystal_block.chime": "Quartz humms",
+    "subtitles.block.geodes.diamond_crystal_block.chime": "Diamond sparkles",
     "subtitles.block.geodes.lapis_crystal_block.chime": "Lapis lazuli clinks",
     "subtitles.block.geodes.gypsum_crystal_block.chime": "Gypsum clinks"
 }

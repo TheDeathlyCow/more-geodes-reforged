@@ -2,6 +2,7 @@ package com.github.thedeathlycow.moregeodes.forge.mixin;
 
 import com.github.thedeathlycow.moregeodes.forge.block.CrystalBlock;
 import com.github.thedeathlycow.moregeodes.forge.block.tag.MoreGeodesBlockTags;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
@@ -34,10 +35,10 @@ public abstract class StepSoundMixin {
     public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
     @Inject(
-            method = "playAmethystStepSound",
-            at = @At("HEAD")
+            method = "walkingStepSound",
+            at = @At("TAIL")
     )
-    private void customGeodeEntityStepSound(BlockState state, CallbackInfo ci) {
+    private void customGeodeEntityStepSound(BlockPos pos, BlockState state, CallbackInfo ci) {
         if (state.is(MoreGeodesBlockTags.CUSTOM_CRYSTAL_SOUND_BLOCKS) && this.tickCount >= this.lastCrystalSoundPlayTick + 20) {
             if (!(state.getBlock() instanceof CrystalBlock crystalBlock)) {
                 return;
