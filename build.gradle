@@ -1,3 +1,15 @@
+
+buildscript {
+    repositories {
+
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        // MixinGradle:
+        classpath 'org.spongepowered:mixingradle:0.7.+'
+    }
+}
+
 plugins {
     id 'idea'
     id 'maven-publish'
@@ -7,7 +19,7 @@ plugins {
     // OPTIONAL Kotlin Serialization plugin
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.22'
 }
-
+apply plugin: 'org.spongepowered.mixin'
 version = mod_version
 group = mod_group_id
 
@@ -103,7 +115,12 @@ dependencies {
     minecraft "net.minecraftforge:forge:$minecraft_version-$forge_version"
 
     implementation "thedarkcolour:kotlinforforge:$kff_version"
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
 }
+
+
 
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
@@ -160,4 +177,11 @@ publishing {
             url "file://${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+mixin {
+
+    add sourceSets.main, 'mixins.geodes.refmap.json'
+
+    config 'mixins.geodes.json'
 }
