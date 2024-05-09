@@ -75,9 +75,7 @@ object MoreGeodesForge {
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.info("Setting up More Geodes Reforged Client")
-        EntityRenderers.register(MoreGeodesEntityTypes.ECHO_DISPLAY) {
-            EchoDisplayRenderer(it)
-        }
+        EntityRenderers.register(MoreGeodesEntityTypes.ECHO_DISPLAY, ::EchoDisplayRenderer)
     }
 
     /**

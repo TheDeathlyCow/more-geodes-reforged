@@ -315,14 +315,6 @@ object MoreGeodesItems {
         )
     }
 
-
-    val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
-        BlockItem(
-            MoreGeodesBlocks.ECHO_LOCATOR,
-            Item.Properties()
-        )
-    }
-
     val GABBRO by REGISTRY.registerObject("gabbro") {
         BlockItem(
             MoreGeodesBlocks.GABBRO,
