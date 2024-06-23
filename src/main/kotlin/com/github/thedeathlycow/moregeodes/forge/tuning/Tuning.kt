@@ -24,7 +24,7 @@ data class Tuning(
 
         val UNTUNED: Tuning = Tuning(
             FastColor.ARGB32.color(0xff, 0x44, 0x44, 0x44),
-            Component.translatable("geodes.tuning.untuned")
+            Component.translatable("geodes.tunings.untuned")
                 .setStyle(Style.EMPTY.withColor(TextColor.parseColor("gray"))),
             LocationPredicate.ANY
         )
