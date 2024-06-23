@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge.item
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
+import com.github.thedeathlycow.moregeodes.forge.util.set
 import net.minecraft.core.registries.Registries
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.chat.Component
@@ -115,7 +116,7 @@ object MoreGeodesCreativeTabs {
         val stack = ItemStack(MoreGeodesItems.TUNED_CRYSTAL_LOCATOR)
 
         val tag = CompoundTag()
-        tag.putString(TunedCrystalLocator.TUNING_ID_NBT_KEY, tuningID)
+        tag[TunedCrystalLocator.TUNING_ID_NBT_KEY] = tuningID
         stack.addTagElement(TunedCrystalLocator.TUNING_NBT_KEY, tag)
 
         return stack

@@ -10,6 +10,7 @@ import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesCreativeTabs
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
 import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
+import com.github.thedeathlycow.moregeodes.forge.tuning.Tunings
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import com.github.thedeathlycow.moregeodes.forge.world.modifications.MoreGeodesBiomeModifiers
 import net.minecraft.client.renderer.entity.EntityRenderers
@@ -21,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import thedarkcolour.kotlinforforge.forge.FORGE_BUS
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.forge.runForDist
 
@@ -58,6 +60,7 @@ object MoreGeodesForge {
         )
 
         MOD_BUS.addListener(::onCommonSetup)
+        MOD_BUS.register(Tunings)
     }
 
     private fun onCommonSetup(event: FMLCommonSetupEvent) {

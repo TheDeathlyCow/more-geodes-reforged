@@ -9,7 +9,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.registries.DataPackRegistryEvent
 
-@EventBusSubscriber
 object Tunings {
 
     val REGISTRY_KEY: ResourceKey<Registry<Tuning>> = ResourceKey.createRegistryKey(
@@ -17,7 +16,7 @@ object Tunings {
     )
 
     @SubscribeEvent
-    internal fun createRegistry(event: DataPackRegistryEvent.NewRegistry) {
+    fun createRegistry(event: DataPackRegistryEvent.NewRegistry) {
         event.dataPackRegistry(
             REGISTRY_KEY,
             Tuning.DATAPACK_CODEC,

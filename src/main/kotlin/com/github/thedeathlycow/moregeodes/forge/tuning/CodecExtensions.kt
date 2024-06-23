@@ -4,7 +4,6 @@ import com.mojang.datafixers.util.Pair
 import com.mojang.serialization.*
 import net.minecraft.advancements.critereon.LocationPredicate
 import net.minecraft.network.chat.Component
-import java.util.function.Supplier
 
 
 val LOCATION_PREDICATE_CODEC: Codec<LocationPredicate> = object : Codec<LocationPredicate> {
