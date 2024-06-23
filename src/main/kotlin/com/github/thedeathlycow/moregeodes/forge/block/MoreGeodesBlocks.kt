@@ -450,20 +450,6 @@ object MoreGeodesBlocks {
         )
     }
 
-    ////// Echo Locator Blocks //////
-
-    val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
-        EchoLocatorBlock(
-            EchoLocatorType.ALL,
-            BlockBehaviour.Properties.of()
-                .mapColor(MapColor.COLOR_BLACK)
-                .noOcclusion()
-                .sound(MoreGeodesSoundTypes.ECHO_LOCATOR)
-                .strength(1.5f, 6.0f)
-                .requiresCorrectToolForDrops()
-        )
-    }
-
     val GABBRO by REGISTRY.registerObject("gabbro") {
         Block(
             BlockBehaviour.Properties.of()
