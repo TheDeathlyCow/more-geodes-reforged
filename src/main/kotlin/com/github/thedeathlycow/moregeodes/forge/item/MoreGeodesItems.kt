@@ -322,6 +322,12 @@ object MoreGeodesItems {
         )
     }
 
+    val TUNED_CRYSTAL_LOCATOR: Item by REGISTRY.registerObject("tuned_crystal_locator") {
+        TunedCrystalLocator(
+            Item.Properties().durability(16)
+        )
+    }
+
     val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
         BlockItem(
             MoreGeodesBlocks.ECHO_LOCATOR,

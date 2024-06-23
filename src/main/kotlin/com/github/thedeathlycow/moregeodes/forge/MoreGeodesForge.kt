@@ -12,12 +12,9 @@ import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import com.github.thedeathlycow.moregeodes.forge.world.modifications.MoreGeodesBiomeModifiers
-import net.minecraft.client.renderer.entity.EntityRendererProvider
 import net.minecraft.client.renderer.entity.EntityRenderers
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.ComposterBlock
-import net.minecraftforge.common.CreativeModeTabRegistry
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent
-import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
@@ -35,6 +32,8 @@ object MoreGeodesForge {
     val LOGGER: Logger = LogManager.getLogger(MODID)
 
     val CONFIG: MoreGeodesConfig = MoreGeodesConfig()
+
+    fun resourceLocation(path: String): ResourceLocation = ResourceLocation(MODID, path)
 
     init {
         MoreGeodesSoundEvents.REGISTRY.register(MOD_BUS)

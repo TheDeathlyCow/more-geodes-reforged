@@ -1,5 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge.item
 
+import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
+import com.github.thedeathlycow.moregeodes.forge.tuning.Tuning
 import com.github.thedeathlycow.moregeodes.forge.util.minus
 import com.github.thedeathlycow.moregeodes.forge.util.plus
 import net.minecraft.core.BlockPos
@@ -52,8 +54,13 @@ open class CrystalLocator(
             }
 
             val cooldowns = player.cooldowns
-            cooldowns.addCooldown(this, COOL_DOWN)
-            player.playNotifySound(SoundEvents.DYE_USE, player.soundSource, 1f, 1f)
+            cooldowns.addCooldown(MoreGeodesItems.CRYSTAL_LOCATOR, COOL_DOWN)
+            cooldowns.addCooldown(MoreGeodesItems.TUNED_CRYSTAL_LOCATOR, COOL_DOWN)
+            player.playNotifySound(
+                MoreGeodesSoundEvents.ITEM_CRYSTAL_LOCATOR_USE,
+                player.soundSource,
+                1f, 1f
+            )
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide)
@@ -66,7 +73,7 @@ open class CrystalLocator(
         pIsAdvanced: TooltipFlag
     ) {
         if (!this.isTuned(pStack, pLevel)) {
-            TODO("add component for tuning")
+            pTooltipComponents.add(Tuning.UNTUNED.description)
         }
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced)
     }
