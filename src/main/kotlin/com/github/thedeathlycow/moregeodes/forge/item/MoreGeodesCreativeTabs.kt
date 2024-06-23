@@ -2,11 +2,12 @@ package com.github.thedeathlycow.moregeodes.forge.item
 
 import com.github.thedeathlycow.moregeodes.forge.MoreGeodesForge
 import net.minecraft.core.registries.Registries
+import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
-import net.minecraftforge.eventbus.api.SubscribeEvent
+import net.minecraftforge.fml.ModList
 import net.minecraftforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.forge.registerObject
 
@@ -83,11 +84,42 @@ object MoreGeodesCreativeTabs {
                 entries.accept(ItemStack(MoreGeodesItems.GABBRO))
 
                 // echo locator
+                entries.accept(ItemStack(MoreGeodesItems.CRYSTAL_LOCATOR))
                 entries.accept(ItemStack(MoreGeodesItems.ECHO_LOCATOR))
+                entries.acceptAll(getTunedCrystalLocators())
             }
             .build()
     }
 
+    private fun getTunedCrystalLocators(): List<ItemStack> {
+        val entries = mutableListOf(
+            makeTunedLocatorStack("geodes:amethyst"),
+            makeTunedLocatorStack("geodes:emerald"),
+            makeTunedLocatorStack("geodes:quartz"),
+            makeTunedLocatorStack("geodes:diamond"),
+            makeTunedLocatorStack("geodes:echo"),
+            makeTunedLocatorStack("geodes:lapis"),
+            makeTunedLocatorStack("geodes:gypsum")
+        )
+
+        if (ModList.get().isLoaded("spectrum")) {
+            entries.add(makeTunedLocatorStack("geodes:spectrum/topaz"))
+            entries.add(makeTunedLocatorStack("geodes:spectrum/citrine"))
+            entries.add(makeTunedLocatorStack("geodes:spectrum/moonstone"))
+        }
+
+        return entries
+    }
+
+    private fun makeTunedLocatorStack(tuningID: String): ItemStack {
+        val stack = ItemStack(MoreGeodesItems.TUNED_CRYSTAL_LOCATOR)
+
+        val tag = CompoundTag()
+        tag.putString(TunedCrystalLocator.TUNING_ID_NBT_KEY, tuningID)
+        stack.addTagElement(TunedCrystalLocator.TUNING_NBT_KEY, tag)
+
+        return stack
+    }
 
 
 }

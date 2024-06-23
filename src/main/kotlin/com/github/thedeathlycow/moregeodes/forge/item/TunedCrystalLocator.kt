@@ -47,9 +47,9 @@ class TunedCrystalLocator(
 
     companion object {
 
-        private const val TUNING_NBT_KEY: String = "tuning"
+        internal const val TUNING_NBT_KEY: String = "tuning"
 
-        private const val TUNING_ID_NBT_KEY: String = "id"
+        internal const val TUNING_ID_NBT_KEY: String = "id"
 
         fun getTuning(registryManager: RegistryAccess, stack: ItemStack): Tuning? {
             val registry: Registry<Tuning> = registryManager.registryOrThrow(Tunings.REGISTRY_KEY) ?: return null
