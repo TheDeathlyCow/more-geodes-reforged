@@ -1,8 +1,6 @@
 package com.github.thedeathlycow.moregeodes.forge
 
 import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
-import com.github.thedeathlycow.moregeodes.forge.block.entity.MoreGeodesBlockEntityTypes
-import com.github.thedeathlycow.moregeodes.forge.client.EchoDisplayRenderer
 import com.github.thedeathlycow.moregeodes.forge.config.MoreGeodesConfig
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesEntityTypes
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesMemoryModules
@@ -13,7 +11,6 @@ import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.tuning.Tunings
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import com.github.thedeathlycow.moregeodes.forge.world.modifications.MoreGeodesBiomeModifiers
-import net.minecraft.client.renderer.entity.EntityRenderers
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.ComposterBlock
 import net.minecraftforge.fml.common.Mod
@@ -22,7 +19,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-import thedarkcolour.kotlinforforge.forge.FORGE_BUS
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.forge.runForDist
 
@@ -43,7 +39,6 @@ object MoreGeodesForge {
         MoreGeodesBlocks.REGISTRY.register(MOD_BUS)
         MoreGeodesItems.REGISTRY.register(MOD_BUS)
         MoreGeodesGameEvents.REGISTRY.register(MOD_BUS)
-        MoreGeodesBlockEntityTypes.REGISTRY.register(MOD_BUS)
         MoreGeodesMemoryModules.REGISTRY.register(MOD_BUS)
         MoreGeodesBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(MOD_BUS)
         MoreGeodesCreativeTabs.REGISTRY.register(MOD_BUS)
@@ -77,7 +72,7 @@ object MoreGeodesForge {
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.info("Setting up More Geodes Reforged Client")
-        EntityRenderers.register(MoreGeodesEntityTypes.ECHO_DISPLAY, ::EchoDisplayRenderer)
+//        EntityRenderers.register(MoreGeodesEntityTypes.ECHO_DISPLAY, ::EchoDisplayRenderer)
     }
 
     /**

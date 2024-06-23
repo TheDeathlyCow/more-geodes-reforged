@@ -86,7 +86,7 @@ object MoreGeodesCreativeTabs {
 
                 // echo locator
                 entries.accept(ItemStack(MoreGeodesItems.CRYSTAL_LOCATOR))
-                entries.accept(ItemStack(MoreGeodesItems.ECHO_LOCATOR))
+//                entries.accept(ItemStack(MoreGeodesItems.ECHO_LOCATOR))
                 entries.acceptAll(getTunedCrystalLocators())
             }
             .build()
