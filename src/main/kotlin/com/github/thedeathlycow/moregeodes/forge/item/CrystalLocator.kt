@@ -44,7 +44,7 @@ open class CrystalLocator(
     ): InteractionResultHolder<ItemStack> {
         val stack = player.getItemInHand(hand)
 
-        if (level.isClientSide) {
+        if (!level.isClientSide) {
             val blocksPinged: Int = activate(level as ServerLevel, player.blockPosition(), stack)
 
             if (blocksPinged > 0) {
@@ -121,7 +121,7 @@ open class CrystalLocator(
         state: BlockState,
         delay: Int
     ) {
-        TODO("add echo display here")
+        // TODO: add echo display here
     }
 
 }
