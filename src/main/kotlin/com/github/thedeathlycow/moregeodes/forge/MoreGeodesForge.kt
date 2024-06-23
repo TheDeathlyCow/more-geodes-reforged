@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge
 
 import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
+import com.github.thedeathlycow.moregeodes.forge.client.ItemColorsSetup
 import com.github.thedeathlycow.moregeodes.forge.config.MoreGeodesConfig
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesEntityTypes
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesMemoryModules
@@ -56,6 +57,7 @@ object MoreGeodesForge {
 
         MOD_BUS.addListener(::onCommonSetup)
         MOD_BUS.register(Tunings)
+        MOD_BUS.register(ItemColorsSetup)
     }
 
     private fun onCommonSetup(event: FMLCommonSetupEvent) {
