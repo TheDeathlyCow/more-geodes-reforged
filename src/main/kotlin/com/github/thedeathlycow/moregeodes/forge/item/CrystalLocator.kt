@@ -1,5 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge.item
 
+import com.github.thedeathlycow.moregeodes.forge.entity.EchoDisplay
+import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesEntityTypes
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.tuning.Tuning
 import com.github.thedeathlycow.moregeodes.forge.util.minus
@@ -121,7 +123,15 @@ open class CrystalLocator(
         state: BlockState,
         delay: Int
     ) {
-        // TODO: add echo display here
+        val blockDisplay: EchoDisplay? = MoreGeodesEntityTypes.ECHO_DISPLAY.create(level)
+
+        blockDisplay?.let {
+            it.setBlockState(state)
+            it.setPos(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble())
+            it.setGlowDelay(delay)
+
+            level.addFreshEntity(it)
+        }
     }
 
 }
