@@ -112,7 +112,7 @@ object MoreGeodesCreativeTabs {
         return entries
     }
 
-    private fun makeTunedLocatorStack(tuningID: String): ItemStack {
+    fun makeTunedLocatorStack(tuningID: String): ItemStack {
         val stack = ItemStack(MoreGeodesItems.TUNED_CRYSTAL_LOCATOR)
 
         val tag = CompoundTag()

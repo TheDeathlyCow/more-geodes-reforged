@@ -8,6 +8,7 @@ import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesEntityTypes
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesMemoryModules
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesCreativeTabs
 import com.github.thedeathlycow.moregeodes.forge.item.MoreGeodesItems
+import com.github.thedeathlycow.moregeodes.forge.item.recipe.MoreGeodesRecipeSerializers
 import com.github.thedeathlycow.moregeodes.forge.sound.EchoGeodeBlockSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.tuning.Tunings
@@ -46,7 +47,7 @@ object MoreGeodesForge {
         MoreGeodesBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(MOD_BUS)
         MoreGeodesCreativeTabs.REGISTRY.register(MOD_BUS)
         MoreGeodesEntityTypes.REGISTRY.register(MOD_BUS)
-
+        MoreGeodesRecipeSerializers.REGISTRY.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {
