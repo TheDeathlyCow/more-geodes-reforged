@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.moregeodes.forge
 
 import com.github.thedeathlycow.moregeodes.forge.block.MoreGeodesBlocks
+import com.github.thedeathlycow.moregeodes.forge.client.EchoDisplayRenderer
 import com.github.thedeathlycow.moregeodes.forge.client.ItemColorsSetup
 import com.github.thedeathlycow.moregeodes.forge.config.MoreGeodesConfig
 import com.github.thedeathlycow.moregeodes.forge.entity.MoreGeodesEntityTypes
@@ -12,6 +13,7 @@ import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundEvents
 import com.github.thedeathlycow.moregeodes.forge.tuning.Tunings
 import com.github.thedeathlycow.moregeodes.forge.world.event.MoreGeodesGameEvents
 import com.github.thedeathlycow.moregeodes.forge.world.modifications.MoreGeodesBiomeModifiers
+import net.minecraft.client.renderer.entity.EntityRenderers
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.ComposterBlock
 import net.minecraftforge.fml.common.Mod
@@ -74,7 +76,7 @@ object MoreGeodesForge {
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.info("Setting up More Geodes Reforged Client")
-//        EntityRenderers.register(MoreGeodesEntityTypes.ECHO_DISPLAY, ::EchoDisplayRenderer)
+        EntityRenderers.register(MoreGeodesEntityTypes.ECHO_DISPLAY, ::EchoDisplayRenderer)
     }
 
     /**
