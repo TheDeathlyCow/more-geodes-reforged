@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "geodes:emerald_crystal_echo_locator"
+			"item": "geodes:echo_locator"
 		},
 		"title": {
 			"translate": "advancement.geodes.adventure.use_echo_locator.title"
@@ -10,24 +10,22 @@
 			"translate": "advancement.geodes.adventure.use_echo_locator.description"
 		}
 	},
-	"parent": "minecraft:adventure/root",
+	"parent": "geodes:adventure/use_tuned_crystal_locator",
 	"criteria": {
-		"use_any_echo_locator": {
-			"trigger": "minecraft:item_used_on_block",
+		"use_echo_locator": {
+			"trigger": "minecraft:item_durability_changed",
 			"conditions": {
-				"location": {
-					"block": {
-						"blocks": [
-							"geodes:echo_locator"
-						]
-					}
+				"item": {
+					"items": [
+						"geodes:echo_locator"
+					]
 				}
 			}
 		}
 	},
 	"requirements": [
 		[
-			"use_any_echo_locator"
+			"use_echo_locator"
 		]
 	],
 	"rewards": {

@@ -14,6 +14,17 @@ object MoreGeodesSoundEvents {
         MoreGeodesForge.MODID
     )
 
+
+    val ITEM_CRYSTAL_LOCATOR_USE: SoundEvent by REGISTRY.registerObject("item.geodes.crystal_locator.use") {
+        SoundEvent.createVariableRangeEvent(
+            ResourceLocation(
+                MoreGeodesForge.MODID,
+                "item.geodes.crystal_locator.use"
+            )
+        )
+
+    }
+
     val BLOCK_ECHO_LOCATOR_RESONATE: SoundEvent by REGISTRY.registerObject("block.geodes.echo_locator.resonate") {
         SoundEvent.createVariableRangeEvent(ResourceLocation(MoreGeodesForge.MODID, "block.geodes.echo_locator.resonate"))
     }

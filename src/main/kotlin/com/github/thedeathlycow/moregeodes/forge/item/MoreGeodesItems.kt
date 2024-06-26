@@ -316,13 +316,18 @@ object MoreGeodesItems {
     }
 
 
-    val ECHO_LOCATOR by REGISTRY.registerObject("echo_locator") {
-        BlockItem(
-            MoreGeodesBlocks.ECHO_LOCATOR,
-            Item.Properties()
+    val CRYSTAL_LOCATOR: Item by REGISTRY.registerObject("crystal_locator") {
+        CrystalLocator(
+            Item.Properties().durability(16)
         )
     }
 
+    val TUNED_CRYSTAL_LOCATOR: Item by REGISTRY.registerObject("tuned_crystal_locator") {
+        TunedCrystalLocator(
+            Item.Properties().durability(16)
+        )
+    }
+    
     val GABBRO by REGISTRY.registerObject("gabbro") {
         BlockItem(
             MoreGeodesBlocks.GABBRO,

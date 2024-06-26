@@ -1,7 +1,7 @@
 {
-	"variants": {
-		"": {
-			"model": "geodes:block/gabbro"
-		}
-	}
+  "variants": {
+    "": {
+      "model": "geodes:block/gabbro"
+    }
+  }
 }
