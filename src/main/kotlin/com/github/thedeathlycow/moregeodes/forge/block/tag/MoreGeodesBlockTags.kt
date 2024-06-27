@@ -11,6 +11,8 @@ object MoreGeodesBlockTags {
     @JvmField
     val CUSTOM_CRYSTAL_SOUND_BLOCKS: TagKey<Block> = create("custom_crystal_sound_blocks")
 
+    val ECHO_LOCATABLE: TagKey<Block> = create("echo_locatable")
+
     fun create(name: String): TagKey<Block> {
         return BlockTags.create(ResourceLocation(MoreGeodesForge.MODID, name))
     }

@@ -315,6 +315,11 @@ object MoreGeodesItems {
         )
     }
 
+    val ECHO_LOCATOR: Item by REGISTRY.registerObject("echo_locator") {
+        EchoLocator(
+            Item.Properties().durability(48)
+        )
+    }
 
     val CRYSTAL_LOCATOR: Item by REGISTRY.registerObject("crystal_locator") {
         CrystalLocator(

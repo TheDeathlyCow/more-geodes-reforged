@@ -23,12 +23,13 @@ import kotlin.math.sqrt
 
 open class CrystalLocator(
     properties: Properties,
-    private val range: Int = BASE_RANGE
+    private val range: Int = CRYSTAL_LOCATOR_RANGE,
+    protected val coolDown: Int = CRYSTAL_LOCATOR_COOL_DOWN
 ) : Item(properties) {
 
     companion object {
-        const val BASE_RANGE = 48
-        const val COOL_DOWN = 20
+        const val CRYSTAL_LOCATOR_RANGE = 48
+        const val CRYSTAL_LOCATOR_COOL_DOWN = 20
     }
 
     open fun isTuned(stack: ItemStack, level: Level?) = false
@@ -38,6 +39,12 @@ open class CrystalLocator(
         serverLevel: ServerLevel,
         pos: BlockPos
     ) = false
+
+    protected open fun applyCooldown(player: Player) {
+        val cooldowns = player.cooldowns
+        cooldowns.addCooldown(MoreGeodesItems.CRYSTAL_LOCATOR, coolDown)
+        cooldowns.addCooldown(MoreGeodesItems.TUNED_CRYSTAL_LOCATOR, coolDown)
+    }
 
     override fun use(
         level: Level,
@@ -55,9 +62,7 @@ open class CrystalLocator(
                 }
             }
 
-            val cooldowns = player.cooldowns
-            cooldowns.addCooldown(MoreGeodesItems.CRYSTAL_LOCATOR, COOL_DOWN)
-            cooldowns.addCooldown(MoreGeodesItems.TUNED_CRYSTAL_LOCATOR, COOL_DOWN)
+            this.applyCooldown(player)
             player.playNotifySound(
                 MoreGeodesSoundEvents.ITEM_CRYSTAL_LOCATOR_USE,
                 player.soundSource,

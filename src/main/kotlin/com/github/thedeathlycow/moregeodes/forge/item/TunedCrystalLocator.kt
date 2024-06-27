@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level
 
 class TunedCrystalLocator(
     properties: Properties,
-    range: Int = BASE_RANGE
+    range: Int = CRYSTAL_LOCATOR_RANGE
 ) : CrystalLocator(properties, range) {
 
     override fun isTuned(stack: ItemStack, level: Level?): Boolean {

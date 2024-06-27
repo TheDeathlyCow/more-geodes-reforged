@@ -25,7 +25,7 @@ object MoreGeodesCreativeTabs {
                 ItemStack(MoreGeodesItems.EMERALD_CLUSTER)
             }
             .title(Component.translatable("itemGroup.geodes.more_geodes"))
-            .displayItems { params, entries ->
+            .displayItems { _, entries ->
                 // emerald
                 entries.accept(ItemStack(MoreGeodesItems.EMERALD_CRYSTAL_BLOCK))
                 entries.accept(ItemStack(MoreGeodesItems.BUDDING_EMERALD))
@@ -86,7 +86,7 @@ object MoreGeodesCreativeTabs {
 
                 // echo locator
                 entries.accept(ItemStack(MoreGeodesItems.CRYSTAL_LOCATOR))
-//                entries.accept(ItemStack(MoreGeodesItems.ECHO_LOCATOR))
+                entries.accept(ItemStack(MoreGeodesItems.ECHO_LOCATOR))
                 entries.acceptAll(getTunedCrystalLocators())
             }
             .build()

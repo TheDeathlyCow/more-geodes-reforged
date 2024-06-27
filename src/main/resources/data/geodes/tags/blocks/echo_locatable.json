@@ -1,8 +1,21 @@
 {
 	"replace": false,
 	"values": [
-		"#c:ores",
-		"#c:buds",
-		"#c:clusters"
+		{
+			"id": "#c:ores",
+			"required": false
+		},
+		{
+			"id": "#c:buds",
+			"required": false
+		},
+		{
+			"id": "#c:clusters",
+			"required": false
+		},
+		{
+			"id": "#forge:ores",
+			"required": false
+		}
 	]
 }
