@@ -6,10 +6,12 @@ import com.github.thedeathlycow.moregeodes.forge.sound.MoreGeodesSoundTypes
 import net.minecraft.core.Direction
 import net.minecraft.world.level.block.*
 import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument
 import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.level.material.PushReaction
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
+import net.minecraftforge.registries.RegistryObject
 import thedarkcolour.kotlinforforge.forge.registerObject
 
 object MoreGeodesBlocks {
@@ -458,5 +460,73 @@ object MoreGeodesBlocks {
                 .strength(1.25f, 4.2f)
                 .requiresCorrectToolForDrops()
         )
+    }
+
+    val CHISELED_GYPSUM by REGISTRY.registerObject("chiseled_gypsum") {
+        Block(
+            BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.BASEDRUM)
+                .requiresCorrectToolForDrops()
+                .strength(0.8f)
+        )
+    }
+
+    val GYPSUM_PILLAR by REGISTRY.registerObject("gypsum_pillar") {
+        RotatedPillarBlock(
+            BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.BASEDRUM)
+                .requiresCorrectToolForDrops()
+                .strength(0.8f)
+        )
+    }
+
+    val POLISHED_GYPSUM_BLOCK by REGISTRY.registerObject("polished_gypsum_block") {
+        Block(
+            BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.BASEDRUM)
+                .requiresCorrectToolForDrops()
+                .strength(0.8f)
+        )
+    }
+
+    val POLISHED_GYPSUM_STAIRS by REGISTRY.registerObject("polished_gypsum_stairs") {
+        StairBlock(
+            state@{
+                POLISHED_GYPSUM_BLOCK.defaultBlockState()
+            },
+            BlockBehaviour.Properties.copy(POLISHED_GYPSUM_BLOCK)
+        )
+    }
+
+    val POLISHED_GYPSUM_SLAB by REGISTRY.registerObject("polished_gypsum_slab") {
+        SlabBlock(BlockBehaviour.Properties.copy(POLISHED_GYPSUM_BLOCK))
+    }
+
+    val POLISHED_GYPSUM_WALL by REGISTRY.registerObject("polished_gypsum_wall") {
+        WallBlock(BlockBehaviour.Properties.copy(POLISHED_GYPSUM_BLOCK))
+    }
+
+    val SMOOTH_GYPSUM_BLOCK by REGISTRY.registerObject("smooth_gypsum_block") {
+        Block(BlockBehaviour.Properties.of()
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(0.8f))
+    }
+
+    val SMOOTH_GYPSUM_STAIRS by REGISTRY.registerObject("smooth_gypsum_stairs") {
+        StairBlock(
+            state@{
+                SMOOTH_GYPSUM_BLOCK.defaultBlockState()
+            },
+            BlockBehaviour.Properties.copy(SMOOTH_GYPSUM_BLOCK)
+        )
+    }
+
+    val SMOOTH_GYPSUM_SLAB by REGISTRY.registerObject("smooth_gypsum_slab") {
+        SlabBlock(BlockBehaviour.Properties.copy(SMOOTH_GYPSUM_BLOCK))
+    }
+
+    val SMOOTH_GYPSUM_WALL by REGISTRY.registerObject("smooth_gypsum_wall") {
+        WallBlock(BlockBehaviour.Properties.copy(SMOOTH_GYPSUM_BLOCK))
     }
 }

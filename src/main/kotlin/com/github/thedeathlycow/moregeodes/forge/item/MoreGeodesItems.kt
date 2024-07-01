@@ -339,4 +339,74 @@ object MoreGeodesItems {
             Item.Properties()
         )
     }
+
+    val CHISELED_GYPSUM: Item by REGISTRY.registerObject("chiseled_gypsum") {
+        BlockItem(
+            MoreGeodesBlocks.CHISELED_GYPSUM,
+            Item.Properties()
+        )
+    }
+
+    val GYPSUM_PILLAR: Item by REGISTRY.registerObject("gypsum_pillar") {
+        BlockItem(
+            MoreGeodesBlocks.GYPSUM_PILLAR,
+            Item.Properties()
+        )
+    }
+
+    val POLISHED_GYPSUM_BLOCK: Item by REGISTRY.registerObject("polished_gypsum_block") {
+        BlockItem(
+            MoreGeodesBlocks.POLISHED_GYPSUM_BLOCK,
+            Item.Properties()
+        )
+    }
+
+    val POLISHED_GYPSUM_STAIRS: Item by REGISTRY.registerObject("polished_gypsum_stairs") {
+        BlockItem(
+            MoreGeodesBlocks.POLISHED_GYPSUM_STAIRS,
+            Item.Properties()
+        )
+    }
+
+    val POLISHED_GYPSUM_SLAB: Item by REGISTRY.registerObject("polished_gypsum_slab") {
+        BlockItem(
+            MoreGeodesBlocks.POLISHED_GYPSUM_SLAB,
+            Item.Properties()
+        )
+    }
+
+    val POLISHED_GYPSUM_WALL: Item by REGISTRY.registerObject("polished_gypsum_wall") {
+        BlockItem(
+            MoreGeodesBlocks.POLISHED_GYPSUM_WALL,
+            Item.Properties()
+        )
+    }
+
+    val SMOOTH_GYPSUM_BLOCK: Item by REGISTRY.registerObject("smooth_gypsum_block") {
+        BlockItem(
+            MoreGeodesBlocks.SMOOTH_GYPSUM_BLOCK,
+            Item.Properties()
+        )
+    }
+
+    val SMOOTH_GYPSUM_STAIRS: Item by REGISTRY.registerObject("smooth_gypsum_stairs") {
+        BlockItem(
+            MoreGeodesBlocks.SMOOTH_GYPSUM_STAIRS,
+            Item.Properties()
+        )
+    }
+
+    val SMOOTH_GYPSUM_SLAB: Item by REGISTRY.registerObject("smooth_gypsum_slab") {
+        BlockItem(
+            MoreGeodesBlocks.SMOOTH_GYPSUM_SLAB,
+            Item.Properties()
+        )
+    }
+
+    val SMOOTH_GYPSUM_WALL: Item by REGISTRY.registerObject("smooth_gypsum_wall") {
+        BlockItem(
+            MoreGeodesBlocks.SMOOTH_GYPSUM_WALL,
+            Item.Properties()
+        )
+    }
 }

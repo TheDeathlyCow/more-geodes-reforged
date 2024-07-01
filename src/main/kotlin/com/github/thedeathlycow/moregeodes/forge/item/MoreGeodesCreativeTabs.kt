@@ -84,6 +84,18 @@ object MoreGeodesCreativeTabs {
 
                 entries.accept(ItemStack(MoreGeodesItems.GABBRO))
 
+                // gypsum blocks
+                entries.accept(ItemStack(MoreGeodesItems.CHISELED_GYPSUM))
+                entries.accept(ItemStack(MoreGeodesItems.GYPSUM_PILLAR))
+                entries.accept(ItemStack(MoreGeodesItems.POLISHED_GYPSUM_BLOCK))
+                entries.accept(ItemStack(MoreGeodesItems.POLISHED_GYPSUM_STAIRS))
+                entries.accept(ItemStack(MoreGeodesItems.POLISHED_GYPSUM_SLAB))
+                entries.accept(ItemStack(MoreGeodesItems.POLISHED_GYPSUM_WALL))
+                entries.accept(ItemStack(MoreGeodesItems.SMOOTH_GYPSUM_BLOCK))
+                entries.accept(ItemStack(MoreGeodesItems.SMOOTH_GYPSUM_STAIRS))
+                entries.accept(ItemStack(MoreGeodesItems.SMOOTH_GYPSUM_SLAB))
+                entries.accept(ItemStack(MoreGeodesItems.SMOOTH_GYPSUM_WALL))
+
                 // echo locator
                 entries.accept(ItemStack(MoreGeodesItems.CRYSTAL_LOCATOR))
                 entries.accept(ItemStack(MoreGeodesItems.ECHO_LOCATOR))
