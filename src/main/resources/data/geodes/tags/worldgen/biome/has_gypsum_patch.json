@@ -1,13 +1,16 @@
 {
-    "replace": false,
-    "values": [
-        "minecraft:desert",
-        "#minecraft:is_badlands",
-        "#c:desert",
+	"replace": false,
+	"values": [
+		"minecraft:desert",
+		"#minecraft:is_badlands",
+        "#forge:is_desert",
+		{
+			"id": "#c:desert",
+			"required": false
+		},
         {
-            "id": "#forge:is_desert",
+            "id": "#c:badlands",
             "required": false
-        },
-        "#c:badlands"
-    ]
+        }
+	]
 }

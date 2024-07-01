@@ -2,7 +2,10 @@
     "replace": false,
     "values": [
         "#minecraft:is_nether",
-        "#c:in_nether",
+        {
+            "id": "#c:in_nether",
+            "required": false
+        },
         {
             "id": "incendium:ash_barrens",
             "required": false

@@ -3,6 +3,10 @@
     "values": [
         "minecraft:grove",
         "#minecraft:is_mountain",
-        "#c:mountain"
+        {
+            "required": false,
+            "id": "#c:mountain"
+        },
+        "#forge:is_mountain"
     ]
 }
