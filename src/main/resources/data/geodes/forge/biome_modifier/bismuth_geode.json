@@ -1,0 +1,8 @@
+{
+	"type": "geodes:add_features_with_dependency",
+	"config": "generate_bismuth_geodes",
+	"required_mod_id": "spectrum",
+	"biomes": "#geodes:has_bismuth_geode",
+	"features": "geodes:bismuth_geode",
+	"step": "underground_decoration"
+}

@@ -1,0 +1,26 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "spectrum"
+                }
+            ],
+            "recipe": {
+                "type": "geodes:crystal_tuning",
+                "group": "geodes_tunings",
+                "ingredients": [
+                    {
+                        "tag": "geodes:spectrum/topaz_shards"
+                    },
+                    {
+                        "item": "geodes:crystal_locator"
+                    }
+                ],
+                "tuning": "geodes:spectrum/topaz"
+            }
+        }
+    ]
+}

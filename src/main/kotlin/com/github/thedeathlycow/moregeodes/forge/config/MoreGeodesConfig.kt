@@ -15,6 +15,7 @@ class MoreGeodesConfig {
         private const val LAPIS_GEODES_KEY = "generate_lapis_geodes"
         private const val GYPSUM_PATCHES_KEY = "generate_gypsum_patches"
         private const val CERTUS_GEODES_KEY = "generate_certus_geodes"
+        private const val BISMUTH_GEODES_KEY = "generate_bismuth_geodes"
     }
 
     private val defaultProperties: Properties = Properties()
@@ -80,6 +81,7 @@ class MoreGeodesConfig {
         defaultProperties.setProperty(LAPIS_GEODES_KEY, "true")
         defaultProperties.setProperty(GYPSUM_PATCHES_KEY, "true")
         defaultProperties.setProperty(CERTUS_GEODES_KEY, "true")
+        defaultProperties.setProperty(BISMUTH_GEODES_KEY, "true")
     }
 
     private fun getConfigFile(): File {

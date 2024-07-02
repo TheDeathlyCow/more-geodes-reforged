@@ -6,7 +6,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
@@ -17,7 +16,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
@@ -32,44 +31,45 @@ public abstract class FoolsGoldBarterMixin {
     protected static void broadcastAngerTarget(AbstractPiglin piglin, LivingEntity target) {
     }
 
-    @Inject(
-            method = "pickUpItem",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/entity/monster/piglin/PiglinAi;admireGoldItem(Lnet/minecraft/world/entity/LivingEntity;)V",
-                    shift = At.Shift.AFTER
-            ),
-            locals = LocalCapture.CAPTURE_FAILEXCEPTION
-    )
-    private static void angerWhenRemembersFoolsGold(Piglin piglin, ItemEntity drop, CallbackInfo ci, ItemStack itemStack) {
-        MemoryModuleType<Boolean> foolsGoldMemory = MoreGeodesMemoryModules.INSTANCE.getREMEMBERS_FOOLS_GOLD();
-        Brain<Piglin> brain = piglin.getBrain();
-        Optional<Boolean> memory = brain.getMemory(foolsGoldMemory);
 
-        boolean remembersFoolsGold = brain.hasMemoryValue(foolsGoldMemory)
+    @Inject(
+            method = "wantsToPickup",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private static void piglinsRememberFoolsGold(Piglin pPiglin, ItemStack pStack, CallbackInfoReturnable<Boolean> cir) {
+        Brain<Piglin> brain = pPiglin.getBrain();
+        Optional<Boolean> memory = brain.getMemory(MoreGeodesMemoryModules.INSTANCE.getREMEMBERS_FOOLS_GOLD());
+
+
+        boolean remembersFoolsGold = brain.hasMemoryValue(MoreGeodesMemoryModules.INSTANCE.getREMEMBERS_FOOLS_GOLD())
+                && memory != null // NOSONAR - why tf is there a nullable optional
                 && memory.isPresent()
                 && memory.get();
 
-        if (remembersFoolsGold && itemStack.is(MoreGeodesItemTags.INSTANCE.getFOOLS_FOLD())) {
-            brain.eraseMemory(MemoryModuleType.ADMIRING_ITEM);
-            angerAtNearbyPlayers(piglin);
+        if (remembersFoolsGold && pStack.is(MoreGeodesItemTags.INSTANCE.getFOOLS_FOLD())) {
+            cir.setReturnValue(false);
         }
     }
 
     @Inject(
             method = "stopHoldingOffHandItem",
-            at = @At("HEAD")
+            at = @At("HEAD"),
+            cancellable = true
     )
     private static void angerPiglinWhenStoppedAdmiringFoolsGold(Piglin piglin, boolean isAdmiring, CallbackInfo ci) {
         if (!isAdmiring) {
             return;
         }
 
-        ItemStack holding = piglin.getItemInHand(InteractionHand.OFF_HAND);
+        ItemStack stack = piglin.getItemInHand(InteractionHand.OFF_HAND);
 
-        if (holding.is(MoreGeodesItemTags.INSTANCE.getFOOLS_FOLD())) {
+        if (stack.is(MoreGeodesItemTags.INSTANCE.getFOOLS_FOLD())) {
             angerAtNearbyPlayers(piglin);
             piglin.getBrain().setMemory(MoreGeodesMemoryModules.INSTANCE.getREMEMBERS_FOOLS_GOLD(), true);
+            stack.setCount(0);
+            piglin.swing(InteractionHand.OFF_HAND);
+            ci.cancel();
         }
     }
 

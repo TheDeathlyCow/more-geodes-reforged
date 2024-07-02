@@ -193,6 +193,10 @@ open class LargeCrystalClusterBlock(
         if (!level.isClientSide) {
             // server break
 
+            if (!player.isCreative) {
+                Block.dropResources(state, level, pos, null, player, player.mainHandItem);
+            }
+
             if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
                 // upper half is broken
                 val anchorPos = pos.relative(state.getValue(FACING).opposite)
