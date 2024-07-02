@@ -3,6 +3,6 @@
 	"config": "generate_bismuth_geodes",
 	"required_mod_id": "spectrum",
 	"biomes": "#geodes:has_bismuth_geode",
-	"features": "geodes:certus_geode",
-	"step": "vegetal_decoration"
+	"features": "geodes:bismuth_geode",
+	"step": "underground_decoration"
 }
