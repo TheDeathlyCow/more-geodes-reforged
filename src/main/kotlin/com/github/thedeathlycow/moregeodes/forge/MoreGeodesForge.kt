@@ -23,6 +23,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import thedarkcolour.kotlinforforge.forge.DIST
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.forge.runForDist
 
@@ -49,9 +50,10 @@ object MoreGeodesForge {
         MoreGeodesEntityTypes.REGISTRY.register(MOD_BUS)
         MoreGeodesRecipeSerializers.REGISTRY.register(MOD_BUS)
 
-        val obj = runForDist(
+        runForDist(
             clientTarget = {
                 MOD_BUS.addListener(::onClientSetup)
+                MOD_BUS.register(ItemColorsSetup)
             },
             serverTarget = {
                 MOD_BUS.addListener(::onServerSetup)
@@ -60,7 +62,6 @@ object MoreGeodesForge {
 
         MOD_BUS.addListener(::onCommonSetup)
         MOD_BUS.register(Tunings)
-        MOD_BUS.register(ItemColorsSetup)
     }
 
     private fun onCommonSetup(event: FMLCommonSetupEvent) {
@@ -73,6 +74,7 @@ object MoreGeodesForge {
     /**
      * This is used for initializing client specific
      * things such as renderers and keymaps
+     *
      * Fired on the mod specific event bus.
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
