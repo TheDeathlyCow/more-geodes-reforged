@@ -1,0 +1,32 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "create"
+                }
+            ],
+            "recipe": {
+                "type": "create:crushing",
+                "ingredients": [
+                    {
+                        "item": "geodes:emerald_crystal_block"
+                    }
+                ],
+                "processingTime": 150,
+                "results": [
+                    {
+                        "count": 3,
+                        "item": "minecraft:emerald"
+                    },
+                    {
+                        "chance": 0.5,
+                        "item": "minecraft:emerald"
+                    }
+                ]
+            }
+        }
+    ]
+}

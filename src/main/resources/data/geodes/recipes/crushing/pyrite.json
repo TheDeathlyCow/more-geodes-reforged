@@ -1,0 +1,32 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "create"
+                }
+            ],
+            "recipe": {
+                "type": "create:crushing",
+                "ingredients": [
+                    {
+                        "item": "geodes:pyrite"
+                    }
+                ],
+                "processingTime": 250,
+                "results": [
+                    {
+                        "count": 3,
+                        "item": "geodes:pyrite_chunk"
+                    },
+                    {
+                        "chance": 0.5,
+                        "item": "geodes:pyrite_chunk"
+                    }
+                ]
+            }
+        }
+    ]
+}

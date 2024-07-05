@@ -1,0 +1,36 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "create"
+                }
+            ],
+            "recipe": {
+                "type": "create:crushing",
+                "ingredients": [
+                    {
+                        "item": "geodes:lapis_cluster"
+                    }
+                ],
+                "processingTime": 150,
+                "results": [
+                    {
+                        "count": 7,
+                        "item": "minecraft:lapis_lazuli"
+                    },
+                    {
+                        "chance": 0.5,
+                        "item": "minecraft:lapis_lazuli"
+                    },
+                    {
+                        "chance": 0.75,
+                        "item": "geodes:pyrite_chunk"
+                    }
+                ]
+            }
+        }
+    ]
+}
